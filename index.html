@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MUT Pack Tracker</title>
+<title>MUT Mystery Pack Tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root {
     --bg: #0a0e0f;
@@ -26,9 +27,7 @@
     --mono: 'JetBrains Mono', ui-monospace, monospace;
     --sans: 'Inter', system-ui, sans-serif;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -39,8 +38,6 @@
       radial-gradient(at 20% 0%, rgba(127, 255, 170, 0.04) 0px, transparent 50%),
       radial-gradient(at 80% 100%, rgba(212, 175, 55, 0.03) 0px, transparent 50%);
   }
-
-  
   header {
     display: flex;
     justify-content: space-between;
@@ -49,19 +46,19 @@
     border-bottom: 1px solid var(--border);
     margin-bottom: 32px;
   }
-  .title-block h1 {
+  h1 {
     font-family: var(--display);
     font-weight: 400;
     font-size: 38px;
     letter-spacing: -0.02em;
     line-height: 1;
   }
-  .title-block h1 em {
+  h1 em {
     font-style: italic;
     color: var(--accent);
     font-weight: 300;
   }
-  .title-block .subtitle {
+  .subtitle {
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.15em;
@@ -75,1030 +72,905 @@
     font-size: 11px;
     color: var(--text-dim);
   }
-  .header-meta .session-time {
+  .header-meta .gen-time {
     font-size: 14px;
     color: var(--text);
     margin-bottom: 4px;
   }
-  .status-dot {
-    display: inline-block;
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    margin-right: 6px;
-    animation: pulse 2s infinite;
-    box-shadow: 0 0 8px var(--accent);
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  
-  .hero {
+  .kpi-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 32px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
   }
-  .hero > div {
+  .kpi {
     background: var(--bg-card);
-    padding: 28px 32px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
   }
-  .hero-label {
+  .kpi .label {
     font-family: var(--mono);
     font-size: 10px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-faint);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
-  .hero-value {
+  .kpi .value {
     font-family: var(--display);
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 400;
-    letter-spacing: -0.02em;
     line-height: 1;
+    color: var(--text);
   }
-  .hero-value.positive { color: var(--accent); }
-  .hero-value.negative { color: var(--loss); }
-  .hero-sub {
+  .kpi .value.accent { color: var(--accent); }
+  .kpi .value.loss { color: var(--loss); }
+  .kpi .value.gold { color: var(--gold); }
+  .kpi .unit {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-dim);
-    margin-top: 10px;
+    margin-top: 6px;
   }
-  .hero-sub .delta { color: var(--accent); }
-  .hero-sub .delta.neg { color: var(--loss); }
-
-  
-  .hero-types {
+  section {
+    margin-bottom: 48px;
+  }
+  section h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  section h2 em { color: var(--accent); font-style: italic; }
+  section .section-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 20px;
+  }
+  .row-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 32px;
-  }
-  .hero-type-card {
-    background: var(--bg-card);
-    padding: 28px 32px;
-  }
-  .hero-type-card .hero-sub + .hero-sub { margin-top: 4px; }
-
-  
-  .grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-bottom: 24px;
   }
-  .grid-3 {
+  .row-3 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
-    margin-bottom: 24px;
   }
-
-  
   .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    padding: 24px;
+    border-radius: 8px;
+    padding: 20px;
   }
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .card-title {
-    font-family: var(--display);
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-  }
-  .card-meta {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-  }
-
-  
-  .dist-row {
-    display: grid;
-    grid-template-columns: 50px 1fr 80px 60px;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .dist-row:last-child { border-bottom: none; }
-  .dist-label {
-    font-family: var(--display);
-    font-size: 22px;
-    font-style: italic;
-    color: var(--text);
-  }
-  .dist-bar-container {
-    position: relative;
-    height: 28px;
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
-  }
-  .dist-bar-expected {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 4px,
-      rgba(127, 255, 170, 0.15) 4px,
-      rgba(127, 255, 170, 0.15) 8px
-    );
-    border-right: 1px dashed var(--accent-dim);
-  }
-  .dist-bar-actual {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    background: var(--accent);
-    transition: width 0.6s ease;
-  }
-  .dist-bar-actual.over {
-    background: var(--gold);
-  }
-  .dist-count {
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--text);
-    text-align: right;
-  }
-  .dist-pct {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    text-align: right;
-  }
-  .dist-legend {
-    display: flex;
-    gap: 20px;
-    margin-top: 16px;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-faint);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .dist-legend .swatch {
-    display: inline-block;
-    width: 16px; height: 8px;
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-  .dist-legend .swatch.actual { background: var(--accent); }
-  .dist-legend .swatch.expected {
-    background: repeating-linear-gradient(
-      45deg,
-      transparent, transparent 2px,
-      rgba(127, 255, 170, 0.3) 2px, rgba(127, 255, 170, 0.3) 4px
-    );
-    border: 1px solid var(--accent-dim);
-  }
-
-  
-  .percentile-chart {
-    position: relative;
-    height: 60px;
-    margin: 24px 0 12px;
-  }
-  .percentile-track {
-    position: absolute;
-    top: 28px;
-    left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg,
-      var(--loss) 0%,
-      var(--warn) 25%,
-      var(--text-dim) 50%,
-      var(--accent) 75%,
-      var(--gold) 100%
-    );
-    border-radius: 2px;
-  }
-  .percentile-marker {
-    position: absolute;
-    top: 18px;
-    width: 2px;
-    height: 24px;
-    background: var(--text);
-    transition: left 0.6s ease;
-  }
-  .percentile-marker::after {
-    content: attr(data-label);
-    position: absolute;
-    top: -24px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text);
-    white-space: nowrap;
-  }
-  .percentile-labels {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-faint);
-    letter-spacing: 0.1em;
-    margin-top: 8px;
-  }
-
-  
+  .chart-wrapper { position: relative; height: 280px; }
+  .chart-wrapper.tall { height: 360px; }
   table {
     width: 100%;
     border-collapse: collapse;
     font-family: var(--mono);
     font-size: 12px;
   }
-  thead th {
-    text-align: left;
-    padding: 8px 12px;
+  th, td {
+    text-align: right;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
     color: var(--text-faint);
     font-weight: 500;
-    font-size: 10px;
-    letter-spacing: 0.15em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--border-strong);
-  }
-  tbody td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
-  }
-  tbody tr:hover { background: var(--bg-elev); }
-  td.num { text-align: right; }
-  td.pull-98 { color: var(--gold); font-weight: 500; }
-  td.pull-96 { color: var(--accent); }
-  td.pull-94, td.pull-95 { color: var(--text-dim); }
-
-  
-  .stat-block .label {
-    font-family: var(--mono);
+    letter-spacing: 0.08em;
     font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 12px;
   }
-  .stat-block .value {
-    font-family: var(--display);
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .stat-block .secondary {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 8px;
-  }
-
-  
-  .sim-controls { display: flex; gap: 4px; }
-  .sim-btn { padding: 6px 12px; font-size: 11px; }
-  .sim-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(127, 255, 170, 0.06); }
-  .sim-stats {
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(127, 255, 170, 0.03); }
+  .profit-positive { color: var(--accent); }
+  .profit-negative { color: var(--loss); }
+  .heatmap {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 140px repeat(30, 1fr);
     gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
   }
-  .sim-stat { background: var(--bg-card); padding: 20px 24px; }
-  .sim-stat .label {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--text-faint); margin-bottom: 10px;
+  .heatmap .h-header {
+    color: var(--text-faint);
+    padding: 4px 2px;
+    text-align: center;
   }
-  .sim-stat .value {
-    font-family: var(--display); font-size: 28px; font-weight: 400;
-    letter-spacing: -0.02em; line-height: 1;
+  .heatmap .h-row-label {
+    color: var(--text-dim);
+    padding: 4px 8px;
   }
-  .sim-range {
-    position: relative; height: 36px;
-    background: var(--bg-elev); border: 1px solid var(--border);
-    margin: 8px 0;
+  .heatmap .h-cell {
+    padding: 4px 2px;
+    text-align: center;
+    background: rgba(127, 255, 170, 0);
+    color: var(--text-faint);
+    border-radius: 2px;
+    min-height: 22px;
   }
-  .sim-range-inner {
-    position: absolute; top: 0; bottom: 0;
-    background: linear-gradient(90deg, rgba(255,107,122,0.18) 0%, rgba(127,255,170,0.18) 100%);
-    transition: left 0.4s ease, width 0.4s ease;
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    text-align: center;
   }
-  .sim-range-zero {
-    position: absolute; top: -2px; bottom: -2px; width: 0;
-    border-left: 1px dashed var(--text-faint);
-    transition: left 0.4s ease;
-  }
-  .sim-range-median {
-    position: absolute; top: -4px; bottom: -4px; width: 3px;
-    background: var(--text); z-index: 2;
-    transition: left 0.4s ease;
-  }
-  .sim-range-labels {
-    display: flex; justify-content: space-between;
-    font-family: var(--mono); font-size: 10px;
-    color: var(--text-faint); letter-spacing: 0.05em;
-    margin-bottom: 16px;
-  }
-  .sim-footnote {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--text-dim); line-height: 1.6;
-    padding-top: 16px; border-top: 1px solid var(--border);
-  }
-
-  
-  .filter-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 18px;
-    margin-bottom: 24px;
+  .data-sources {
+    margin-top: 48px;
+    padding: 24px;
     background: var(--bg-card);
     border: 1px solid var(--border);
+    border-radius: 8px;
   }
-  .filter-bar-label {
+  .data-sources h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .data-sources .section-meta {
+    margin-bottom: 16px;
+  }
+  .data-sources ul {
+    list-style: none;
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
+    font-size: 12px;
+  }
+  .data-sources li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-sources li:last-child { border-bottom: none; }
+  .data-sources a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .data-sources a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+  .data-sources .meta {
+    color: var(--text-faint);
+    font-size: 11px;
+  }
+  /* Tooltip system — pure CSS */
+  .info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    color: var(--text-faint);
+    font-size: 9px;
+    font-family: var(--mono);
+    font-weight: 600;
+    cursor: help;
+    margin-left: 6px;
+    position: relative;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .info:hover {
+    color: var(--accent);
+    border-color: var(--accent-dim);
+    background: rgba(127, 255, 170, 0.06);
+  }
+  .info::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text);
+    white-space: pre-wrap;
+    width: 280px;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  .info::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--border-strong);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    z-index: 101;
+  }
+  .info:hover::after, .info:hover::before {
+    opacity: 1;
+  }
+  /* Right-aligned tooltips for header cells in tables */
+  th .info::after {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+  th .info::before {
+    left: auto;
+    right: 8px;
+    transform: none;
+  }
+  /* Section-level info icons need a different vertical alignment */
+  h2 .info, .card h2 .info {
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+  /* Currency filter toggle */
+  .filter-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+  }
+  .filter-bar .label {
     color: var(--text-faint);
     margin-right: 8px;
   }
-  .filter-btn { padding: 8px 16px; font-size: 11px; letter-spacing: 0.08em; }
-  .filter-btn.active {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(127, 255, 170, 0.06);
-  }
-  
-  body.filter-surge .card-76k-only,
-  body.filter-surge .row-76k-only { display: none; }
-  
-  body.filter-surge .grid-3 { grid-template-columns: 1fr; }
-
-  
-  .pull-btn {
-    background: transparent;
+  .filter-bar .filter-group {
+    display: inline-flex;
+    background: var(--bg-elev);
     border: 1px solid var(--border-strong);
-    color: var(--text);
-    padding: 10px 18px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.1em;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .filter-bar button {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    padding: 8px 16px;
     cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     transition: all 0.15s;
   }
-  .pull-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(127, 255, 170, 0.04);
+  .filter-bar button:hover {
+    color: var(--text);
+    background: rgba(127, 255, 170, 0.05);
   }
-
-  @media (max-width: 900px) {
-    .hero, .grid, .grid-3 { grid-template-columns: 1fr; }
-    body { padding: 20px; }
+  .filter-bar button.active {
+    background: var(--accent-dim);
+    color: var(--text);
+  }
+  /* Currency view toggling */
+  body.view-coins .col-training,
+  body.view-coins .kpi-training {
+    display: none;
+  }
+  body.view-training .col-coins,
+  body.view-training .kpi-coins {
+    display: none;
+  }
+  /* body.view-both shows everything (default no hiding) */
+  /* KPI grid adapts column count when items hide */
+  body.view-coins .kpi-grid,
+  body.view-training .kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  body.view-coins .kpi-grid-roi,
+  body.view-training .kpi-grid-roi {
+    grid-template-columns: 1fr !important;
   }
 </style>
 </head>
-<body>
+<body class="view-coins">
 
 <header>
-  <div class="title-block">
-    <h1>Pack <em>Tracker</em></h1>
-    <div class="subtitle">Live · MUT Pack Profitability · 100-Pack Horizon</div>
+  <div>
+    <h1>MUT Mystery <em>Pack Tracker</em></h1>
+    <div class="subtitle">Live · MUT Pack Profitability · Lifetime View</div>
   </div>
   <div class="header-meta">
-    <div class="session-time" id="session-time">Session active</div>
-    <div><span class="status-dot"></span>Live · polling every 5s</div>
+    <div class="gen-time">Generated 2026-05-27 16:42</div>
+    <div>311 packs · 1,073 cards</div>
   </div>
 </header>
 
-
 <div class="filter-bar">
-  <span class="filter-bar-label">Pack filter</span>
-  <button class="pull-btn filter-btn active" onclick="setPackFilter('all', this)">All Packs</button>
-  <button class="pull-btn filter-btn" onclick="setPackFilter('training_pack', this)">76K Training Only</button>
-  <button class="pull-btn filter-btn" onclick="setPackFilter('surge_training_pack', this)">Surge 240K Only</button>
-</div>
-
-
-<div class="hero-types" id="hero-types">
-  <div class="hero-type-card">
-    <div class="hero-label">Loading…</div>
-    <div class="hero-value" style="color:var(--text-faint)">—</div>
+  <span class="label">View by currency:</span>
+  <div class="filter-group">
+    <button data-view="coins" class="active">Coins</button>
+    <button data-view="training">Training</button>
+    <button data-view="both">Both</button>
   </div>
 </div>
 
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="label">Total Cards<span class="info" data-tip="Count of individual card pulls in data/pulls.csv. Each row = one card. Equivalent to COUNTROWS(Cards) in Power BI."></span></div>
+    <div class="value">1,073</div>
+    <div class="unit">across 7 batches · 311 packs</div>
+  </div>
+  <div class="kpi kpi-coins">
+    <div class="label">Spent · Coins<span class="info" data-tip="Total Packs × 17,500 coins. Every mystery pack costs the same 17,500 coins regardless of type."></span></div>
+    <div class="value gold">5,442,500</div>
+    <div class="unit">coins · 311 × 17,500</div>
+  </div>
+  <div class="kpi kpi-training">
+    <div class="label">Spent · Training<span class="info" data-tip="Total Packs × 50,000 training points. Every mystery pack costs 50,000 training points (the alternate currency for buying packs)."></span></div>
+    <div class="value gold">15,550,000</div>
+    <div class="unit">training · 311 × 50,000</div>
+  </div>
+  <div class="kpi kpi-coins">
+    <div class="label">Value · Coins<span class="info" data-tip="Per card: value = ovr_values[ovr].Value_Used. Summed across all cards. The coin-currency value from the Value_Used column in data/lookups/ovr_values.csv. Single source of truth — edit that file and value updates everywhere on next build."></span></div>
+    <div class="value accent">5,856,195</div>
+    <div class="unit">from ovr_values.Value_Used</div>
+  </div>
+  <div class="kpi kpi-training">
+    <div class="label">Value · Training<span class="info" data-tip="Per card: value = ovr_values[ovr].training_value. Summed across all cards. The training-currency value from the training_value column in data/lookups/ovr_values.csv."></span></div>
+    <div class="value accent">11,013,459</div>
+    <div class="unit">from ovr_values.training_value</div>
+  </div>
+</div>
+<div class="kpi-grid kpi-grid-roi" style="grid-template-columns: 1fr 1fr; margin-top:-20px;">
+  <div class="kpi kpi-coins">
+    <div class="label">ROI · Coins<span class="info" data-tip="((Value Coins − Spent Coins) / Spent Coins) × 100. Positive = profit. The most economically meaningful ROI since coins are the tradeable currency."></span></div>
+    <div class="value accent">+7.6%</div>
+    <div class="unit">413,695 coins profit</div>
+  </div>
+  <div class="kpi kpi-training">
+    <div class="label">ROI · Training<span class="info" data-tip="((Value Training − Spent Training) / Spent Training) × 100. Measures whether the OVR-weighted training value pulled exceeded the training spent on packs. Often higher than ROI Coins because manual_value applies a 0.6 haircut."></span></div>
+    <div class="value loss">-29.2%</div>
+    <div class="unit">-4,536,541 training profit</div>
+  </div>
+</div>
 
-<div class="grid row-76k-only">
+<section>
+  <h2>Pack Type <em>Performance</em></h2>
+  <div class="section-meta">Profit · ROI · Hit rate · OVR range — per pack type</div>
   <div class="card">
-    <div class="card-header">
-      <div class="card-title">Pull Distribution</div>
-      <div class="card-meta">76K Pack · Session vs Your History</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pack Type</th>
+          <th>Packs<span class="info" data-tip="Number of packs of this type opened. Distinct count of (project, batch, pack_no) for this pack_type."></span></th>
+          <th>Cards<span class="info" data-tip="Total cards pulled from this pack type. Equals Packs × cards-per-pack."></span></th>
+          <th class="col-coins">Spent · Coins<span class="info" data-tip="Packs × 17,500 coins. Coin-currency cost of the packs opened."></span></th>
+          <th class="col-training">Spent · Trn<span class="info" data-tip="Packs × 50,000 training. Training-currency cost of the packs opened."></span></th>
+          <th class="col-coins">Value · Coins<span class="info" data-tip="Per card: ovr_values[ovr].Value_Used. Summed across this pack type. From the Value_Used column in ovr_values.csv (SSoT)."></span></th>
+          <th class="col-training">Value · Trn<span class="info" data-tip="Per card: ovr_values[ovr].training_value. Summed across this pack type. From the training_value column in ovr_values.csv."></span></th>
+          <th class="col-coins">ROI · Coins<span class="info" data-tip="((Value Coins − Spent Coins) / Spent Coins) × 100. The coin return rate on this pack type."></span></th>
+          <th class="col-training">ROI · Trn<span class="info" data-tip="((Value Trn − Spent Trn) / Spent Trn) × 100. The training return rate. Usually higher than ROI Coins because the 0.6 conversion isn't applied."></span></th>
+          <th>Avg/Pack<span class="info" data-tip="Avg coins value per pack of this type. Compare to 17,500 (coin breakeven)."></span></th>
+          <th>Avg OVR<span class="info" data-tip="Arithmetic mean OVR across all cards pulled from this pack type."></span></th>
+          <th>OVR Range<span class="info" data-tip="Min−Max OVR pulled from this pack type. Shows the spread of card quality."></span></th>
+          <th>90+ Rate<span class="info" data-tip="Percentage of cards pulled with OVR ≥ 90. Higher = more chase-tier hits."></span></th>
+          <th>95+ Rate<span class="info" data-tip="Percentage of cards pulled with OVR ≥ 95. The rare-hit rate."></span></th>
+        </tr>
+      </thead>
+      <tbody><tr>
+        <td>Snap Fantasy</td>
+        <td>45</td>
+        <td>225</td>
+        <td class="col-coins">787,500</td>
+        <td class="col-training">2,250,000</td>
+        <td class="col-coins">1,728,520</td>
+        <td class="col-training">3,048,300</td>
+        <td class="col-coins profit-positive">+119.5%</td>
+        <td class="col-training profit-positive">+35.5%</td>
+        <td>38,412</td>
+        <td>89.0</td>
+        <td>81–97</td>
+        <td>32.9%</td>
+        <td>2.2%</td>
+        </tr><tr>
+        <td>Deep Shot</td>
+        <td>116</td>
+        <td>580</td>
+        <td class="col-coins">2,030,000</td>
+        <td class="col-training">5,800,000</td>
+        <td class="col-coins">1,395,675</td>
+        <td class="col-training">3,059,163</td>
+        <td class="col-coins profit-negative">-31.2%</td>
+        <td class="col-training profit-negative">-47.3%</td>
+        <td>12,032</td>
+        <td>85.3</td>
+        <td>71–95</td>
+        <td>11.9%</td>
+        <td>1.4%</td>
+        </tr><tr>
+        <td>NFL Draft</td>
+        <td>26</td>
+        <td>104</td>
+        <td class="col-coins">455,000</td>
+        <td class="col-training">1,300,000</td>
+        <td class="col-coins">949,920</td>
+        <td class="col-training">1,717,800</td>
+        <td class="col-coins profit-positive">+108.8%</td>
+        <td class="col-training profit-positive">+32.1%</td>
+        <td>36,535</td>
+        <td>90.3</td>
+        <td>88–96</td>
+        <td>53.8%</td>
+        <td>1.9%</td>
+        </tr><tr>
+        <td>Reel Deals</td>
+        <td>20</td>
+        <td>40</td>
+        <td class="col-coins">350,000</td>
+        <td class="col-training">1,000,000</td>
+        <td class="col-coins">713,560</td>
+        <td class="col-training">1,170,900</td>
+        <td class="col-coins profit-positive">+103.9%</td>
+        <td class="col-training profit-positive">+17.1%</td>
+        <td>35,678</td>
+        <td>91.2</td>
+        <td>90–97</td>
+        <td>100.0%</td>
+        <td>5.0%</td>
+        </tr><tr>
+        <td>Collector Series</td>
+        <td>17</td>
+        <td>34</td>
+        <td class="col-coins">297,500</td>
+        <td class="col-training">850,000</td>
+        <td class="col-coins">522,872</td>
+        <td class="col-training">1,023,182</td>
+        <td class="col-coins profit-positive">+75.8%</td>
+        <td class="col-training profit-positive">+20.4%</td>
+        <td>30,757</td>
+        <td>88.0</td>
+        <td>75–98</td>
+        <td>52.9%</td>
+        <td>2.9%</td>
+        </tr><tr>
+        <td>Ultimate Legends</td>
+        <td>3</td>
+        <td>6</td>
+        <td class="col-coins">52,500</td>
+        <td class="col-training">150,000</td>
+        <td class="col-coins">302,000</td>
+        <td class="col-training">654,000</td>
+        <td class="col-coins profit-positive">+475.2%</td>
+        <td class="col-training profit-positive">+336.0%</td>
+        <td>100,667</td>
+        <td>93.8</td>
+        <td>92–98</td>
+        <td>100.0%</td>
+        <td>33.3%</td>
+        </tr><tr>
+        <td>70+ Gold Player</td>
+        <td>84</td>
+        <td>84</td>
+        <td class="col-coins">1,470,000</td>
+        <td class="col-training">4,200,000</td>
+        <td class="col-coins">243,648</td>
+        <td class="col-training">340,114</td>
+        <td class="col-coins profit-negative">-83.4%</td>
+        <td class="col-training profit-negative">-91.9%</td>
+        <td>2,901</td>
+        <td>83.1</td>
+        <td>73–96</td>
+        <td>4.8%</td>
+        <td>1.2%</td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="row-2">
+    <div class="card">
+      <h2 style="font-size:18px; margin-bottom:4px;">OVR Distribution<span class="info" data-tip="Histogram of OVR values across all cards. Each bar = number of cards pulled at that OVR. Color gradient blue (low) → orange (high) shows quality at a glance."></span></h2>
+      <div class="section-meta">All cards · count by OVR</div>
+      <div class="chart-wrapper"><canvas id="ovrChart"></canvas></div>
     </div>
-    <div id="dist-container">
-      <div class="dist-row">
-        <div class="dist-label">98+</div>
-        <div class="dist-bar-container">
-          <div class="dist-bar-expected" id="exp-98" style="width:0%"></div>
-          <div class="dist-bar-actual" id="bar-98" style="width:0%"></div>
-        </div>
-        <div class="dist-count" id="count-98">0</div>
-        <div class="dist-pct" id="pct-98">0.0%</div>
-      </div>
-      <div class="dist-row">
-        <div class="dist-label">96-97</div>
-        <div class="dist-bar-container">
-          <div class="dist-bar-expected" id="exp-96" style="width:0%"></div>
-          <div class="dist-bar-actual" id="bar-96" style="width:0%"></div>
-        </div>
-        <div class="dist-count" id="count-96">0</div>
-        <div class="dist-pct" id="pct-96">0.0%</div>
-      </div>
-      <div class="dist-row">
-        <div class="dist-label">94-95</div>
-        <div class="dist-bar-container">
-          <div class="dist-bar-expected" id="exp-94" style="width:0%"></div>
-          <div class="dist-bar-actual" id="bar-94" style="width:0%"></div>
-        </div>
-        <div class="dist-count" id="count-94">0</div>
-        <div class="dist-pct" id="pct-94">0.0%</div>
-      </div>
-    </div>
-    <div class="dist-legend">
-      <span><span class="swatch actual"></span>This session</span>
-      <span><span class="swatch expected"></span>Your historical rate (all-time SQL)</span>
+    <div class="card">
+      <h2 style="font-size:18px; margin-bottom:4px;">Pack Type Mix<span class="info" data-tip="Share of total packs opened by pack type. Shows your purchasing pattern — which pack types dominate your spend."></span></h2>
+      <div class="section-meta">% of packs opened, by type</div>
+      <div class="chart-wrapper"><canvas id="packMixChart"></canvas></div>
     </div>
   </div>
+</section>
 
+<section>
+  <div class="row-2">
+    <div class="card">
+      <h2 style="font-size:18px; margin-bottom:4px;">Value by Pack Type<span class="info" data-tip="Total coins pulled by pack type (sum of value_used). Biggest bar = the pack type contributing the most absolute value to your collection."></span></h2>
+      <div class="section-meta">Total value pulled per pack type</div>
+      <div class="chart-wrapper"><canvas id="valueByTypeChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 style="font-size:18px; margin-bottom:4px;">Avg Value per Pack<span class="info" data-tip="Average coins extracted per individual pack. Bars colored mint = profitable (above 17,500 breakeven), red = losing money. This is the per-pack ROI in absolute coin terms."></span></h2>
+      <div class="section-meta">Average value extracted per pack, by type</div>
+      <div class="chart-wrapper"><canvas id="avgValueChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Batch <em>Comparison</em></h2>
+  <div class="section-meta">ROI across mystery batches over time</div>
   <div class="card">
-    <div class="card-header">
-      <div class="card-title">Variance vs History</div>
-      <div class="card-meta">76K Pack · Session Percentile vs Your History</div>
-    </div>
-    <div class="percentile-chart">
-      <div class="percentile-track"></div>
-      <div class="percentile-marker" id="pct-marker" data-label="—" style="left: 50%"></div>
-    </div>
-    <div class="percentile-labels">
-      <span>1st</span><span>10th</span><span>25th</span><span>50th</span><span>75th</span><span>90th</span><span>99th</span>
-    </div>
-    <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border); font-family:var(--mono); font-size:12px; color:var(--text-dim); line-height:1.7">
-      <div id="variance-narrative">Open packs to see how your run is tracking against the simulated distribution.</div>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Batch</th><th>Packs</th><th>Cards</th>
+          <th class="col-coins">Spent · Coins</th><th class="col-training">Spent · Trn</th>
+          <th class="col-coins">Value · Coins</th><th class="col-training">Value · Trn</th>
+          <th class="col-coins">ROI · Coins</th><th class="col-training">ROI · Trn</th>
+        </tr>
+      </thead>
+      <tbody><tr>
+        <td>mystery-2</td>
+        <td>52</td>
+        <td>182</td>
+        <td class="col-coins">910,000</td>
+        <td class="col-training">2,600,000</td>
+        <td class="col-coins">775,259</td>
+        <td class="col-training">1,566,147</td>
+        <td class="col-coins profit-negative">-14.8%</td>
+        <td class="col-training profit-negative">-39.8%</td>
+        </tr><tr>
+        <td>mystery-3</td>
+        <td>11</td>
+        <td>31</td>
+        <td class="col-coins">192,500</td>
+        <td class="col-training">550,000</td>
+        <td class="col-coins">232,785</td>
+        <td class="col-training">430,961</td>
+        <td class="col-coins profit-positive">+20.9%</td>
+        <td class="col-training profit-negative">-21.6%</td>
+        </tr><tr>
+        <td>mystery-4</td>
+        <td>45</td>
+        <td>156</td>
+        <td class="col-coins">787,500</td>
+        <td class="col-training">2,250,000</td>
+        <td class="col-coins">1,141,776</td>
+        <td class="col-training">2,193,431</td>
+        <td class="col-coins profit-positive">+45.0%</td>
+        <td class="col-training profit-negative">-2.5%</td>
+        </tr><tr>
+        <td>mystery-5</td>
+        <td>31</td>
+        <td>116</td>
+        <td class="col-coins">542,500</td>
+        <td class="col-training">1,550,000</td>
+        <td class="col-coins">436,050</td>
+        <td class="col-training">921,122</td>
+        <td class="col-coins profit-negative">-19.6%</td>
+        <td class="col-training profit-negative">-40.6%</td>
+        </tr><tr>
+        <td>mystery-6</td>
+        <td>78</td>
+        <td>255</td>
+        <td class="col-coins">1,365,000</td>
+        <td class="col-training">3,900,000</td>
+        <td class="col-coins">1,676,231</td>
+        <td class="col-training">3,083,571</td>
+        <td class="col-coins profit-positive">+22.8%</td>
+        <td class="col-training profit-negative">-20.9%</td>
+        </tr><tr>
+        <td>mystery-7</td>
+        <td>21</td>
+        <td>73</td>
+        <td class="col-coins">367,500</td>
+        <td class="col-training">1,050,000</td>
+        <td class="col-coins">307,943</td>
+        <td class="col-training">649,857</td>
+        <td class="col-coins profit-negative">-16.2%</td>
+        <td class="col-training profit-negative">-38.1%</td>
+        </tr><tr>
+        <td>original</td>
+        <td>73</td>
+        <td>260</td>
+        <td class="col-coins">1,277,500</td>
+        <td class="col-training">3,650,000</td>
+        <td class="col-coins">1,286,151</td>
+        <td class="col-training">2,168,370</td>
+        <td class="col-coins profit-positive">+0.7%</td>
+        <td class="col-training profit-negative">-40.6%</td>
+        </tr></tbody>
+    </table>
   </div>
-</div>
+</section>
 
-
-<div class="grid-3">
-  <div class="card stat-block card-76k-only">
-    <div class="label">Expected at Current Pace</div>
-    <div class="value" id="projected-profit" style="color:var(--accent)">—</div>
-    <div class="secondary" id="projected-detail">Projecting from current run rate</div>
+<section>
+  <h2>Top <em>Pulls</em></h2>
+  <div class="section-meta">Highest single-card value</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>Rank</th><th>OVR</th><th>Pack Type</th><th>Batch</th><th>Value</th></tr>
+      </thead>
+      <tbody><tr>
+        <td>1</td>
+        <td>96</td>
+        <td>Snap Fantasy</td>
+        <td>original</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>2</td>
+        <td>96</td>
+        <td>Snap Fantasy</td>
+        <td>original</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>3</td>
+        <td>97</td>
+        <td>Snap Fantasy</td>
+        <td>original</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>4</td>
+        <td>96</td>
+        <td>70+ Gold Player</td>
+        <td>mystery-4</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>5</td>
+        <td>96</td>
+        <td>NFL Draft</td>
+        <td>mystery-4</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>6</td>
+        <td>98</td>
+        <td>Collector Series</td>
+        <td>mystery-4</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>7</td>
+        <td>98</td>
+        <td>Ultimate Legends</td>
+        <td>mystery-4</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>8</td>
+        <td>96</td>
+        <td>Reel Deals</td>
+        <td>mystery-6</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>9</td>
+        <td>97</td>
+        <td>Reel Deals</td>
+        <td>mystery-6</td>
+        <td>160,000</td>
+        </tr><tr>
+        <td>10</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-2</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>11</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-2</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>12</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-4</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>13</td>
+        <td>95</td>
+        <td>Snap Fantasy</td>
+        <td>mystery-5</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>14</td>
+        <td>95</td>
+        <td>Ultimate Legends</td>
+        <td>mystery-6</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>15</td>
+        <td>95</td>
+        <td>Snap Fantasy</td>
+        <td>mystery-6</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>16</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-6</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>17</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-6</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>18</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-6</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>19</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-6</td>
+        <td>50,000</td>
+        </tr><tr>
+        <td>20</td>
+        <td>95</td>
+        <td>Deep Shot</td>
+        <td>mystery-7</td>
+        <td>50,000</td>
+        </tr></tbody>
+    </table>
   </div>
-  <div class="card stat-block">
-    <div class="label">Best Pull (session)</div>
-    <div class="value" id="best-pull" style="color:var(--gold);font-style:italic">—</div>
-    <div class="secondary" id="best-pull-detail">No pulls yet</div>
-  </div>
-  <div class="card stat-block card-76k-only">
-    <div class="label">98+ Hit Rate (session)</div>
-    <div class="value" id="hit-98-rate">0.0%</div>
-    <div class="secondary" id="hit-98-detail">—</div>
-  </div>
-</div>
+</section>
 
+<section class="data-sources">
+  <h3>Data <em style="color:var(--accent); font-style:italic;">Sources</em></h3>
+  <div class="section-meta">All values derive from these CSVs. Click to view raw data.</div>
+  <ul>
+    <li>
+      <span><a href="data/pulls.csv" download>pulls.csv</a> · fact table · 1 row per card pulled</span>
+      <span class="meta">1,073 rows · 102.1 KB</span>
+    </li>
+    <li>
+      <span><a href="data/ovr_values.csv" download>ovr_values.csv</a> · OVR → value lookup · <strong style="color:var(--accent)">single source of truth</strong></span>
+      <span class="meta">30 rows · 412 B</span>
+    </li>
+    <li>
+      <span><a href="data/pack_types.csv" download>pack_types.csv</a> · pack metadata · cards-per-pack & cost</span>
+      <span class="meta">7 rows · 260 B</span>
+    </li>
+  </ul>
+</section>
 
-<div class="card card-76k-only">
-  <div class="card-header">
-    <div class="card-title">Forward Projection</div>
-    <div style="display:flex;align-items:center;gap:14px">
-      <span class="card-meta">Monte Carlo · 76K Pack · EA's published odds</span>
-      <div class="sim-controls">
-        <button class="pull-btn sim-btn" onclick="setSimN(10, this)">10</button>
-        <button class="pull-btn sim-btn" onclick="setSimN(25, this)">25</button>
-        <button class="pull-btn sim-btn active" onclick="setSimN(50, this)">50</button>
-        <button class="pull-btn sim-btn" onclick="setSimN(100, this)">100</button>
-        <button class="pull-btn sim-btn" onclick="setSimN(250, this)">250</button>
-      </div>
-    </div>
-  </div>
-  <div id="sim-body">
-    <div class="sim-stats">
-      <div class="sim-stat"><div class="label">Median profit</div><div class="value" id="sim-median">—</div></div>
-      <div class="sim-stat"><div class="label">P(net negative)</div><div class="value" id="sim-pneg">—</div></div>
-      <div class="sim-stat"><div class="label">Best 5% (p95)</div><div class="value" id="sim-p95">—</div></div>
-      <div class="sim-stat"><div class="label">Worst 5% (p5)</div><div class="value" id="sim-p5">—</div></div>
-    </div>
-    <div class="sim-range">
-      <div class="sim-range-inner" id="sim-range-inner" style="left:25%;width:50%"></div>
-      <div class="sim-range-zero" id="sim-range-zero" style="left:50%"></div>
-      <div class="sim-range-median" id="sim-range-median" style="left:50%"></div>
-    </div>
-    <div class="sim-range-labels">
-      <span id="sim-p5-label">—</span>
-      <span id="sim-med-label">— (median)</span>
-      <span id="sim-p95-label">—</span>
-    </div>
-    <div class="sim-footnote" id="sim-footnote">Loading…</div>
-  </div>
-</div>
+<footer>
+  Generated by build_dashboard.py · Source: data/pulls.csv (derived value via ovr_values.csv)
+</footer>
 
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">Pull Log</div>
-    <div class="card-meta">Most Recent First</div>
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Time</th>
-        <th>Pack</th>
-        <th>Card</th>
-        <th class="num">Value</th>
-        <th class="num">Running Profit</th>
-        <th class="num">Pack P/L</th>
-      </tr>
-    </thead>
-    <tbody id="pull-log">
-      <tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text-faint);font-style:italic">No pulls logged. Use the buttons above or wire up the API.</td></tr>
-    </tbody>
-  </table>
-</div>
-
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">Statistics</div>
-    <div style="display:flex;align-items:center;gap:14px">
-      <span class="card-meta" id="stats-meta">—</span>
-      <a class="pull-btn" href="/api/export.xlsx" download>↓ Download Excel</a>
-    </div>
-  </div>
-  <div id="stats-body">
-    <div style="text-align:center;padding:32px;color:var(--text-faint);font-style:italic">Loading…</div>
-  </div>
-</div>
-
-<script>window.__SNAPSHOT__ = {"generatedAt":"2026-05-18T19:52:34.884Z","pulls":[{"id":5,"card_overall":94,"card_name":"Joe Burrow","card_value":32700,"pulled_at":"2026-05-14T02:04:21.849Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WaedtHdqZR.jpg"},{"id":6,"card_overall":87,"card_name":"Jack Campbell","card_value":2000,"pulled_at":"2026-05-14T02:04:21.852Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WaedtHdqZR.jpg"},{"id":7,"card_overall":91,"card_name":"Jordan Whittington","card_value":7335,"pulled_at":"2026-05-14T02:04:21.854Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WaedtHdqZR.jpg"},{"id":8,"card_overall":95,"card_name":"Michael Bennett","card_value":37700,"pulled_at":"2026-05-14T02:08:30.612Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TYdriTzBp4.jpg"},{"id":9,"card_overall":86,"card_name":"Chris Rodriguez Jr","card_value":1309,"pulled_at":"2026-05-14T02:08:30.614Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TYdriTzBp4.jpg"},{"id":10,"card_overall":83,"card_name":"Marlon Humphrey","card_value":250,"pulled_at":"2026-05-14T02:08:30.615Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TYdriTzBp4.jpg"},{"id":11,"card_overall":85,"card_name":"T.J. Hockenson","card_value":646,"pulled_at":"2026-05-14T02:08:58.378Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Kyv4FZI2mm.jpg"},{"id":12,"card_overall":83,"card_name":"Terrel Bernard","card_value":250,"pulled_at":"2026-05-14T02:08:58.380Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Kyv4FZI2mm.jpg"},{"id":13,"card_overall":96,"card_name":"Luther Burden III","card_value":160000,"pulled_at":"2026-05-14T02:08:58.380Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Kyv4FZI2mm.jpg"},{"id":14,"card_overall":95,"card_name":"Matt Araiza","card_value":37700,"pulled_at":"2026-05-14T02:09:57.643Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fOt1kU0Gpe.jpg"},{"id":15,"card_overall":88,"card_name":"Larry Allen","card_value":2963,"pulled_at":"2026-05-14T02:09:57.644Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fOt1kU0Gpe.jpg"},{"id":16,"card_overall":88,"card_name":"Logan Wilson","card_value":2963,"pulled_at":"2026-05-14T02:09:57.649Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fOt1kU0Gpe.jpg"},{"id":17,"card_overall":83,"card_name":"Khalil Mack","card_value":250,"pulled_at":"2026-05-14T02:10:09.425Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_58PqTz1hwq.jpg"},{"id":18,"card_overall":94,"card_name":"Jonathan Greenard","card_value":32700,"pulled_at":"2026-05-14T02:10:09.426Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_58PqTz1hwq.jpg"},{"id":19,"card_overall":79,"card_name":"Larry Fitzgerald","card_value":0,"pulled_at":"2026-05-14T02:10:09.427Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_58PqTz1hwq.jpg"},{"id":20,"card_overall":96,"card_name":"Sam LaPorta","card_value":160000,"pulled_at":"2026-05-14T02:10:13.391Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8tp44Vyxhk.jpg"},{"id":21,"card_overall":83,"card_name":"Matt Milano","card_value":250,"pulled_at":"2026-05-14T02:10:13.391Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8tp44Vyxhk.jpg"},{"id":22,"card_overall":87,"card_name":"Kyren Williams","card_value":2000,"pulled_at":"2026-05-14T02:10:13.392Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8tp44Vyxhk.jpg"},{"id":23,"card_overall":87,"card_name":"Jake Andrews","card_value":2000,"pulled_at":"2026-05-14T02:10:17.045Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_CqxvuGtXvR.jpg"},{"id":24,"card_overall":77,"card_name":"Laiatu Latu","card_value":0,"pulled_at":"2026-05-14T02:10:17.047Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_CqxvuGtXvR.jpg"},{"id":25,"card_overall":95,"card_name":"Aaron Banks","card_value":37700,"pulled_at":"2026-05-14T02:10:17.050Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_CqxvuGtXvR.jpg"},{"id":29,"card_overall":76,"card_name":"Adoree' Jackson","card_value":0,"pulled_at":"2026-05-14T02:10:24.512Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_jStOv1cXXx.jpg"},{"id":30,"card_overall":81,"card_name":"Joe Alt","card_value":225,"pulled_at":"2026-05-14T02:10:24.514Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_jStOv1cXXx.jpg"},{"id":31,"card_overall":94,"card_name":"Amon-Ra St. Brown","card_value":32700,"pulled_at":"2026-05-14T02:10:24.515Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_jStOv1cXXx.jpg"},{"id":32,"card_overall":80,"card_name":"Malcolm Rodriguez","card_value":175,"pulled_at":"2026-05-14T02:10:33.918Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_l9AWqLVpYu.jpg"},{"id":33,"card_overall":85,"card_name":"Jonah Williams","card_value":646,"pulled_at":"2026-05-14T02:10:33.923Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_l9AWqLVpYu.jpg"},{"id":34,"card_overall":94,"card_name":"Jack Jones","card_value":32700,"pulled_at":"2026-05-14T02:10:33.924Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_l9AWqLVpYu.jpg"},{"id":35,"card_overall":88,"card_name":"Kingsley Enagbare","card_value":2963,"pulled_at":"2026-05-14T02:10:38.078Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oFcR040sGT.jpg"},{"id":36,"card_overall":86,"card_name":"Zyon McCollum","card_value":1309,"pulled_at":"2026-05-14T02:10:38.079Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oFcR040sGT.jpg"},{"id":37,"card_overall":95,"card_name":"Jalen Sundell","card_value":37700,"pulled_at":"2026-05-14T02:10:38.080Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oFcR040sGT.jpg"},{"id":38,"card_overall":95,"card_name":"Carlton Davis III","card_value":37700,"pulled_at":"2026-05-14T02:10:40.907Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_RmS9AgwEVh.jpg"},{"id":39,"card_overall":82,"card_name":"Tyler Linderbaum","card_value":250,"pulled_at":"2026-05-14T02:10:40.908Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_RmS9AgwEVh.jpg"},{"id":40,"card_overall":89,"card_name":"Mike Jones","card_value":3417,"pulled_at":"2026-05-14T02:10:40.911Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_RmS9AgwEVh.jpg"},{"id":41,"card_overall":94,"card_name":"Brian Burns","card_value":32700,"pulled_at":"2026-05-14T02:10:42.128Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_R6HLKisuW1.jpg"},{"id":42,"card_overall":86,"card_name":"Jared Goff","card_value":1309,"pulled_at":"2026-05-14T02:10:42.131Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_R6HLKisuW1.jpg"},{"id":43,"card_overall":86,"card_name":"Laremy Tunsil","card_value":1309,"pulled_at":"2026-05-14T02:10:42.133Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_R6HLKisuW1.jpg"},{"id":44,"card_overall":82,"card_name":"Sean Murphy-Bunting","card_value":250,"pulled_at":"2026-05-14T02:10:46.044Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WGNohLJizA.jpg"},{"id":45,"card_overall":84,"card_name":"Demarcus Robinson","card_value":523,"pulled_at":"2026-05-14T02:10:46.045Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WGNohLJizA.jpg"},{"id":46,"card_overall":94,"card_name":"Abdul Carter","card_value":32700,"pulled_at":"2026-05-14T02:10:46.046Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WGNohLJizA.jpg"},{"id":50,"card_overall":77,"card_name":"Braxton Jones","card_value":0,"pulled_at":"2026-05-14T02:10:57.473Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fVUNEWWYUg.jpg"},{"id":51,"card_overall":98,"card_name":"Brandon Scherff","card_value":148000,"pulled_at":"2026-05-14T02:10:57.498Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fVUNEWWYUg.jpg"},{"id":52,"card_overall":77,"card_name":"Geno Stone","card_value":0,"pulled_at":"2026-05-14T02:10:57.500Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fVUNEWWYUg.jpg"},{"id":53,"card_overall":71,"card_name":"Isaiah Land","card_value":0,"pulled_at":"2026-05-14T21:00:39.590Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XCz3Rnk2EN.jpg"},{"id":54,"card_overall":97,"card_name":"Maurice Jones-Drew","card_value":160000,"pulled_at":"2026-05-14T21:00:39.684Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XCz3Rnk2EN.jpg"},{"id":55,"card_overall":91,"card_name":"Kam Chancellor","card_value":7335,"pulled_at":"2026-05-14T21:00:39.689Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XCz3Rnk2EN.jpg"},{"id":80,"card_overall":92,"card_name":"Christian Haynes","card_value":11200,"pulled_at":"2026-05-14T21:02:03.915Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2iWmAHKd4C.jpg"},{"id":81,"card_overall":81,"card_name":"Charvarius Ward","card_value":225,"pulled_at":"2026-05-14T21:02:03.919Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2iWmAHKd4C.jpg"},{"id":82,"card_overall":94,"card_name":"Harrison Smith","card_value":32700,"pulled_at":"2026-05-14T21:02:03.922Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2iWmAHKd4C.jpg"},{"id":83,"card_overall":85,"card_name":"Christian Kirk","card_value":646,"pulled_at":"2026-05-14T21:03:07.914Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_lutXjt4fyP.jpg"},{"id":84,"card_overall":95,"card_name":"Jay Hilgenberg","card_value":37700,"pulled_at":"2026-05-14T21:03:07.928Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_lutXjt4fyP.jpg"},{"id":85,"card_overall":78,"card_name":"Tyler Bass","card_value":0,"pulled_at":"2026-05-14T21:03:07.930Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_lutXjt4fyP.jpg"},{"id":86,"card_overall":80,"card_name":"Thomas Hennessy","card_value":175,"pulled_at":"2026-05-14T21:04:53.082Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Sz7s1TZuuH.jpg"},{"id":87,"card_overall":88,"card_name":"Kevin Zeitler","card_value":2963,"pulled_at":"2026-05-14T21:04:53.087Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Sz7s1TZuuH.jpg"},{"id":88,"card_overall":95,"card_name":"Geno Smith","card_value":37700,"pulled_at":"2026-05-14T21:04:53.089Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Sz7s1TZuuH.jpg"},{"id":89,"card_overall":83,"card_name":"Brandon Stephens","card_value":250,"pulled_at":"2026-05-14T21:10:00.387Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_VyfpOoKkoF.jpg"},{"id":90,"card_overall":85,"card_name":"Eric Dickerson","card_value":646,"pulled_at":"2026-05-14T21:10:00.391Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_VyfpOoKkoF.jpg"},{"id":91,"card_overall":95,"card_name":"Morgan Cox","card_value":37700,"pulled_at":"2026-05-14T21:10:00.393Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_VyfpOoKkoF.jpg"},{"id":92,"card_overall":82,"card_name":"Harrison Smith","card_value":250,"pulled_at":"2026-05-14T21:10:22.559Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_U7pVTFAtap.jpg"},{"id":93,"card_overall":83,"card_name":"Dax Hill","card_value":250,"pulled_at":"2026-05-14T21:10:22.561Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_U7pVTFAtap.jpg"},{"id":94,"card_overall":95,"card_name":"Joe Staley","card_value":37700,"pulled_at":"2026-05-14T21:10:22.562Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_U7pVTFAtap.jpg"},{"id":95,"card_overall":77,"card_name":"Romeo Doubs","card_value":0,"pulled_at":"2026-05-14T21:10:42.864Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_W1uJ74XbGd.jpg"},{"id":96,"card_overall":83,"card_name":"Terrel Bernard","card_value":250,"pulled_at":"2026-05-14T21:10:42.866Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_W1uJ74XbGd.jpg"},{"id":97,"card_overall":96,"card_name":"Jalen Pitre","card_value":160000,"pulled_at":"2026-05-14T21:10:42.867Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_W1uJ74XbGd.jpg"},{"id":98,"card_overall":79,"card_name":"Boye Mafe","card_value":0,"pulled_at":"2026-05-14T21:11:29.600Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gnLBG1sO75.jpg"},{"id":99,"card_overall":94,"card_name":"Myles Murphy","card_value":32700,"pulled_at":"2026-05-14T21:11:29.602Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gnLBG1sO75.jpg"},{"id":100,"card_overall":80,"card_name":"Chigoziem Okonkwo","card_value":175,"pulled_at":"2026-05-14T21:11:29.603Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gnLBG1sO75.jpg"},{"id":101,"card_overall":96,"card_name":"Mecole Hardman","card_value":160000,"pulled_at":"2026-05-14T21:11:55.237Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XQ4I2wWzG4.jpg"},{"id":102,"card_overall":87,"card_name":"Christian Mahogany","card_value":2000,"pulled_at":"2026-05-14T21:11:55.241Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XQ4I2wWzG4.jpg"},{"id":103,"card_overall":81,"card_name":"J.J. Jansen","card_value":225,"pulled_at":"2026-05-14T21:11:55.243Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XQ4I2wWzG4.jpg"},{"id":104,"card_overall":79,"card_name":"Marvin Harrison Jr","card_value":0,"pulled_at":"2026-05-14T21:12:23.624Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gqMXwsuu9l.jpg"},{"id":105,"card_overall":95,"card_name":"Boye Mafe","card_value":37700,"pulled_at":"2026-05-14T21:12:23.625Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gqMXwsuu9l.jpg"},{"id":106,"card_overall":81,"card_name":"Jonathan Allen","card_value":225,"pulled_at":"2026-05-14T21:12:23.626Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gqMXwsuu9l.jpg"},{"id":107,"card_overall":78,"card_name":"Jonah Jackson","card_value":0,"pulled_at":"2026-05-14T21:13:36.654Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_mOJ1PRGfGj.jpg"},{"id":108,"card_overall":86,"card_name":"Zaire Franklin","card_value":1309,"pulled_at":"2026-05-14T21:13:36.674Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_mOJ1PRGfGj.jpg"},{"id":109,"card_overall":94,"card_name":"Harrison Smith","card_value":32700,"pulled_at":"2026-05-14T21:13:36.677Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_mOJ1PRGfGj.jpg"},{"id":110,"card_overall":82,"card_name":"Lavonte David","card_value":250,"pulled_at":"2026-05-14T21:14:21.279Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TTf1uO7Mc4.jpg"},{"id":111,"card_overall":96,"card_name":"Haloti Ngata","card_value":160000,"pulled_at":"2026-05-14T21:14:21.288Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TTf1uO7Mc4.jpg"},{"id":112,"card_overall":81,"card_name":"Chris Olave","card_value":225,"pulled_at":"2026-05-14T21:14:21.289Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TTf1uO7Mc4.jpg"},{"id":113,"card_overall":90,"card_name":"Kerby Joseph","card_value":5326,"pulled_at":"2026-05-14T21:14:39.170Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_D0dvAhRK4B.jpg"},{"id":114,"card_overall":77,"card_name":"Taliese Fuaga","card_value":0,"pulled_at":"2026-05-14T21:14:39.175Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_D0dvAhRK4B.jpg"},{"id":115,"card_overall":94,"card_name":"Carl Granderson","card_value":32700,"pulled_at":"2026-05-14T21:14:39.176Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_D0dvAhRK4B.jpg"},{"id":116,"card_overall":94,"card_name":"Darren Waller","card_value":32700,"pulled_at":"2026-05-14T21:15:20.351Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qNmobBHfnc.jpg"},{"id":117,"card_overall":88,"card_name":"Mason McCormick","card_value":2963,"pulled_at":"2026-05-14T21:15:20.356Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qNmobBHfnc.jpg"},{"id":118,"card_overall":87,"card_name":"Chris Board","card_value":2000,"pulled_at":"2026-05-14T21:15:20.359Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qNmobBHfnc.jpg"},{"id":119,"card_overall":79,"card_name":"DeShon Elliott","card_value":0,"pulled_at":"2026-05-14T21:15:54.593Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3Nn0gFPigk.jpg"},{"id":120,"card_overall":83,"card_name":"Jordyn Brooks","card_value":250,"pulled_at":"2026-05-14T21:15:54.596Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3Nn0gFPigk.jpg"},{"id":121,"card_overall":95,"card_name":"Tytus Howard","card_value":37700,"pulled_at":"2026-05-14T21:15:54.598Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3Nn0gFPigk.jpg"},{"id":122,"card_overall":96,"card_name":"Darren McFadden","card_value":160000,"pulled_at":"2026-05-14T21:16:14.596Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oSMQzs2dGW.jpg"},{"id":123,"card_overall":80,"card_name":"Graham Glasgow","card_value":175,"pulled_at":"2026-05-14T21:16:14.600Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oSMQzs2dGW.jpg"},{"id":124,"card_overall":87,"card_name":"Shemar Stewart","card_value":2000,"pulled_at":"2026-05-14T21:16:14.601Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oSMQzs2dGW.jpg"},{"id":125,"card_overall":90,"card_name":"Troy Vincent","card_value":5326,"pulled_at":"2026-05-14T21:17:15.316Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GRpu9Rc6vS.jpg"},{"id":126,"card_overall":85,"card_name":"Tim Settle Jr","card_value":646,"pulled_at":"2026-05-14T21:17:15.320Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GRpu9Rc6vS.jpg"},{"id":127,"card_overall":95,"card_name":"Andy Dalton","card_value":37700,"pulled_at":"2026-05-14T21:17:15.322Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GRpu9Rc6vS.jpg"},{"id":128,"card_overall":82,"card_name":"David Njoku","card_value":250,"pulled_at":"2026-05-14T21:17:42.945Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SYnUCORNUY.jpg"},{"id":129,"card_overall":95,"card_name":"Paul Posluszny","card_value":37700,"pulled_at":"2026-05-14T21:17:42.950Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SYnUCORNUY.jpg"},{"id":130,"card_overall":85,"card_name":"Christian Barmore","card_value":646,"pulled_at":"2026-05-14T21:17:42.952Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SYnUCORNUY.jpg"},{"id":131,"card_overall":85,"card_name":"Troy Fautanu","card_value":646,"pulled_at":"2026-05-14T21:18:20.907Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_RZMBhZhdc9.jpg"},{"id":132,"card_overall":94,"card_name":"Ray Nitschke","card_value":32700,"pulled_at":"2026-05-14T21:18:20.911Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_RZMBhZhdc9.jpg"},{"id":133,"card_overall":85,"card_name":"Larry Little","card_value":646,"pulled_at":"2026-05-14T21:18:20.913Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_RZMBhZhdc9.jpg"},{"id":134,"card_overall":83,"card_name":"Kene Nwangwu","card_value":250,"pulled_at":"2026-05-14T22:25:26.589Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_NMsotkSTDi.jpg"},{"id":135,"card_overall":96,"card_name":"Donovan Ezeiruaku","card_value":160000,"pulled_at":"2026-05-14T22:25:26.618Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_NMsotkSTDi.jpg"},{"id":136,"card_overall":89,"card_name":"Joe Burrow","card_value":3417,"pulled_at":"2026-05-14T22:25:26.620Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_NMsotkSTDi.jpg"},{"id":137,"card_overall":87,"card_name":"Russell Wilson","card_value":2000,"pulled_at":"2026-05-14T22:25:55.237Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6QM34aPRUw.jpg"},{"id":138,"card_overall":94,"card_name":"Ronnie Lott","card_value":32700,"pulled_at":"2026-05-14T22:25:55.241Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6QM34aPRUw.jpg"},{"id":139,"card_overall":77,"card_name":"Will Johnson","card_value":0,"pulled_at":"2026-05-14T22:25:55.244Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6QM34aPRUw.jpg"},{"id":140,"card_overall":85,"card_name":"Jonah Williams","card_value":646,"pulled_at":"2026-05-14T22:26:22.257Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_p96OmKgxT2.jpg"},{"id":141,"card_overall":97,"card_name":"Martellus Bennett","card_value":160000,"pulled_at":"2026-05-14T22:26:22.259Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_p96OmKgxT2.jpg"},{"id":142,"card_overall":86,"card_name":"Keaton Mitchell","card_value":1309,"pulled_at":"2026-05-14T22:26:22.261Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_p96OmKgxT2.jpg"},{"id":143,"card_overall":92,"card_name":"Patrick Mahomes","card_value":11200,"pulled_at":"2026-05-14T22:26:57.079Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_U97aqsrQGE.jpg"},{"id":144,"card_overall":84,"card_name":"Derrick Johnson","card_value":523,"pulled_at":"2026-05-14T22:26:57.083Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_U97aqsrQGE.jpg"},{"id":145,"card_overall":95,"card_name":"Corey Dillon","card_value":37700,"pulled_at":"2026-05-14T22:26:57.084Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_U97aqsrQGE.jpg"},{"id":146,"card_overall":94,"card_name":"Dalton Kincaid","card_value":32700,"pulled_at":"2026-05-14T23:05:24.549Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1EIAAONNxE.jpg"},{"id":147,"card_overall":80,"card_name":"Steve Hutchinson","card_value":175,"pulled_at":"2026-05-14T23:05:24.557Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1EIAAONNxE.jpg"},{"id":148,"card_overall":90,"card_name":"Markquese Bell","card_value":5326,"pulled_at":"2026-05-14T23:05:24.561Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1EIAAONNxE.jpg"},{"id":149,"card_overall":88,"card_name":"John Riggins","card_value":2963,"pulled_at":"2026-05-14T23:05:41.982Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_cSX9xlF5VD.jpg"},{"id":150,"card_overall":95,"card_name":"Ryan Bates","card_value":37700,"pulled_at":"2026-05-14T23:05:41.984Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_cSX9xlF5VD.jpg"},{"id":151,"card_overall":84,"card_name":"A.J. Cole","card_value":523,"pulled_at":"2026-05-14T23:05:41.985Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_cSX9xlF5VD.jpg"},{"id":152,"card_overall":86,"card_name":"Jack Conklin","card_value":1309,"pulled_at":"2026-05-14T23:06:01.693Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_058gx2FCao.jpg"},{"id":153,"card_overall":78,"card_name":"Micah McFadden","card_value":0,"pulled_at":"2026-05-14T23:06:01.706Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_058gx2FCao.jpg"},{"id":154,"card_overall":96,"card_name":"Nico Collins","card_value":160000,"pulled_at":"2026-05-14T23:06:01.707Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_058gx2FCao.jpg"},{"id":155,"card_overall":82,"card_name":"Larry Fitzgerald","card_value":250,"pulled_at":"2026-05-14T23:06:36.547Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_pa6fy0Gy5b.jpg"},{"id":156,"card_overall":95,"card_name":"Steve Atwater","card_value":37700,"pulled_at":"2026-05-14T23:06:36.553Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_pa6fy0Gy5b.jpg"},{"id":157,"card_overall":89,"card_name":"Sam Adams","card_value":3417,"pulled_at":"2026-05-14T23:06:36.559Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_pa6fy0Gy5b.jpg"},{"id":158,"card_overall":80,"card_name":"Ben Bredeson","card_value":175,"pulled_at":"2026-05-14T23:07:29.020Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SqG2RIR4vJ.jpg"},{"id":159,"card_overall":82,"card_name":"Jason Taylor","card_value":250,"pulled_at":"2026-05-14T23:07:29.021Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SqG2RIR4vJ.jpg"},{"id":160,"card_overall":95,"card_name":"Marquise Brown","card_value":37700,"pulled_at":"2026-05-14T23:07:29.024Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SqG2RIR4vJ.jpg"},{"id":161,"card_overall":94,"card_name":"Abdul Carter","card_value":32700,"pulled_at":"2026-05-14T23:08:18.211Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_z4dufXc4Fr.jpg"},{"id":162,"card_overall":78,"card_name":"T.J. Slaton","card_value":0,"pulled_at":"2026-05-14T23:08:18.213Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_z4dufXc4Fr.jpg"},{"id":163,"card_overall":75,"card_name":"Josh Jones","card_value":0,"pulled_at":"2026-05-14T23:08:18.213Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_z4dufXc4Fr.jpg"},{"id":164,"card_overall":82,"card_name":"Jauan Jennings","card_value":250,"pulled_at":"2026-05-14T23:09:34.162Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8HEVmxYOhq.jpg"},{"id":165,"card_overall":99,"card_name":"Calvin Ridley","card_value":265000,"pulled_at":"2026-05-14T23:09:34.165Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8HEVmxYOhq.jpg"},{"id":166,"card_overall":82,"card_name":"Jalen Carter","card_value":250,"pulled_at":"2026-05-14T23:09:34.166Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8HEVmxYOhq.jpg"},{"id":167,"card_overall":85,"card_name":"Rich Gannon","card_value":646,"pulled_at":"2026-05-14T23:10:15.783Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oZe87PvSMd.jpg"},{"id":168,"card_overall":95,"card_name":"Jevon Kearse","card_value":37700,"pulled_at":"2026-05-14T23:10:15.786Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oZe87PvSMd.jpg"},{"id":169,"card_overall":82,"card_name":"Kyle Williams","card_value":250,"pulled_at":"2026-05-14T23:10:15.788Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oZe87PvSMd.jpg"},{"id":170,"card_overall":78,"card_name":"Blake Gillikin","card_value":0,"pulled_at":"2026-05-14T23:11:24.340Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SlPLDhJ6kC.jpg"},{"id":171,"card_overall":74,"card_name":"Channing Tindall","card_value":0,"pulled_at":"2026-05-14T23:11:24.342Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SlPLDhJ6kC.jpg"},{"id":172,"card_overall":96,"card_name":"Brian Dawkins","card_value":160000,"pulled_at":"2026-05-14T23:11:24.343Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SlPLDhJ6kC.jpg"},{"id":173,"card_overall":89,"card_name":"Isaiah McDuffie","card_value":3417,"pulled_at":"2026-05-14T23:11:53.076Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xEaUHMLljk.jpg"},{"id":174,"card_overall":94,"card_name":"Jamel Dean","card_value":32700,"pulled_at":"2026-05-14T23:11:53.081Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xEaUHMLljk.jpg"},{"id":175,"card_overall":83,"card_name":"Cade Otton","card_value":250,"pulled_at":"2026-05-14T23:11:53.082Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xEaUHMLljk.jpg"},{"id":176,"card_overall":91,"card_name":"Abraham Lucas","card_value":7335,"pulled_at":"2026-05-14T23:12:16.932Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_IavmzViqJM.jpg"},{"id":177,"card_overall":81,"card_name":"Talanoa Hufanga","card_value":225,"pulled_at":"2026-05-14T23:12:16.934Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_IavmzViqJM.jpg"},{"id":178,"card_overall":95,"card_name":"Kerby Joseph","card_value":37700,"pulled_at":"2026-05-14T23:12:16.935Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_IavmzViqJM.jpg"},{"id":179,"card_overall":85,"card_name":"Logan Hall","card_value":646,"pulled_at":"2026-05-14T23:12:45.780Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8uFBXrKzGF.jpg"},{"id":180,"card_overall":84,"card_name":"Lucas Patrick","card_value":523,"pulled_at":"2026-05-14T23:12:45.802Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8uFBXrKzGF.jpg"},{"id":181,"card_overall":95,"card_name":"Jeremy Shockey","card_value":37700,"pulled_at":"2026-05-14T23:12:45.803Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8uFBXrKzGF.jpg"},{"id":182,"card_overall":97,"card_name":"Sterling Sharpe","card_value":160000,"pulled_at":"2026-05-14T23:13:11.885Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6smSTZqxkk.jpg"},{"id":183,"card_overall":80,"card_name":"Darius Slay Jr","card_value":175,"pulled_at":"2026-05-14T23:13:11.890Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6smSTZqxkk.jpg"},{"id":184,"card_overall":78,"card_name":"Mike Gesicki","card_value":0,"pulled_at":"2026-05-14T23:13:11.894Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6smSTZqxkk.jpg"},{"id":185,"card_overall":94,"card_name":"Mack Hollins","card_value":32700,"pulled_at":"2026-05-14T23:13:41.997Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Srf89gtlpi.jpg"},{"id":186,"card_overall":83,"card_name":"Nick Scott","card_value":250,"pulled_at":"2026-05-14T23:13:41.998Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Srf89gtlpi.jpg"},{"id":187,"card_overall":83,"card_name":"Christian Gonzalez","card_value":250,"pulled_at":"2026-05-14T23:13:42.004Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Srf89gtlpi.jpg"},{"id":188,"card_overall":94,"card_name":"Demario Davis","card_value":32700,"pulled_at":"2026-05-14T23:14:46.106Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_C7zP6lAYTa.jpg"},{"id":189,"card_overall":92,"card_name":"Dorance Armstrong","card_value":11200,"pulled_at":"2026-05-14T23:14:46.110Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_C7zP6lAYTa.jpg"},{"id":190,"card_overall":82,"card_name":"Lloyd Cushenberry III","card_value":250,"pulled_at":"2026-05-14T23:14:46.111Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_C7zP6lAYTa.jpg"},{"id":191,"card_overall":83,"card_name":"Penei Sewell","card_value":250,"pulled_at":"2026-05-14T23:15:02.164Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_M0kJR3bYus.jpg"},{"id":192,"card_overall":94,"card_name":"Sam Adams","card_value":32700,"pulled_at":"2026-05-14T23:15:02.168Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_M0kJR3bYus.jpg"},{"id":193,"card_overall":78,"card_name":"Kwity Paye","card_value":0,"pulled_at":"2026-05-14T23:15:02.170Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_M0kJR3bYus.jpg"},{"id":194,"card_overall":80,"card_name":"Dwight Freeney","card_value":175,"pulled_at":"2026-05-14T23:15:16.748Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_bq9x555me8.jpg"},{"id":195,"card_overall":96,"card_name":"Jermaine Eluemunor","card_value":160000,"pulled_at":"2026-05-14T23:15:16.750Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_bq9x555me8.jpg"},{"id":196,"card_overall":78,"card_name":"Alohi Gilman","card_value":0,"pulled_at":"2026-05-14T23:15:16.751Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_bq9x555me8.jpg"},{"id":197,"card_overall":84,"card_name":"Jonnu Smith","card_value":523,"pulled_at":"2026-05-14T23:15:45.786Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_LIkYV2QDZt.jpg"},{"id":198,"card_overall":90,"card_name":"Will Shields","card_value":5326,"pulled_at":"2026-05-14T23:15:45.789Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_LIkYV2QDZt.jpg"},{"id":199,"card_overall":95,"card_name":"Tyler Ott","card_value":37700,"pulled_at":"2026-05-14T23:15:45.790Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_LIkYV2QDZt.jpg"},{"id":200,"card_overall":95,"card_name":"Paul Krause","card_value":37700,"pulled_at":"2026-05-14T23:16:41.708Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4mXnaKujOT.jpg"},{"id":201,"card_overall":87,"card_name":"Adam Butler","card_value":2000,"pulled_at":"2026-05-14T23:16:41.710Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4mXnaKujOT.jpg"},{"id":202,"card_overall":87,"card_name":"L'Jarius Sneed","card_value":2000,"pulled_at":"2026-05-14T23:16:41.712Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4mXnaKujOT.jpg"},{"id":203,"card_overall":80,"card_name":"Trevin Wallace","card_value":175,"pulled_at":"2026-05-14T23:16:55.992Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JiAaZFvArS.jpg"},{"id":204,"card_overall":94,"card_name":"Laremy Tunsil","card_value":32700,"pulled_at":"2026-05-14T23:16:55.999Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JiAaZFvArS.jpg"},{"id":205,"card_overall":82,"card_name":"Van Jefferson","card_value":250,"pulled_at":"2026-05-14T23:16:56.002Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JiAaZFvArS.jpg"},{"id":206,"card_overall":80,"card_name":"Antonio Johnson","card_value":175,"pulled_at":"2026-05-14T23:17:12.804Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_7MUIAbCf1f.jpg"},{"id":207,"card_overall":78,"card_name":"Elijah Molden","card_value":0,"pulled_at":"2026-05-14T23:17:12.812Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_7MUIAbCf1f.jpg"},{"id":208,"card_overall":95,"card_name":"JD Bertrand","card_value":37700,"pulled_at":"2026-05-14T23:17:12.822Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_7MUIAbCf1f.jpg"},{"id":209,"card_overall":96,"card_name":"Troy Polamalu","card_value":160000,"pulled_at":"2026-05-14T23:26:16.160Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SEpnzGjX6o.jpg"},{"id":210,"card_overall":90,"card_name":"Dan Dierdorf","card_value":5326,"pulled_at":"2026-05-14T23:26:16.165Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SEpnzGjX6o.jpg"},{"id":211,"card_overall":84,"card_name":"Tyreek Hill","card_value":523,"pulled_at":"2026-05-14T23:26:16.167Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SEpnzGjX6o.jpg"},{"id":212,"card_overall":83,"card_name":"Dax Hill","card_value":250,"pulled_at":"2026-05-14T23:26:55.727Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_7SevZr9Xuy.jpg"},{"id":213,"card_overall":95,"card_name":"Nehemiah Pritchett","card_value":37700,"pulled_at":"2026-05-14T23:26:55.730Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_7SevZr9Xuy.jpg"},{"id":214,"card_overall":80,"card_name":"DeForest Buckner","card_value":175,"pulled_at":"2026-05-14T23:26:55.731Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_7SevZr9Xuy.jpg"},{"id":215,"card_overall":84,"card_name":"A.J. Cole","card_value":523,"pulled_at":"2026-05-14T23:27:27.830Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_CnkuMFvkkX.jpg"},{"id":216,"card_overall":90,"card_name":"Da'Shawn Hand","card_value":5326,"pulled_at":"2026-05-14T23:27:27.834Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_CnkuMFvkkX.jpg"},{"id":217,"card_overall":94,"card_name":"Marvin Mims Jr","card_value":32700,"pulled_at":"2026-05-14T23:27:27.836Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_CnkuMFvkkX.jpg"},{"id":218,"card_overall":94,"card_name":"Jason Marshall Jr","card_value":32700,"pulled_at":"2026-05-14T23:27:40.973Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6Lc4b8qqrg.jpg"},{"id":219,"card_overall":81,"card_name":"Jaxon Smith-Njigba","card_value":225,"pulled_at":"2026-05-14T23:27:40.976Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6Lc4b8qqrg.jpg"},{"id":220,"card_overall":85,"card_name":"Mac Jones","card_value":646,"pulled_at":"2026-05-14T23:27:40.977Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_6Lc4b8qqrg.jpg"},{"id":221,"card_overall":79,"card_name":"Harold Landry III","card_value":0,"pulled_at":"2026-05-14T23:27:59.022Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_wowFqF1K4G.jpg"},{"id":222,"card_overall":84,"card_name":"Scott Matlock","card_value":523,"pulled_at":"2026-05-14T23:27:59.031Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_wowFqF1K4G.jpg"},{"id":223,"card_overall":95,"card_name":"Greg Rousseau","card_value":37700,"pulled_at":"2026-05-14T23:27:59.033Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_wowFqF1K4G.jpg"},{"id":224,"card_overall":94,"card_name":"Puka Nacua","card_value":32700,"pulled_at":"2026-05-14T23:28:29.815Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PNp1WpdHZJ.jpg"},{"id":225,"card_overall":85,"card_name":"Walker Little","card_value":646,"pulled_at":"2026-05-14T23:28:29.820Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PNp1WpdHZJ.jpg"},{"id":226,"card_overall":76,"card_name":"Brady Christensen","card_value":0,"pulled_at":"2026-05-14T23:28:29.821Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PNp1WpdHZJ.jpg"},{"id":227,"card_overall":96,"card_name":"Camryn Bynum","card_value":160000,"pulled_at":"2026-05-14T23:28:56.955Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JHRFFW6kW7.jpg"},{"id":228,"card_overall":85,"card_name":"Shemar James","card_value":646,"pulled_at":"2026-05-14T23:28:56.959Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JHRFFW6kW7.jpg"},{"id":229,"card_overall":85,"card_name":"Arden Key","card_value":646,"pulled_at":"2026-05-14T23:28:56.961Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JHRFFW6kW7.jpg"},{"id":230,"card_overall":77,"card_name":"Kenneth Murray Jr","card_value":0,"pulled_at":"2026-05-14T23:29:25.874Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_MLgHuaTulg.jpg"},{"id":231,"card_overall":78,"card_name":"Bo Nix","card_value":0,"pulled_at":"2026-05-14T23:29:25.877Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_MLgHuaTulg.jpg"},{"id":232,"card_overall":97,"card_name":"Roquan Smith","card_value":160000,"pulled_at":"2026-05-14T23:29:25.879Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_MLgHuaTulg.jpg"},{"id":233,"card_overall":94,"card_name":"Cooper DeJean","card_value":32700,"pulled_at":"2026-05-14T23:29:56.472Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qRqmcnfCDg.jpg"},{"id":234,"card_overall":82,"card_name":"DeVonta Smith","card_value":250,"pulled_at":"2026-05-14T23:29:56.476Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qRqmcnfCDg.jpg"},{"id":235,"card_overall":97,"card_name":"Malcolm Rodriguez","card_value":160000,"pulled_at":"2026-05-14T23:29:56.478Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qRqmcnfCDg.jpg"},{"id":236,"card_overall":94,"card_name":"Gale Sayers","card_value":32700,"pulled_at":"2026-05-14T23:30:37.302Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oy53mr3mvg.jpg"},{"id":237,"card_overall":78,"card_name":"Travis Hunter","card_value":0,"pulled_at":"2026-05-14T23:30:37.304Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oy53mr3mvg.jpg"},{"id":238,"card_overall":84,"card_name":"Jessie Bates III","card_value":523,"pulled_at":"2026-05-14T23:30:37.306Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_oy53mr3mvg.jpg"},{"id":239,"card_overall":94,"card_name":"Ray Lewis","card_value":32700,"pulled_at":"2026-05-14T23:31:05.748Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_elLgudv0h3.jpg"},{"id":240,"card_overall":85,"card_name":"Tim Settle Jr","card_value":646,"pulled_at":"2026-05-14T23:31:05.753Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_elLgudv0h3.jpg"},{"id":241,"card_overall":89,"card_name":"Travis Jones","card_value":3417,"pulled_at":"2026-05-14T23:31:05.754Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_elLgudv0h3.jpg"},{"id":242,"card_overall":94,"card_name":"Devin Bush","card_value":32700,"pulled_at":"2026-05-14T23:31:36.583Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fevaA1NjQN.jpg"},{"id":243,"card_overall":77,"card_name":"D.J. Jones","card_value":0,"pulled_at":"2026-05-14T23:31:36.586Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fevaA1NjQN.jpg"},{"id":244,"card_overall":88,"card_name":"Kyle Hamilton","card_value":2963,"pulled_at":"2026-05-14T23:31:36.587Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fevaA1NjQN.jpg"},{"id":245,"card_overall":95,"card_name":"Aaron Banks","card_value":37700,"pulled_at":"2026-05-14T23:31:57.705Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_jWjAbpV7MG.jpg"},{"id":246,"card_overall":88,"card_name":"Arian Foster","card_value":2963,"pulled_at":"2026-05-14T23:31:57.708Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_jWjAbpV7MG.jpg"},{"id":247,"card_overall":79,"card_name":"Luke Goedeke","card_value":0,"pulled_at":"2026-05-14T23:31:57.710Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_jWjAbpV7MG.jpg"},{"id":248,"card_overall":74,"card_name":"Derion Kendrick","card_value":0,"pulled_at":"2026-05-14T23:32:18.539Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fBQZx1L9mz.jpg"},{"id":249,"card_overall":87,"card_name":"Jadeveon Clowney","card_value":2000,"pulled_at":"2026-05-14T23:32:18.542Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fBQZx1L9mz.jpg"},{"id":250,"card_overall":95,"card_name":"Wil Lutz","card_value":37700,"pulled_at":"2026-05-14T23:32:18.543Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fBQZx1L9mz.jpg"},{"id":251,"card_overall":80,"card_name":"Thomas Hennessy","card_value":175,"pulled_at":"2026-05-14T23:32:45.179Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_k16iaJJhMO.jpg"},{"id":252,"card_overall":96,"card_name":"Donovan Ezeiruaku","card_value":160000,"pulled_at":"2026-05-14T23:32:45.198Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_k16iaJJhMO.jpg"},{"id":253,"card_overall":93,"card_name":"Clark Phillips III","card_value":18200,"pulled_at":"2026-05-14T23:32:45.200Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_k16iaJJhMO.jpg"},{"id":254,"card_overall":95,"card_name":"Tracy Porter","card_value":37700,"pulled_at":"2026-05-14T23:33:13.720Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_DcT9MQz60Q.jpg"},{"id":255,"card_overall":80,"card_name":"Kaden Elliss","card_value":175,"pulled_at":"2026-05-14T23:33:13.722Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_DcT9MQz60Q.jpg"},{"id":256,"card_overall":84,"card_name":"Derrick Brooks","card_value":523,"pulled_at":"2026-05-14T23:33:13.723Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_DcT9MQz60Q.jpg"},{"id":257,"card_overall":78,"card_name":"Ed Ingram","card_value":0,"pulled_at":"2026-05-14T23:33:39.311Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Dj31r2BbiQ.jpg"},{"id":258,"card_overall":96,"card_name":"Thurman Thomas","card_value":160000,"pulled_at":"2026-05-14T23:33:39.313Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Dj31r2BbiQ.jpg"},{"id":259,"card_overall":85,"card_name":"Jonah Williams","card_value":646,"pulled_at":"2026-05-14T23:33:39.314Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Dj31r2BbiQ.jpg"},{"id":260,"card_overall":83,"card_name":"Jordyn Brooks","card_value":250,"pulled_at":"2026-05-14T23:34:07.386Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_ix9oCAOMrB.jpg"},{"id":261,"card_overall":95,"card_name":"Dylan Fairchild","card_value":37700,"pulled_at":"2026-05-14T23:34:07.389Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_ix9oCAOMrB.jpg"},{"id":262,"card_overall":84,"card_name":"Michael Pittman Jr","card_value":523,"pulled_at":"2026-05-14T23:34:07.391Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_ix9oCAOMrB.jpg"},{"id":263,"card_overall":78,"card_name":"Jacob Bobenmoyer","card_value":0,"pulled_at":"2026-05-14T23:34:33.095Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_cJTL4FdcVA.jpg"},{"id":264,"card_overall":79,"card_name":"Harold Landry III","card_value":0,"pulled_at":"2026-05-14T23:34:33.104Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_cJTL4FdcVA.jpg"},{"id":265,"card_overall":94,"card_name":"Cole Kmet","card_value":32700,"pulled_at":"2026-05-14T23:34:33.114Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_cJTL4FdcVA.jpg"},{"id":266,"card_overall":95,"card_name":"Zack Martin","card_value":37700,"pulled_at":"2026-05-14T23:35:03.255Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_h2XR3F2Jh8.jpg"},{"id":267,"card_overall":77,"card_name":"Tykee Smith","card_value":0,"pulled_at":"2026-05-14T23:35:03.257Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_h2XR3F2Jh8.jpg"},{"id":268,"card_overall":86,"card_name":"Matthew Stafford","card_value":1309,"pulled_at":"2026-05-14T23:35:03.258Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_h2XR3F2Jh8.jpg"},{"id":269,"card_overall":88,"card_name":"Mike Gesicki","card_value":2963,"pulled_at":"2026-05-14T23:35:15.188Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xNcRuojF1s.jpg"},{"id":270,"card_overall":95,"card_name":"Trevon Diggs","card_value":37700,"pulled_at":"2026-05-14T23:35:15.193Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xNcRuojF1s.jpg"},{"id":271,"card_overall":84,"card_name":"Davis Allen","card_value":523,"pulled_at":"2026-05-14T23:35:15.194Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xNcRuojF1s.jpg"},{"id":272,"card_overall":95,"card_name":"Jordan Stout","card_value":37700,"pulled_at":"2026-05-14T23:35:37.497Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gvyBfKKWH7.jpg"},{"id":273,"card_overall":84,"card_name":"Jaylin Smith","card_value":523,"pulled_at":"2026-05-14T23:35:37.500Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gvyBfKKWH7.jpg"},{"id":274,"card_overall":90,"card_name":"Logan Wilson","card_value":5326,"pulled_at":"2026-05-14T23:35:37.501Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gvyBfKKWH7.jpg"},{"id":275,"card_overall":96,"card_name":"Jeff Saturday","card_value":160000,"pulled_at":"2026-05-14T23:35:54.084Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SZr0GoYBEj.jpg"},{"id":276,"card_overall":86,"card_name":"Lavonte David","card_value":1309,"pulled_at":"2026-05-14T23:35:54.088Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SZr0GoYBEj.jpg"},{"id":277,"card_overall":89,"card_name":"Howie Long","card_value":3417,"pulled_at":"2026-05-14T23:35:54.090Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_SZr0GoYBEj.jpg"},{"id":278,"card_overall":87,"card_name":"Tetairoa McMillan","card_value":2000,"pulled_at":"2026-05-14T23:36:28.781Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gvEXLhfS4b.jpg"},{"id":279,"card_overall":95,"card_name":"Bruce Smith","card_value":37700,"pulled_at":"2026-05-14T23:36:28.783Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gvEXLhfS4b.jpg"},{"id":280,"card_overall":87,"card_name":"Kerby Joseph","card_value":2000,"pulled_at":"2026-05-14T23:36:28.784Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_gvEXLhfS4b.jpg"},{"id":281,"card_overall":93,"card_name":"Mike Green","card_value":18200,"pulled_at":"2026-05-14T23:36:44.706Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_FjQoZdspLz.jpg"},{"id":282,"card_overall":86,"card_name":"Jack Conklin","card_value":1309,"pulled_at":"2026-05-14T23:36:44.712Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_FjQoZdspLz.jpg"},{"id":283,"card_overall":95,"card_name":"Craig Woodson","card_value":37700,"pulled_at":"2026-05-14T23:36:44.715Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_FjQoZdspLz.jpg"},{"id":284,"card_overall":95,"card_name":"Chris Boswell","card_value":37700,"pulled_at":"2026-05-14T23:37:25.089Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_aDlYWQRMBR.jpg"},{"id":285,"card_overall":81,"card_name":"Damien Lewis","card_value":225,"pulled_at":"2026-05-14T23:37:25.094Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_aDlYWQRMBR.jpg"},{"id":286,"card_overall":79,"card_name":"Larry Fitzgerald","card_value":0,"pulled_at":"2026-05-14T23:37:25.096Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_aDlYWQRMBR.jpg"},{"id":287,"card_overall":96,"card_name":"J.J. Watt","card_value":160000,"pulled_at":"2026-05-14T23:38:33.331Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_eRmrZJz0WS.jpg"},{"id":288,"card_overall":82,"card_name":"Bilal Nichols","card_value":250,"pulled_at":"2026-05-14T23:38:33.355Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_eRmrZJz0WS.jpg"},{"id":289,"card_overall":85,"card_name":"Kevin Byard III","card_value":646,"pulled_at":"2026-05-14T23:38:33.357Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_eRmrZJz0WS.jpg"},{"id":290,"card_overall":95,"card_name":"John Simpson","card_value":37700,"pulled_at":"2026-05-14T23:39:53.774Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_QbD1N9n2Up.jpg"},{"id":291,"card_overall":82,"card_name":"Tyler Johnson","card_value":250,"pulled_at":"2026-05-14T23:39:53.777Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_QbD1N9n2Up.jpg"},{"id":292,"card_overall":82,"card_name":"Denzel Perryman","card_value":250,"pulled_at":"2026-05-14T23:39:53.784Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_QbD1N9n2Up.jpg"},{"id":293,"card_overall":90,"card_name":"Kyler Gordon","card_value":5326,"pulled_at":"2026-05-14T23:40:19.835Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JTWIwScNE0.jpg"},{"id":294,"card_overall":81,"card_name":"Jared Verse","card_value":225,"pulled_at":"2026-05-14T23:40:19.836Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JTWIwScNE0.jpg"},{"id":295,"card_overall":94,"card_name":"Nick Chubb","card_value":32700,"pulled_at":"2026-05-14T23:40:19.839Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JTWIwScNE0.jpg"},{"id":296,"card_overall":94,"card_name":"Trevor Lawrence","card_value":32700,"pulled_at":"2026-05-14T23:40:41.504Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_A1ZqPz0YOl.jpg"},{"id":297,"card_overall":81,"card_name":"Julian Love","card_value":225,"pulled_at":"2026-05-14T23:40:41.509Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_A1ZqPz0YOl.jpg"},{"id":298,"card_overall":84,"card_name":"Maxx Crosby","card_value":523,"pulled_at":"2026-05-14T23:40:41.511Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_A1ZqPz0YOl.jpg"},{"id":299,"card_overall":96,"card_name":"Cooper Kupp","card_value":160000,"pulled_at":"2026-05-14T23:41:18.111Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_lWUwGjVJ6s.jpg"},{"id":300,"card_overall":80,"card_name":"Jordan Morgan","card_value":175,"pulled_at":"2026-05-14T23:41:18.115Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_lWUwGjVJ6s.jpg"},{"id":301,"card_overall":82,"card_name":"Nick Cross","card_value":250,"pulled_at":"2026-05-14T23:41:18.117Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_lWUwGjVJ6s.jpg"},{"id":302,"card_overall":86,"card_name":"O'Cyrus Torrence","card_value":1309,"pulled_at":"2026-05-14T23:41:51.131Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_G2gKF86mvc.jpg"},{"id":303,"card_overall":77,"card_name":"Jarran Reed","card_value":0,"pulled_at":"2026-05-14T23:41:51.135Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_G2gKF86mvc.jpg"},{"id":304,"card_overall":97,"card_name":"Will Anderson Jr","card_value":160000,"pulled_at":"2026-05-14T23:41:51.136Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_G2gKF86mvc.jpg"},{"id":305,"card_overall":97,"card_name":"Jamaree Caldwell","card_value":160000,"pulled_at":"2026-05-14T23:42:29.696Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_V5tCAFuuU0.jpg"},{"id":306,"card_overall":84,"card_name":"Larry Fitzgerald","card_value":523,"pulled_at":"2026-05-14T23:42:29.701Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_V5tCAFuuU0.jpg"},{"id":307,"card_overall":84,"card_name":"Richard Sherman","card_value":523,"pulled_at":"2026-05-14T23:42:29.705Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_V5tCAFuuU0.jpg"},{"id":308,"card_overall":95,"card_name":"Jay Hilgenberg","card_value":37700,"pulled_at":"2026-05-14T23:42:46.516Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8tZdVvz7GI.jpg"},{"id":309,"card_overall":84,"card_name":"Jon Runyan","card_value":523,"pulled_at":"2026-05-14T23:42:46.548Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8tZdVvz7GI.jpg"},{"id":310,"card_overall":86,"card_name":"Dan Dierdorf","card_value":1309,"pulled_at":"2026-05-14T23:42:46.552Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8tZdVvz7GI.jpg"},{"id":311,"card_overall":81,"card_name":"Jamel Dean","card_value":225,"pulled_at":"2026-05-14T23:43:18.538Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WKPA833LCk.jpg"},{"id":312,"card_overall":94,"card_name":"Dalton Schultz","card_value":32700,"pulled_at":"2026-05-14T23:43:18.542Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WKPA833LCk.jpg"},{"id":313,"card_overall":88,"card_name":"John Riggins","card_value":2963,"pulled_at":"2026-05-14T23:43:18.543Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WKPA833LCk.jpg"},{"id":314,"card_overall":88,"card_name":"Adam Jones","card_value":2963,"pulled_at":"2026-05-14T23:43:34.311Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_MpZwEpmyLQ.jpg"},{"id":315,"card_overall":78,"card_name":"Michael Pittman Jr","card_value":0,"pulled_at":"2026-05-14T23:43:34.314Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_MpZwEpmyLQ.jpg"},{"id":316,"card_overall":96,"card_name":"Mecole Hardman","card_value":160000,"pulled_at":"2026-05-14T23:43:34.315Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_MpZwEpmyLQ.jpg"},{"id":317,"card_overall":79,"card_name":"Jon Weeks","card_value":0,"pulled_at":"2026-05-14T23:44:02.780Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_KtOTUUNrMc.jpg"},{"id":318,"card_overall":96,"card_name":"Jason Kelce","card_value":160000,"pulled_at":"2026-05-14T23:44:02.784Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_KtOTUUNrMc.jpg"},{"id":319,"card_overall":84,"card_name":"Ty Robinson","card_value":523,"pulled_at":"2026-05-14T23:44:02.785Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_KtOTUUNrMc.jpg"},{"id":320,"card_overall":83,"card_name":"Kamari Lassiter","card_value":250,"pulled_at":"2026-05-14T23:44:19.890Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Pkd5QjD7ve.jpg"},{"id":321,"card_overall":95,"card_name":"Montaric Brown","card_value":37700,"pulled_at":"2026-05-14T23:44:19.892Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Pkd5QjD7ve.jpg"},{"id":322,"card_overall":84,"card_name":"SirVocea Dennis","card_value":523,"pulled_at":"2026-05-14T23:44:19.893Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Pkd5QjD7ve.jpg"},{"id":323,"card_overall":97,"card_name":"Tariq Woolen","card_value":170000,"pulled_at":"2026-05-14T23:55:32.626Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_oHV1NWuIKf.jpg"},{"id":324,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-14T23:55:52.242Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_y4CtqxKBfx.jpg"},{"id":325,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-14T23:56:06.001Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_0f6XqZyD5j.jpg"},{"id":326,"card_overall":97,"card_name":"Drake London","card_value":170000,"pulled_at":"2026-05-14T23:56:20.897Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_TFvP2uwZeF.jpg"},{"id":327,"card_overall":97,"card_name":"Drake London","card_value":170000,"pulled_at":"2026-05-15T00:02:32.995Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_WwxR70uYsw.jpg"},{"id":328,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-15T00:05:53.173Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_A7UYRM6zeg.jpg"},{"id":329,"card_overall":94,"card_name":"Vita Vea","card_value":44500,"pulled_at":"2026-05-15T00:08:06.845Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_YMc8M34Els.jpg"},{"id":330,"card_overall":98,"card_name":"Troy Vincent","card_value":148000,"pulled_at":"2026-05-15T01:47:05.775Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1sXM1mv2C3.jpg"},{"id":331,"card_overall":86,"card_name":"Andrew Beck","card_value":1309,"pulled_at":"2026-05-15T01:47:05.779Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1sXM1mv2C3.jpg"},{"id":332,"card_overall":88,"card_name":"Jaden Hicks","card_value":2963,"pulled_at":"2026-05-15T01:47:05.780Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1sXM1mv2C3.jpg"},{"id":333,"card_overall":94,"card_name":"Xavier McKinney","card_value":32700,"pulled_at":"2026-05-15T01:47:13.903Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PpKOzGCoka.jpg"},{"id":334,"card_overall":89,"card_name":"Malcolm Rodriguez","card_value":3417,"pulled_at":"2026-05-15T01:47:13.907Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PpKOzGCoka.jpg"},{"id":335,"card_overall":89,"card_name":"Sam Adams","card_value":3417,"pulled_at":"2026-05-15T01:47:13.911Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PpKOzGCoka.jpg"},{"id":336,"card_overall":79,"card_name":"RJ Harvey","card_value":0,"pulled_at":"2026-05-15T02:11:11.316Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_EPxmPUG6jd.jpg"},{"id":337,"card_overall":96,"card_name":"Brian Orakpo","card_value":160000,"pulled_at":"2026-05-15T02:11:11.343Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_EPxmPUG6jd.jpg"},{"id":338,"card_overall":81,"card_name":"Azeez Al-Shaair","card_value":225,"pulled_at":"2026-05-15T02:11:11.345Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_EPxmPUG6jd.jpg"},{"id":339,"card_overall":85,"card_name":"Chop Robinson","card_value":646,"pulled_at":"2026-05-15T02:11:42.530Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_uETHcW9i7f.jpg"},{"id":340,"card_overall":86,"card_name":"T'Vondre Sweat","card_value":1309,"pulled_at":"2026-05-15T02:11:42.533Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_uETHcW9i7f.jpg"},{"id":341,"card_overall":94,"card_name":"Randall Cunningham","card_value":32700,"pulled_at":"2026-05-15T02:11:42.534Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_uETHcW9i7f.jpg"},{"id":342,"card_overall":94,"card_name":"Jay Toia","card_value":32700,"pulled_at":"2026-05-15T02:11:58.985Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_d9yXCxiF4Y.jpg"},{"id":343,"card_overall":84,"card_name":"Dalvin Tomlinson","card_value":523,"pulled_at":"2026-05-15T02:11:58.988Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_d9yXCxiF4Y.jpg"},{"id":344,"card_overall":81,"card_name":"Jack Campbell","card_value":225,"pulled_at":"2026-05-15T02:11:58.989Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_d9yXCxiF4Y.jpg"},{"id":345,"card_overall":85,"card_name":"Tyquan Thornton","card_value":646,"pulled_at":"2026-05-15T02:12:15.600Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_bwIeBN6Fmt.jpg"},{"id":346,"card_overall":95,"card_name":"Carl Banks","card_value":37700,"pulled_at":"2026-05-15T02:12:15.604Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_bwIeBN6Fmt.jpg"},{"id":347,"card_overall":80,"card_name":"Chuba Hubbard","card_value":175,"pulled_at":"2026-05-15T02:12:15.605Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_bwIeBN6Fmt.jpg"},{"id":348,"card_overall":75,"card_name":"Levi Onwuzurike","card_value":0,"pulled_at":"2026-05-15T02:12:45.403Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_s0CmjAqcxu.jpg"},{"id":349,"card_overall":88,"card_name":"Javon Kinlaw","card_value":2963,"pulled_at":"2026-05-15T02:12:45.429Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_s0CmjAqcxu.jpg"},{"id":350,"card_overall":95,"card_name":"Mitchell Evans","card_value":37700,"pulled_at":"2026-05-15T02:12:45.431Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_s0CmjAqcxu.jpg"},{"id":351,"card_overall":78,"card_name":"Chop Robinson","card_value":0,"pulled_at":"2026-05-15T02:13:15.063Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fdh2GE2DKG.jpg"},{"id":352,"card_overall":96,"card_name":"Mike Jackson","card_value":160000,"pulled_at":"2026-05-15T02:13:15.066Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fdh2GE2DKG.jpg"},{"id":353,"card_overall":78,"card_name":"Kamren Curl","card_value":0,"pulled_at":"2026-05-15T02:13:15.068Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fdh2GE2DKG.jpg"},{"id":354,"card_overall":81,"card_name":"Brock Purdy","card_value":225,"pulled_at":"2026-05-15T03:13:22.417Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3RD3Ih8Bpd.jpg"},{"id":355,"card_overall":94,"card_name":"Andrew Mukuba","card_value":32700,"pulled_at":"2026-05-15T03:13:22.430Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3RD3Ih8Bpd.jpg"},{"id":356,"card_overall":81,"card_name":"Brandon Aiyuk","card_value":225,"pulled_at":"2026-05-15T03:13:22.434Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3RD3Ih8Bpd.jpg"},{"id":357,"card_overall":81,"card_name":"Trent Brown","card_value":225,"pulled_at":"2026-05-15T03:13:59.169Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_iIFMniuK0r.jpg"},{"id":358,"card_overall":94,"card_name":"Lavonte David","card_value":32700,"pulled_at":"2026-05-15T03:13:59.171Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_iIFMniuK0r.jpg"},{"id":359,"card_overall":88,"card_name":"Trey Smith","card_value":2963,"pulled_at":"2026-05-15T03:13:59.173Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_iIFMniuK0r.jpg"},{"id":360,"card_overall":94,"card_name":"Amon-Ra St. Brown","card_value":32700,"pulled_at":"2026-05-15T03:14:46.089Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xg1cCK2mgV.jpg"},{"id":361,"card_overall":87,"card_name":"JuJu Smith-Schuster","card_value":2000,"pulled_at":"2026-05-15T03:14:46.091Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xg1cCK2mgV.jpg"},{"id":362,"card_overall":90,"card_name":"Andre Cisco","card_value":5326,"pulled_at":"2026-05-15T03:14:46.093Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_xg1cCK2mgV.jpg"},{"id":363,"card_overall":94,"card_name":"Jason Marshall Jr","card_value":32700,"pulled_at":"2026-05-15T03:15:00.671Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_0WZVoBYuIw.jpg"},{"id":364,"card_overall":87,"card_name":"Kyler Gordon","card_value":2000,"pulled_at":"2026-05-15T03:15:00.675Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_0WZVoBYuIw.jpg"},{"id":365,"card_overall":86,"card_name":"Najee Harris","card_value":1309,"pulled_at":"2026-05-15T03:15:00.678Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_0WZVoBYuIw.jpg"},{"id":366,"card_overall":82,"card_name":"Andre Cisco","card_value":250,"pulled_at":"2026-05-15T03:15:41.262Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_eQX8egJUa5.jpg"},{"id":367,"card_overall":76,"card_name":"Jon Runyan","card_value":0,"pulled_at":"2026-05-15T03:15:41.264Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_eQX8egJUa5.jpg"},{"id":368,"card_overall":96,"card_name":"Haloti Ngata","card_value":160000,"pulled_at":"2026-05-15T03:15:41.267Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_eQX8egJUa5.jpg"},{"id":369,"card_overall":78,"card_name":"Jacob Bobenmoyer","card_value":0,"pulled_at":"2026-05-15T03:17:10.758Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Z3xBDhbd1G.jpg"},{"id":370,"card_overall":85,"card_name":"Terrell Suggs","card_value":646,"pulled_at":"2026-05-15T03:17:10.762Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Z3xBDhbd1G.jpg"},{"id":371,"card_overall":95,"card_name":"Troy Vincent","card_value":37700,"pulled_at":"2026-05-15T03:17:10.767Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Z3xBDhbd1G.jpg"},{"id":372,"card_overall":96,"card_name":"Luther Burden III","card_value":160000,"pulled_at":"2026-05-15T20:33:36.637Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_f3mj5wnpUt.jpg"},{"id":373,"card_overall":80,"card_name":"Drew Dalman","card_value":175,"pulled_at":"2026-05-15T20:33:36.697Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_f3mj5wnpUt.jpg"},{"id":374,"card_overall":80,"card_name":"Dak Prescott","card_value":175,"pulled_at":"2026-05-15T20:33:36.700Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_f3mj5wnpUt.jpg"},{"id":375,"card_overall":96,"card_name":"Plaxico Burress","card_value":160000,"pulled_at":"2026-05-15T20:34:26.868Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_38Bci3sLUD.jpg"},{"id":376,"card_overall":84,"card_name":"Jonathon Cooper","card_value":523,"pulled_at":"2026-05-15T20:34:26.872Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_38Bci3sLUD.jpg"},{"id":377,"card_overall":81,"card_name":"Marcus Jones","card_value":225,"pulled_at":"2026-05-15T20:34:26.874Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_38Bci3sLUD.jpg"},{"id":378,"card_overall":80,"card_name":"Ladd McConkey","card_value":175,"pulled_at":"2026-05-15T20:34:30.472Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3QLMWerCi3.jpg"},{"id":379,"card_overall":82,"card_name":"Larry Fitzgerald","card_value":250,"pulled_at":"2026-05-15T20:34:30.473Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3QLMWerCi3.jpg"},{"id":380,"card_overall":95,"card_name":"Tyrique Stevenson","card_value":37700,"pulled_at":"2026-05-15T20:34:30.474Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_3QLMWerCi3.jpg"},{"id":381,"card_overall":90,"card_name":"Orlando Brown Jr","card_value":5326,"pulled_at":"2026-05-15T20:34:34.370Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_5Qq2wv4kpw.jpg"},{"id":382,"card_overall":80,"card_name":"Jordyn Brooks","card_value":175,"pulled_at":"2026-05-15T20:34:34.372Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_5Qq2wv4kpw.jpg"},{"id":383,"card_overall":94,"card_name":"Odell Beckham Jr","card_value":32700,"pulled_at":"2026-05-15T20:34:34.375Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_5Qq2wv4kpw.jpg"},{"id":384,"card_overall":95,"card_name":"DeVonta Smith","card_value":37700,"pulled_at":"2026-05-15T20:34:38.721Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_5yy6KNJmM7.jpg"},{"id":385,"card_overall":79,"card_name":"Calais Campbell","card_value":0,"pulled_at":"2026-05-15T20:34:38.722Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_5yy6KNJmM7.jpg"},{"id":386,"card_overall":82,"card_name":"Foyesade Oluokun","card_value":250,"pulled_at":"2026-05-15T20:34:38.722Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_5yy6KNJmM7.jpg"},{"id":387,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-15T20:34:45.027Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_7BgMEiPcpP.jpg"},{"id":388,"card_overall":88,"card_name":"Chris Spielman","card_value":2963,"pulled_at":"2026-05-15T20:34:49.348Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8baAEPNAs2.jpg"},{"id":389,"card_overall":89,"card_name":"Richard Sherman","card_value":3417,"pulled_at":"2026-05-15T20:34:49.349Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8baAEPNAs2.jpg"},{"id":390,"card_overall":95,"card_name":"Parker Washington","card_value":37700,"pulled_at":"2026-05-15T20:34:49.350Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_8baAEPNAs2.jpg"},{"id":391,"card_overall":90,"card_name":"Grover Stewart","card_value":5326,"pulled_at":"2026-05-15T20:34:53.174Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_b6hItIJaJ5.jpg"},{"id":392,"card_overall":79,"card_name":"Jason Sanders","card_value":0,"pulled_at":"2026-05-15T20:34:53.175Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_b6hItIJaJ5.jpg"},{"id":393,"card_overall":95,"card_name":"Tyler Ott","card_value":37700,"pulled_at":"2026-05-15T20:34:53.176Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_b6hItIJaJ5.jpg"},{"id":394,"card_overall":79,"card_name":"Greg Dulcich","card_value":0,"pulled_at":"2026-05-15T20:34:57.387Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_BgmbjCe5LQ.jpg"},{"id":395,"card_overall":95,"card_name":"Tyrique Stevenson","card_value":37700,"pulled_at":"2026-05-15T20:34:57.388Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_BgmbjCe5LQ.jpg"},{"id":396,"card_overall":90,"card_name":"Elgton Jenkins","card_value":5326,"pulled_at":"2026-05-15T20:34:57.389Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_BgmbjCe5LQ.jpg"},{"id":397,"card_overall":90,"card_name":"Noah Fant","card_value":5326,"pulled_at":"2026-05-15T20:35:01.803Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_dKU06JdTFU.jpg"},{"id":398,"card_overall":81,"card_name":"Ryan Flournoy","card_value":225,"pulled_at":"2026-05-15T20:35:01.804Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_dKU06JdTFU.jpg"},{"id":399,"card_overall":94,"card_name":"Eli Manning","card_value":32700,"pulled_at":"2026-05-15T20:35:01.805Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_dKU06JdTFU.jpg"},{"id":400,"card_overall":96,"card_name":"Donte Jackson","card_value":160000,"pulled_at":"2026-05-15T20:35:10.064Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_HAumcu23s8.jpg"},{"id":401,"card_overall":81,"card_name":"Elgton Jenkins","card_value":225,"pulled_at":"2026-05-15T20:35:10.065Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_HAumcu23s8.jpg"},{"id":402,"card_overall":77,"card_name":"Josh Simmons","card_value":0,"pulled_at":"2026-05-15T20:35:10.066Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_HAumcu23s8.jpg"},{"id":403,"card_overall":94,"card_name":"Jake Bailey","card_value":32700,"pulled_at":"2026-05-15T20:35:13.621Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_IoB4gYqXEK.jpg"},{"id":404,"card_overall":85,"card_name":"Josh Metellus","card_value":646,"pulled_at":"2026-05-15T20:35:13.622Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_IoB4gYqXEK.jpg"},{"id":405,"card_overall":76,"card_name":"Donovan Jackson","card_value":0,"pulled_at":"2026-05-15T20:35:13.624Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_IoB4gYqXEK.jpg"},{"id":406,"card_overall":80,"card_name":"Drew Dalman","card_value":175,"pulled_at":"2026-05-15T20:35:17.252Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_joHslZFWja.jpg"},{"id":407,"card_overall":95,"card_name":"Geno Stone","card_value":37700,"pulled_at":"2026-05-15T20:35:17.254Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_joHslZFWja.jpg"},{"id":408,"card_overall":80,"card_name":"Jordan Fuller","card_value":175,"pulled_at":"2026-05-15T20:35:17.254Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_joHslZFWja.jpg"},{"id":409,"card_overall":83,"card_name":"Jalen Sundell","card_value":250,"pulled_at":"2026-05-15T20:35:20.943Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_kADDxrleO7.jpg"},{"id":410,"card_overall":94,"card_name":"Tremon Smith","card_value":32700,"pulled_at":"2026-05-15T20:35:20.945Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_kADDxrleO7.jpg"},{"id":411,"card_overall":95,"card_name":"Jon Weeks","card_value":37700,"pulled_at":"2026-05-15T20:35:20.946Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_kADDxrleO7.jpg"},{"id":412,"card_overall":94,"card_name":"Adam Jones","card_value":32700,"pulled_at":"2026-05-15T20:35:30.881Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_O7MkAA0ddp.jpg"},{"id":413,"card_overall":88,"card_name":"Thurman Thomas","card_value":2963,"pulled_at":"2026-05-15T20:35:30.882Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_O7MkAA0ddp.jpg"},{"id":414,"card_overall":86,"card_name":"Jared Goff","card_value":1309,"pulled_at":"2026-05-15T20:35:30.883Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_O7MkAA0ddp.jpg"},{"id":415,"card_overall":82,"card_name":"Jarran Reed","card_value":250,"pulled_at":"2026-05-15T20:35:34.824Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PBU8htZvzp.jpg"},{"id":416,"card_overall":79,"card_name":"Jerry Tillery","card_value":0,"pulled_at":"2026-05-15T20:35:34.825Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PBU8htZvzp.jpg"},{"id":417,"card_overall":96,"card_name":"Devin Hester","card_value":160000,"pulled_at":"2026-05-15T20:35:34.826Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PBU8htZvzp.jpg"},{"id":418,"card_overall":94,"card_name":"Adam Jones","card_value":32700,"pulled_at":"2026-05-15T20:35:42.726Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qCarIXQ4Px.jpg"},{"id":419,"card_overall":82,"card_name":"Malcolm Koonce","card_value":250,"pulled_at":"2026-05-15T20:35:42.727Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qCarIXQ4Px.jpg"},{"id":420,"card_overall":86,"card_name":"Devaughn Vele","card_value":1309,"pulled_at":"2026-05-15T20:35:42.729Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_qCarIXQ4Px.jpg"},{"id":421,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-15T20:35:48.918Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_Ur80Ac8Xh6.jpg"},{"id":422,"card_overall":97,"card_name":"Ryan Shazier","card_value":160000,"pulled_at":"2026-05-15T20:35:53.006Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_utfitpYYfB.jpg"},{"id":423,"card_overall":78,"card_name":"Marcus Epps","card_value":0,"pulled_at":"2026-05-15T20:35:53.007Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_utfitpYYfB.jpg"},{"id":424,"card_overall":84,"card_name":"Davis Allen","card_value":523,"pulled_at":"2026-05-15T20:35:53.008Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_utfitpYYfB.jpg"},{"id":425,"card_overall":86,"card_name":"Maurice Jones-Drew","card_value":1309,"pulled_at":"2026-05-15T20:35:57.495Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Xr4eVwRH32.jpg"},{"id":426,"card_overall":94,"card_name":"Pat Summerall","card_value":32700,"pulled_at":"2026-05-15T20:35:57.497Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Xr4eVwRH32.jpg"},{"id":427,"card_overall":85,"card_name":"Myles Garrett","card_value":646,"pulled_at":"2026-05-15T20:35:57.498Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Xr4eVwRH32.jpg"},{"id":428,"card_overall":81,"card_name":"Jake Elliott","card_value":225,"pulled_at":"2026-05-15T20:36:01.591Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_z7Z93lGGbR.jpg"},{"id":429,"card_overall":79,"card_name":"Cooper DeJean","card_value":0,"pulled_at":"2026-05-15T20:36:01.592Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_z7Z93lGGbR.jpg"},{"id":430,"card_overall":94,"card_name":"Budda Baker","card_value":32700,"pulled_at":"2026-05-15T20:36:01.592Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_z7Z93lGGbR.jpg"},{"id":431,"card_overall":94,"card_name":"Vita Vea","card_value":44500,"pulled_at":"2026-05-15T21:27:38.482Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_OHfQhQSpNU.jpg"},{"id":432,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-15T21:27:58.025Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_fB8xufAJL1.jpg"},{"id":433,"card_overall":99,"card_name":"Jared Allen","card_value":400000,"pulled_at":"2026-05-15T21:28:11.709Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_rkei6tLhaL.jpg"},{"id":434,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-15T21:28:55.789Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_LVruqUZE2o.jpg"},{"id":435,"card_overall":99,"card_name":"Jared Allen","card_value":400000,"pulled_at":"2026-05-15T21:29:11.342Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_rR4l01l2Mx.jpg"},{"id":436,"card_overall":80,"card_name":"Tommy Townsend","card_value":175,"pulled_at":"2026-05-15T22:02:27.226Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JCifVe0d4I.jpg"},{"id":437,"card_overall":95,"card_name":"Jeremy Chinn","card_value":37700,"pulled_at":"2026-05-15T22:02:27.244Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JCifVe0d4I.jpg"},{"id":438,"card_overall":87,"card_name":"Kenneth Murray Jr","card_value":2000,"pulled_at":"2026-05-15T22:02:27.246Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_JCifVe0d4I.jpg"},{"id":439,"card_overall":94,"card_name":"Jaylinn Hawkins","card_value":32700,"pulled_at":"2026-05-15T22:02:43.679Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_s9yeSAFiJJ.jpg"},{"id":440,"card_overall":82,"card_name":"Cameron Jordan","card_value":250,"pulled_at":"2026-05-15T22:02:43.681Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_s9yeSAFiJJ.jpg"},{"id":441,"card_overall":85,"card_name":"Roquan Smith","card_value":646,"pulled_at":"2026-05-15T22:02:43.683Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_s9yeSAFiJJ.jpg"},{"id":442,"card_overall":82,"card_name":"Justin Herbert","card_value":250,"pulled_at":"2026-05-15T22:02:56.896Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WDNOF1JCzK.jpg"},{"id":443,"card_overall":80,"card_name":"Cairo Santos","card_value":175,"pulled_at":"2026-05-15T22:02:56.899Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WDNOF1JCzK.jpg"},{"id":444,"card_overall":94,"card_name":"Justin Reid","card_value":32700,"pulled_at":"2026-05-15T22:02:56.900Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_WDNOF1JCzK.jpg"},{"id":445,"card_overall":84,"card_name":"Tyson Bagent","card_value":523,"pulled_at":"2026-05-15T22:03:11.807Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4KMiI0HWs5.jpg"},{"id":446,"card_overall":80,"card_name":"Cairo Santos","card_value":175,"pulled_at":"2026-05-15T22:03:11.811Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4KMiI0HWs5.jpg"},{"id":447,"card_overall":97,"card_name":"Bobby Wagner","card_value":160000,"pulled_at":"2026-05-15T22:03:11.812Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4KMiI0HWs5.jpg"},{"id":448,"card_overall":94,"card_name":"Dion Dawkins","card_value":32700,"pulled_at":"2026-05-15T22:03:37.134Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_NeyZYGKjpY.jpg"},{"id":449,"card_overall":83,"card_name":"Patrick Ricard","card_value":250,"pulled_at":"2026-05-15T22:03:37.136Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_NeyZYGKjpY.jpg"},{"id":450,"card_overall":80,"card_name":"Zay Flowers","card_value":175,"pulled_at":"2026-05-15T22:03:37.137Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_NeyZYGKjpY.jpg"},{"id":451,"card_overall":94,"card_name":"Jayden Higgins","card_value":32700,"pulled_at":"2026-05-15T22:03:50.685Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Qa6yaZMRPJ.jpg"},{"id":452,"card_overall":83,"card_name":"Matthew Stafford","card_value":250,"pulled_at":"2026-05-15T22:03:50.690Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Qa6yaZMRPJ.jpg"},{"id":453,"card_overall":81,"card_name":"Blake Cashman","card_value":225,"pulled_at":"2026-05-15T22:03:50.691Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Qa6yaZMRPJ.jpg"},{"id":454,"card_overall":82,"card_name":"Tariq Woolen","card_value":250,"pulled_at":"2026-05-15T22:04:04.284Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Jim2LNfNZg.jpg"},{"id":455,"card_overall":96,"card_name":"Trey Smith","card_value":160000,"pulled_at":"2026-05-15T22:04:04.286Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Jim2LNfNZg.jpg"},{"id":456,"card_overall":81,"card_name":"Jaydon Blue","card_value":225,"pulled_at":"2026-05-15T22:04:04.287Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Jim2LNfNZg.jpg"},{"id":457,"card_overall":94,"card_name":"Jeremiah Owusu-Koramoah","card_value":32700,"pulled_at":"2026-05-15T22:04:18.875Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GHwBfTCVc9.jpg"},{"id":458,"card_overall":88,"card_name":"Landon Jackson","card_value":2963,"pulled_at":"2026-05-15T22:04:18.878Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GHwBfTCVc9.jpg"},{"id":459,"card_overall":86,"card_name":"Tua Tagovailoa","card_value":1309,"pulled_at":"2026-05-15T22:04:18.879Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GHwBfTCVc9.jpg"},{"id":460,"card_overall":88,"card_name":"Jay Hilgenberg","card_value":2963,"pulled_at":"2026-05-15T22:04:32.639Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_37d9iqkfy5.jpg"},{"id":461,"card_overall":95,"card_name":"Tytus Howard","card_value":37700,"pulled_at":"2026-05-15T22:04:32.641Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_37d9iqkfy5.jpg"},{"id":462,"card_overall":92,"card_name":"Marte Mapu","card_value":11200,"pulled_at":"2026-05-15T22:04:32.642Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_37d9iqkfy5.jpg"},{"id":463,"card_overall":94,"card_name":"Cris Collinsworth","card_value":32700,"pulled_at":"2026-05-15T22:04:55.232Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_W6v4VhBnwE.jpg"},{"id":464,"card_overall":79,"card_name":"DeShon Elliott","card_value":0,"pulled_at":"2026-05-15T22:04:55.236Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_W6v4VhBnwE.jpg"},{"id":465,"card_overall":82,"card_name":"Demetrius Knight Jr","card_value":250,"pulled_at":"2026-05-15T22:04:55.238Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_W6v4VhBnwE.jpg"},{"id":466,"card_overall":87,"card_name":"Travis Hunter","card_value":2000,"pulled_at":"2026-05-15T22:05:11.374Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_zzWatpeP8u.jpg"},{"id":467,"card_overall":95,"card_name":"Joshua Palmer","card_value":37700,"pulled_at":"2026-05-15T22:05:11.378Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_zzWatpeP8u.jpg"},{"id":468,"card_overall":77,"card_name":"T'Vondre Sweat","card_value":0,"pulled_at":"2026-05-15T22:05:11.379Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_zzWatpeP8u.jpg"},{"id":469,"card_overall":95,"card_name":"Dylan Cook","card_value":37700,"pulled_at":"2026-05-15T22:05:25.026Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2EQbSHtO98.jpg"},{"id":470,"card_overall":83,"card_name":"Leo Chenal","card_value":250,"pulled_at":"2026-05-15T22:05:25.028Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2EQbSHtO98.jpg"},{"id":471,"card_overall":85,"card_name":"Carl Banks","card_value":646,"pulled_at":"2026-05-15T22:05:25.029Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2EQbSHtO98.jpg"},{"id":472,"card_overall":85,"card_name":"Charles Woods","card_value":646,"pulled_at":"2026-05-15T22:05:39.993Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PaFEJYfADD.jpg"},{"id":473,"card_overall":95,"card_name":"Grant Delpit","card_value":37700,"pulled_at":"2026-05-15T22:05:39.997Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PaFEJYfADD.jpg"},{"id":474,"card_overall":90,"card_name":"Kaden Elliss","card_value":5326,"pulled_at":"2026-05-15T22:05:39.998Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_PaFEJYfADD.jpg"},{"id":475,"card_overall":96,"card_name":"Cody Simon","card_value":160000,"pulled_at":"2026-05-15T22:05:54.849Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Yoq4b5b2Fq.jpg"},{"id":476,"card_overall":92,"card_name":"Charvarius Ward","card_value":11200,"pulled_at":"2026-05-15T22:05:54.852Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Yoq4b5b2Fq.jpg"},{"id":477,"card_overall":84,"card_name":"Cody Lindenberg","card_value":523,"pulled_at":"2026-05-15T22:05:54.853Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Yoq4b5b2Fq.jpg"},{"id":478,"card_overall":94,"card_name":"Gale Sayers","card_value":32700,"pulled_at":"2026-05-15T22:06:21.886Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_uP6SnDONUn.jpg"},{"id":479,"card_overall":89,"card_name":"Case Keenum","card_value":3417,"pulled_at":"2026-05-15T22:06:21.889Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_uP6SnDONUn.jpg"},{"id":480,"card_overall":88,"card_name":"Penei Sewell","card_value":2963,"pulled_at":"2026-05-15T22:06:21.890Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_uP6SnDONUn.jpg"},{"id":481,"card_overall":85,"card_name":"Dominique Rodgers-Cromartie","card_value":646,"pulled_at":"2026-05-15T22:06:51.336Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Rcfe85qVkV.jpg"},{"id":482,"card_overall":94,"card_name":"Josh Oliver","card_value":32700,"pulled_at":"2026-05-15T22:06:51.340Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Rcfe85qVkV.jpg"},{"id":483,"card_overall":80,"card_name":"Younghoe Koo","card_value":175,"pulled_at":"2026-05-15T22:06:51.341Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Rcfe85qVkV.jpg"},{"id":484,"card_overall":86,"card_name":"Josh Jobe","card_value":1309,"pulled_at":"2026-05-15T22:07:06.273Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_M3k6O6n4dR.jpg"},{"id":485,"card_overall":83,"card_name":"Braelon Allen","card_value":250,"pulled_at":"2026-05-15T22:07:06.277Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_M3k6O6n4dR.jpg"},{"id":486,"card_overall":95,"card_name":"Warrick Dunn","card_value":37700,"pulled_at":"2026-05-15T22:07:06.278Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_M3k6O6n4dR.jpg"},{"id":487,"card_overall":94,"card_name":"Derrick Barnes","card_value":32700,"pulled_at":"2026-05-15T22:07:20.410Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_KWsQWc2nOS.jpg"},{"id":488,"card_overall":89,"card_name":"Aaron Jones","card_value":3417,"pulled_at":"2026-05-15T22:07:20.415Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_KWsQWc2nOS.jpg"},{"id":489,"card_overall":83,"card_name":"Marlon Humphrey","card_value":250,"pulled_at":"2026-05-15T22:07:20.417Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_KWsQWc2nOS.jpg"},{"id":490,"card_overall":94,"card_name":"Landon Dickerson","card_value":32700,"pulled_at":"2026-05-15T22:07:33.377Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Y76HUrbwiK.jpg"},{"id":491,"card_overall":87,"card_name":"Tim Patrick","card_value":2000,"pulled_at":"2026-05-15T22:07:33.380Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Y76HUrbwiK.jpg"},{"id":492,"card_overall":77,"card_name":"David Onyemata","card_value":0,"pulled_at":"2026-05-15T22:07:33.384Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_Y76HUrbwiK.jpg"},{"id":493,"card_overall":96,"card_name":"Logan Wilson","card_value":160000,"pulled_at":"2026-05-15T22:07:47.737Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_AmlabLEXwz.jpg"},{"id":494,"card_overall":81,"card_name":"Morgan Cox","card_value":225,"pulled_at":"2026-05-15T22:07:47.740Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_AmlabLEXwz.jpg"},{"id":495,"card_overall":82,"card_name":"Ka'imi Fairbairn","card_value":250,"pulled_at":"2026-05-15T22:07:47.744Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_AmlabLEXwz.jpg"},{"id":496,"card_overall":96,"card_name":"Terrell Buckley","card_value":160000,"pulled_at":"2026-05-15T23:36:06.798Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XgGYix9nID.jpg"},{"id":497,"card_overall":84,"card_name":"Patrick Mahomes","card_value":523,"pulled_at":"2026-05-15T23:36:06.821Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XgGYix9nID.jpg"},{"id":498,"card_overall":86,"card_name":"Penei Sewell","card_value":1309,"pulled_at":"2026-05-15T23:36:06.824Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_XgGYix9nID.jpg"},{"id":499,"card_overall":94,"card_name":"Al-Quadin Muhammad","card_value":32700,"pulled_at":"2026-05-15T23:36:34.385Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TXZtnyYloO.jpg"},{"id":500,"card_overall":86,"card_name":"Alex Forsyth","card_value":1309,"pulled_at":"2026-05-15T23:36:34.387Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TXZtnyYloO.jpg"},{"id":501,"card_overall":83,"card_name":"Rich Gannon","card_value":250,"pulled_at":"2026-05-15T23:36:34.388Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_TXZtnyYloO.jpg"},{"id":502,"card_overall":94,"card_name":"A.J. Barner","card_value":32700,"pulled_at":"2026-05-15T23:37:02.146Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2k0uWytvc2.jpg"},{"id":503,"card_overall":82,"card_name":"Kevin Byard III","card_value":250,"pulled_at":"2026-05-15T23:37:02.149Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2k0uWytvc2.jpg"},{"id":504,"card_overall":98,"card_name":"Spencer Fano","card_value":148000,"pulled_at":"2026-05-15T23:37:02.151Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_2k0uWytvc2.jpg"},{"id":505,"card_overall":94,"card_name":"Jaylinn Hawkins","card_value":32700,"pulled_at":"2026-05-15T23:37:36.251Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4JNUtuCYGu.jpg"},{"id":506,"card_overall":84,"card_name":"Zion Johnson","card_value":523,"pulled_at":"2026-05-15T23:37:36.258Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4JNUtuCYGu.jpg"},{"id":507,"card_overall":83,"card_name":"Clelin Ferrell","card_value":250,"pulled_at":"2026-05-15T23:37:36.260Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_4JNUtuCYGu.jpg"},{"id":508,"card_overall":81,"card_name":"Zach Allen","card_value":225,"pulled_at":"2026-05-15T23:38:00.395Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fFmRr4ICEp.jpg"},{"id":509,"card_overall":94,"card_name":"Braxton Jones","card_value":32700,"pulled_at":"2026-05-15T23:38:00.398Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fFmRr4ICEp.jpg"},{"id":510,"card_overall":84,"card_name":"Dyami Brown","card_value":523,"pulled_at":"2026-05-15T23:38:00.402Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_fFmRr4ICEp.jpg"},{"id":511,"card_overall":96,"card_name":"J. Riggins","card_value":160000,"pulled_at":"2026-05-15T23:38:24.021Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1cSMrXBqu9.jpg"},{"id":512,"card_overall":78,"card_name":"Jason Peters","card_value":0,"pulled_at":"2026-05-15T23:38:24.023Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1cSMrXBqu9.jpg"},{"id":513,"card_overall":83,"card_name":"Clay Matthews","card_value":250,"pulled_at":"2026-05-15T23:38:24.024Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_1cSMrXBqu9.jpg"},{"id":514,"card_overall":95,"card_name":"Bruce Smith","card_value":37700,"pulled_at":"2026-05-15T23:38:53.435Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GPWZR8iTl2.jpg"},{"id":515,"card_overall":79,"card_name":"Brandon McManus","card_value":0,"pulled_at":"2026-05-15T23:38:53.437Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GPWZR8iTl2.jpg"},{"id":516,"card_overall":84,"card_name":"Mark Schlereth","card_value":523,"pulled_at":"2026-05-15T23:38:53.438Z","pack_cost":76000,"pack_type":"training_pack","screenshot_path":"Madden26_GPWZR8iTl2.jpg"},{"id":517,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-16T01:58:59.193Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_nRUdsBSt19.jpg"},{"id":518,"card_overall":94,"card_name":"Vita Vea","card_value":44500,"pulled_at":"2026-05-16T01:59:22.399Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_6Bb3rZ5GQP.jpg"},{"id":519,"card_overall":97,"card_name":"Tariq Woolen","card_value":170000,"pulled_at":"2026-05-16T01:59:53.711Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_3x2In0HlpJ.jpg"},{"id":520,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-16T02:21:40.011Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_lOcB5iWY2v.jpg"},{"id":521,"card_overall":94,"card_name":"Vita Vea","card_value":44500,"pulled_at":"2026-05-16T02:21:53.611Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_VvZSi9RRBt.jpg"},{"id":525,"card_overall":97,"card_name":"Drake London","card_value":170000,"pulled_at":"2026-05-17T00:25:54.556Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_4tQ7ylLcXu.jpg"},{"id":528,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:26:09.741Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_9Maacb9OVB.jpg"},{"id":529,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:26:12.340Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_fFuKFu6cTd.jpg"},{"id":531,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:26:20.867Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_JLJiIQmgMI.jpg"},{"id":532,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:26:23.448Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_jlZhfkq3tr.jpg"},{"id":538,"card_overall":97,"card_name":"Tariq Woolen","card_value":170000,"pulled_at":"2026-05-17T00:27:02.228Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_RgZyW713ld.jpg"},{"id":539,"card_overall":97,"card_name":"Tariq Woolen","card_value":170000,"pulled_at":"2026-05-17T00:27:05.018Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_rHM9owv554.jpg"},{"id":540,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:27:07.893Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_sd79KYN4Vw.jpg"},{"id":542,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:27:13.536Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_sqEUPEu22m.jpg"},{"id":543,"card_overall":94,"card_name":"Vita Vea","card_value":44500,"pulled_at":"2026-05-17T00:27:16.476Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_sXsdIl7DRE.jpg"},{"id":545,"card_overall":97,"card_name":"Tariq Woolen","card_value":170000,"pulled_at":"2026-05-17T00:27:22.521Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_Tq7aWWDsVO.jpg"},{"id":547,"card_overall":94,"card_name":"Vita Vea","card_value":44500,"pulled_at":"2026-05-17T00:27:31.599Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_Xe4hTA2cG9.jpg"},{"id":548,"card_overall":99,"card_name":"Walter Payton","card_value":400000,"pulled_at":"2026-05-17T00:27:34.116Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_xrqZcjMR4W.jpg"},{"id":549,"card_overall":94,"card_name":"Vita Vea","card_value":44500,"pulled_at":"2026-05-17T00:27:37.034Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_y6bdFRdDYG.jpg"},{"id":550,"card_overall":97,"card_name":"Drake London","card_value":170000,"pulled_at":"2026-05-17T00:27:39.530Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_Y7zlkLS7Gw.jpg"},{"id":552,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:27:45.014Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_yE6nUacXcs.jpg"},{"id":554,"card_overall":94,"card_name":"Harold Carmichael","card_value":44500,"pulled_at":"2026-05-17T00:27:57.706Z","pack_cost":121500,"pack_type":"surge_training_pack","screenshot_path":"Madden26_zY5smHMdVz.jpg"}],"stats":{"packTypes":{"training_pack":{"cost":76000,"n":156,"profit":{"n":156,"mean":-1990.7884615384614,"sd":58059.311153449176,"se":4648.46515309846,"ciLo":-11101.780161611443,"ciHi":7120.203238534521,"median":-36741,"min":-43300,"max":189500,"q1":-39633,"q3":84175,"cv":29.16397812984184},"earned":{"n":156,"mean":74009.21153846153,"sd":58059.31115344917,"se":4648.465153098459,"ciLo":64898.219838388555,"ciHi":83120.20323853451,"median":39259,"min":32700,"max":265500,"q1":36367,"q3":160175,"cv":0.7844876326411959},"roi":{"point":-0.026194585020242914,"ciLo":-0.1460760547580453,"ciHi":0.09368688471755948},"hitRate":{"wins":44,"n":156,"p":0.28205128205128205,"lo":0.21733055915459057,"hi":0.3572482738901237},"heroOdds":[{"ovr":99,"count":1,"p":0.00641025641025641,"lo":0.001132436172597704,"hi":0.03541374454631402},{"ovr":98,"count":3,"p":0.019230769230769232,"lo":0.006561287554149496,"hi":0.05500966769154373},{"ovr":97,"count":9,"p":0.057692307692307696,"lo":0.030645393965407268,"hi":0.1059998848606305},{"ovr":96,"count":31,"p":0.1987179487179487,"lo":0.14367478189937047,"hi":0.26824301672126394},{"ovr":95,"count":55,"p":0.3525641025641026,"lo":0.2819551795082889,"hi":0.43025991343372366},{"ovr":94,"count":57,"p":0.36538461538461536,"lo":0.2938978350975439,"hi":0.4433420323712501}],"cumulative":[{"threshold":98,"hits":4,"p":0.02564102564102564,"lo":0.010015304054574611,"hi":0.06406803845450937},{"threshold":97,"hits":13,"p":0.08333333333333333,"lo":0.049345180039177615,"hi":0.13734964784042314},{"threshold":96,"hits":44,"p":0.28205128205128205,"lo":0.21733055915459057,"hi":0.3572482738901237},{"threshold":95,"hits":99,"p":0.6346153846153846,"lo":0.5566579676287499,"hi":0.706102164902456}]},"surge_training_pack":{"cost":121500,"n":36,"profit":{"n":36,"mean":-16000,"sd":105144.39051676916,"se":17524.065086128194,"ciLo":-51416.13553906508,"ciHi":19416.13553906508,"median":-77000,"min":-77000,"max":278500,"q1":-77000,"q3":48500,"cv":6.571524407298072},"earned":{"n":36,"mean":105500,"sd":105144.39051676916,"se":17524.065086128194,"ciLo":70083.86446093491,"ciHi":140916.1355390651,"median":44500,"min":44500,"max":400000,"q1":44500,"q3":170000,"cv":0.9966292939978119},"roi":{"point":-0.13168724279835392,"ciLo":-0.423178070280371,"ciHi":0.1598035846836632},"hitRate":{"wins":12,"n":36,"p":0.3333333333333333,"lo":0.20214424774586046,"hi":0.49666302907033155},"heroOdds":[{"ovr":99,"count":3,"p":0.08333333333333333,"lo":0.028748089271291785,"hi":0.2182701027691885},{"ovr":97,"count":9,"p":0.25,"lo":0.13750323839225387,"hi":0.41070767683203424},{"ovr":94,"count":24,"p":0.6666666666666666,"lo":0.5033369709296683,"hi":0.7978557522541395}],"cumulative":[{"threshold":98,"hits":3,"p":0.08333333333333333,"lo":0.028748089271291785,"hi":0.2182701027691885},{"threshold":97,"hits":12,"p":0.3333333333333333,"lo":0.20214424774586046,"hi":0.49666302907033155},{"threshold":96,"hits":12,"p":0.3333333333333333,"lo":0.20214424774586046,"hi":0.49666302907033155},{"threshold":95,"hits":12,"p":0.3333333333333333,"lo":0.20214424774586046,"hi":0.49666302907033155}]}},"allCards":{"total":504,"byOvr":[{"ovr":99,"count":4,"p":0.007936507936507936,"lo":0.0030905067433077155,"hi":0.020227000132852092},{"ovr":98,"count":3,"p":0.005952380952380952,"lo":0.002026332296815878,"hi":0.017352938719973607},{"ovr":97,"count":18,"p":0.03571428571428571,"lo":0.022708254432047582,"hi":0.055744554475296755},{"ovr":96,"count":31,"p":0.061507936507936505,"lo":0.04366684857712309,"hi":0.08598302650203546},{"ovr":95,"count":55,"p":0.10912698412698413,"lo":0.0848045365986313,"hi":0.13936299910541503},{"ovr":94,"count":84,"p":0.16666666666666666,"lo":0.13667677628065636,"hi":0.2016995993451293},{"ovr":93,"count":2,"p":0.003968253968253968,"lo":0.0010888909602774716,"hi":0.014352144197141693},{"ovr":92,"count":5,"p":0.00992063492063492,"lo":0.00424467481563337,"hi":0.023011067919896763},{"ovr":91,"count":3,"p":0.005952380952380952,"lo":0.002026332296815878,"hi":0.017352938719973607},{"ovr":90,"count":14,"p":0.027777777777777776,"lo":0.016617309115281177,"hi":0.04608255635458187},{"ovr":89,"count":11,"p":0.021825396825396824,"lo":0.012229697311201219,"hi":0.03865546058055086},{"ovr":88,"count":19,"p":0.037698412698412696,"lo":0.024264743384725708,"hi":0.05812630138198895},{"ovr":87,"count":17,"p":0.03373015873015873,"lo":0.02116417701783907,"hi":0.053350396030134944},{"ovr":86,"count":22,"p":0.04365079365079365,"lo":0.029000317944006943,"hi":0.06520543440081869},{"ovr":85,"count":27,"p":0.05357142857142857,"lo":0.03707538540188167,"hi":0.07682154623979558},{"ovr":84,"count":28,"p":0.05555555555555555,"lo":0.03871339260278968,"hi":0.07912177489825789},{"ovr":83,"count":25,"p":0.0496031746031746,"lo":0.033821119284905346,"hi":0.07219934063803125},{"ovr":82,"count":28,"p":0.05555555555555555,"lo":0.03871339260278968,"hi":0.07912177489825789},{"ovr":81,"count":24,"p":0.047619047619047616,"lo":0.03220565009499271,"hi":0.06987657396857357},{"ovr":80,"count":26,"p":0.051587301587301584,"lo":0.035444502062581755,"hi":0.07451419371972517},{"ovr":79,"count":17,"p":0.03373015873015873,"lo":0.02116417701783907,"hi":0.053350396030134944},{"ovr":78,"count":19,"p":0.037698412698412696,"lo":0.024264743384725708,"hi":0.05812630138198895},{"ovr":77,"count":13,"p":0.025793650793650792,"lo":0.015134669524063107,"hi":0.04362696008642961},{"ovr":76,"count":4,"p":0.007936507936507936,"lo":0.0030905067433077155,"hi":0.020227000132852092},{"ovr":75,"count":2,"p":0.003968253968253968,"lo":0.0010888909602774716,"hi":0.014352144197141693},{"ovr":74,"count":2,"p":0.003968253968253968,"lo":0.0010888909602774716,"hi":0.014352144197141693},{"ovr":71,"count":1,"p":0.001984126984126984,"lo":0.0003503240243380159,"hi":0.011152475273710823}]}},"sim":{"n":50,"trials":10000,"inputs":{"heroBucket":{"96+":{"96":31,"97":9,"98":3,"99":1},"94-95":{"94":57,"95":55}},"bucketP":{"96+":0.27,"94-95":0.73},"packCost":76000,"fillerN":312,"heroN":156},"mean":-175760.2545,"median":-185598,"p5":-810589,"p25":-456010,"p75":96820,"p95":509650,"pNegative":0.6753,"min":-1532782,"max":1720732}};</script>
 <script>
+const DATA = {"generated_at": "2026-05-27 16:42", "total_cards": 1073, "total_packs": 311, "total_value_coins": 5856195, "total_value_training": 11013459, "total_spent_coins": 5442500, "total_spent_training": 15550000, "roi_coins_pct": 7.6, "roi_training_pct": -29.2, "avg_value_per_card": 5458.0, "avg_value_per_pack": 18830.0, "pack_summary": [{"pack_type": "Snap Fantasy", "packs": 45, "cards": 225, "spent_coins": 787500, "spent_training": 2250000, "value_coins": 1728520, "value_training": 3048300, "profit_coins": 941020, "profit_training": 798300, "roi_coins_pct": 119.5, "roi_training_pct": 35.5, "avg_value_pack": 38412.0, "avg_value_card": 7682.0, "avg_ovr": 89.0, "max_ovr": 97, "min_ovr": 81}, {"pack_type": "Deep Shot", "packs": 116, "cards": 580, "spent_coins": 2030000, "spent_training": 5800000, "value_coins": 1395675, "value_training": 3059163, "profit_coins": -634325, "profit_training": -2740837, "roi_coins_pct": -31.2, "roi_training_pct": -47.3, "avg_value_pack": 12032.0, "avg_value_card": 2406.0, "avg_ovr": 85.3, "max_ovr": 95, "min_ovr": 71}, {"pack_type": "NFL Draft", "packs": 26, "cards": 104, "spent_coins": 455000, "spent_training": 1300000, "value_coins": 949920, "value_training": 1717800, "profit_coins": 494920, "profit_training": 417800, "roi_coins_pct": 108.8, "roi_training_pct": 32.1, "avg_value_pack": 36535.0, "avg_value_card": 9134.0, "avg_ovr": 90.3, "max_ovr": 96, "min_ovr": 88}, {"pack_type": "Reel Deals", "packs": 20, "cards": 40, "spent_coins": 350000, "spent_training": 1000000, "value_coins": 713560, "value_training": 1170900, "profit_coins": 363560, "profit_training": 170900, "roi_coins_pct": 103.9, "roi_training_pct": 17.1, "avg_value_pack": 35678.0, "avg_value_card": 17839.0, "avg_ovr": 91.2, "max_ovr": 97, "min_ovr": 90}, {"pack_type": "Collector Series", "packs": 17, "cards": 34, "spent_coins": 297500, "spent_training": 850000, "value_coins": 522872, "value_training": 1023182, "profit_coins": 225372, "profit_training": 173182, "roi_coins_pct": 75.8, "roi_training_pct": 20.4, "avg_value_pack": 30757.0, "avg_value_card": 15379.0, "avg_ovr": 88.0, "max_ovr": 98, "min_ovr": 75}, {"pack_type": "Ultimate Legends", "packs": 3, "cards": 6, "spent_coins": 52500, "spent_training": 150000, "value_coins": 302000, "value_training": 654000, "profit_coins": 249500, "profit_training": 504000, "roi_coins_pct": 475.2, "roi_training_pct": 336.0, "avg_value_pack": 100667.0, "avg_value_card": 50333.0, "avg_ovr": 93.8, "max_ovr": 98, "min_ovr": 92}, {"pack_type": "70+ Gold Player", "packs": 84, "cards": 84, "spent_coins": 1470000, "spent_training": 4200000, "value_coins": 243648, "value_training": 340114, "profit_coins": -1226352, "profit_training": -3859886, "roi_coins_pct": -83.4, "roi_training_pct": -91.9, "avg_value_pack": 2901.0, "avg_value_card": 2901.0, "avg_ovr": 83.1, "max_ovr": 96, "min_ovr": 73}], "ovr_dist": [[71, 2], [73, 3], [74, 2], [75, 8], [76, 15], [77, 10], [78, 23], [79, 21], [80, 36], [81, 48], [82, 53], [83, 28], [84, 54], [85, 48], [86, 25], [87, 25], [88, 271], [89, 134], [90, 90], [91, 59], [92, 61], [93, 21], [94, 15], [95, 12], [96, 5], [97, 2], [98, 2]], "project_summary": [{"project": "mystery-2", "packs": 52, "cards": 182, "spent_coins": 910000, "spent_training": 2600000, "value_coins": 775259, "value_training": 1566147, "profit_coins": -134741, "profit_training": -1033853, "roi_coins_pct": -14.8, "roi_training_pct": -39.8}, {"project": "mystery-3", "packs": 11, "cards": 31, "spent_coins": 192500, "spent_training": 550000, "value_coins": 232785, "value_training": 430961, "profit_coins": 40285, "profit_training": -119039, "roi_coins_pct": 20.9, "roi_training_pct": -21.6}, {"project": "mystery-4", "packs": 45, "cards": 156, "spent_coins": 787500, "spent_training": 2250000, "value_coins": 1141776, "value_training": 2193431, "profit_coins": 354276, "profit_training": -56569, "roi_coins_pct": 45.0, "roi_training_pct": -2.5}, {"project": "mystery-5", "packs": 31, "cards": 116, "spent_coins": 542500, "spent_training": 1550000, "value_coins": 436050, "value_training": 921122, "profit_coins": -106450, "profit_training": -628878, "roi_coins_pct": -19.6, "roi_training_pct": -40.6}, {"project": "mystery-6", "packs": 78, "cards": 255, "spent_coins": 1365000, "spent_training": 3900000, "value_coins": 1676231, "value_training": 3083571, "profit_coins": 311231, "profit_training": -816429, "roi_coins_pct": 22.8, "roi_training_pct": -20.9}, {"project": "mystery-7", "packs": 21, "cards": 73, "spent_coins": 367500, "spent_training": 1050000, "value_coins": 307943, "value_training": 649857, "profit_coins": -59557, "profit_training": -400143, "roi_coins_pct": -16.2, "roi_training_pct": -38.1}, {"project": "original", "packs": 73, "cards": 260, "spent_coins": 1277500, "spent_training": 3650000, "value_coins": 1286151, "value_training": 2168370, "profit_coins": 8651, "profit_training": -1481630, "roi_coins_pct": 0.7, "roi_training_pct": -40.6}], "top_pulls": [{"ovr": 96, "pack_type": "Snap Fantasy", "project": "original", "value": 160000}, {"ovr": 96, "pack_type": "Snap Fantasy", "project": "original", "value": 160000}, {"ovr": 97, "pack_type": "Snap Fantasy", "project": "original", "value": 160000}, {"ovr": 96, "pack_type": "70+ Gold Player", "project": "mystery-4", "value": 160000}, {"ovr": 96, "pack_type": "NFL Draft", "project": "mystery-4", "value": 160000}, {"ovr": 98, "pack_type": "Collector Series", "project": "mystery-4", "value": 160000}, {"ovr": 98, "pack_type": "Ultimate Legends", "project": "mystery-4", "value": 160000}, {"ovr": 96, "pack_type": "Reel Deals", "project": "mystery-6", "value": 160000}, {"ovr": 97, "pack_type": "Reel Deals", "project": "mystery-6", "value": 160000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-2", "value": 50000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-2", "value": 50000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-4", "value": 50000}, {"ovr": 95, "pack_type": "Snap Fantasy", "project": "mystery-5", "value": 50000}, {"ovr": 95, "pack_type": "Ultimate Legends", "project": "mystery-6", "value": 50000}, {"ovr": 95, "pack_type": "Snap Fantasy", "project": "mystery-6", "value": 50000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-6", "value": 50000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-6", "value": 50000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-6", "value": 50000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-6", "value": 50000}, {"ovr": 95, "pack_type": "Deep Shot", "project": "mystery-7", "value": 50000}], "pack_hit_rates": {"Reel Deals": {"rate_90plus_card_pct": 100.0, "rate_95plus_card_pct": 5.0}, "70+ Gold Player": {"rate_90plus_card_pct": 4.8, "rate_95plus_card_pct": 1.2}, "Deep Shot": {"rate_90plus_card_pct": 11.9, "rate_95plus_card_pct": 1.4}, "Snap Fantasy": {"rate_90plus_card_pct": 32.9, "rate_95plus_card_pct": 2.2}, "NFL Draft": {"rate_90plus_card_pct": 53.8, "rate_95plus_card_pct": 1.9}, "Collector Series": {"rate_90plus_card_pct": 52.9, "rate_95plus_card_pct": 2.9}, "Ultimate Legends": {"rate_90plus_card_pct": 100.0, "rate_95plus_card_pct": 33.3}}, "heatmap": {"Reel Deals": {"90": 20, "91": 7, "92": 7, "93": 1, "94": 3, "96": 1, "97": 1}, "70+ Gold Player": {"73": 1, "76": 6, "77": 2, "78": 5, "79": 4, "80": 4, "81": 7, "82": 7, "83": 3, "84": 14, "85": 9, "86": 5, "87": 4, "88": 7, "89": 2, "90": 1, "91": 1, "94": 1, "96": 1}, "Deep Shot": {"71": 2, "73": 2, "74": 2, "75": 6, "76": 9, "77": 8, "78": 18, "79": 17, "80": 29, "81": 37, "82": 39, "83": 21, "84": 38, "85": 33, "86": 17, "87": 17, "88": 170, "89": 46, "90": 31, "91": 18, "92": 7, "93": 3, "94": 2, "95": 8}, "Snap Fantasy": {"81": 3, "82": 5, "83": 2, "84": 1, "85": 5, "86": 2, "87": 4, "88": 91, "89": 38, "90": 21, "91": 17, "92": 20, "93": 6, "94": 5, "95": 2, "96": 2, "97": 1}, "NFL Draft": {"88": 1, "89": 47, "90": 17, "91": 15, "92": 15, "93": 6, "94": 1, "95": 1, "96": 1}, "Collector Series": {"75": 2, "80": 3, "81": 1, "82": 2, "83": 2, "84": 1, "85": 1, "86": 1, "88": 2, "89": 1, "91": 1, "92": 9, "93": 5, "94": 2, "98": 1}, "Ultimate Legends": {"92": 3, "94": 1, "95": 1, "98": 1}}, "csv_meta": {"pulls": {"rows": 1073, "size": "102.1 KB"}, "ovr_values": {"rows": 30, "size": "412 B"}, "pack_types": {"rows": 7, "size": "260 B"}}};
 
-const CONFIG = {
-  packCost: 76000,    
-  targetPacks: 100,
-};
-
-
-let pulls = [];        
-let statsData = null;  
-let packTypeFilter = 'all';  
-
-
-
-
-
-const SNAPSHOT = window.__SNAPSHOT__ || null;
-
-
-function applyFilterBodyClass() {
-  document.body.classList.remove('filter-training', 'filter-surge');
-  if (packTypeFilter === 'training_pack') document.body.classList.add('filter-training');
-  else if (packTypeFilter === 'surge_training_pack') document.body.classList.add('filter-surge');
-}
-function setPackFilter(type, btn) {
-  packTypeFilter = type;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  applyFilterBodyClass();
-  render();
-  if (statsData) renderStats(statsData);
-}
-
-
-function fmt(n) {
-  if (n === null || n === undefined || isNaN(n)) return '—';
-  const sign = n < 0 ? '−' : (n > 0 ? '+' : '');
-  return sign + Math.abs(n).toLocaleString();
-}
-function fmtPlain(n) {
-  return Math.round(n).toLocaleString();
-}
-
-
-function bucket(overall) {
-  if (overall >= 98) return '98+';
-  if (overall >= 96) return '96-97';
-  return '94-95';
-}
-
-
-
-function trainingModel() {
-  const s = statsData && statsData.packTypes && statsData.packTypes.training_pack;
-  if (!s) return null;
-  const probs = { '98+': 0, '96-97': 0, '94-95': 0 };
-  for (const h of s.heroOdds) probs[bucket(h.ovr)] += h.p;
-  return {
-    n: s.n,
-    profitMean: s.profit.mean,
-    profitSD: s.profit.sd,
-    earnedMean: s.earned.mean,
-    probs,
-  };
-}
-
-
-
-function sessionPercentile(sessionProfit, tn, model) {
-  if (!model || tn === 0 || !(model.profitSD > 0)) return null;
-  const sessionMean = sessionProfit / tn;
-  const se = model.profitSD / Math.sqrt(tn);
-  const z = (sessionMean - model.profitMean) / se;
-  const cdf = 0.5 * (1 + erf(z / Math.sqrt(2)));
-  return Math.max(1, Math.min(99, Math.round(cdf * 100)));
-}
-
-function erf(x) {
-  const a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741;
-  const a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
-  const sign = x < 0 ? -1 : 1;
-  x = Math.abs(x);
-  const t = 1.0 / (1.0 + p * x);
-  const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
-  return sign * y;
-}
-
-
-function groupPacks(cards) {
-  const byPack = new Map();
-  for (const c of cards) {
-    const key = c.pack_id || c.ts;
-    if (!byPack.has(key)) byPack.set(key, []);
-    byPack.get(key).push(c);
-  }
-  const packs = [];
-  for (const [key, cards] of byPack) {
-    const hero = cards.reduce((a, b) => (b.overall > a.overall ? b : a));
-    const totalValue = cards.reduce((s, c) => s + c.value, 0);
-    const cost = cards[0].pack_cost ?? CONFIG.packCost;
-    packs.push({
-      pack_id: key,
-      hero_overall: hero.overall,
-      total_value: totalValue,
-      cost,
-      pack_type: cards[0].pack_type ?? 'training_pack',
-      ts: hero.ts,
-      cards
-    });
-  }
-  packs.sort((a, b) => new Date(a.ts) - new Date(b.ts));
-  return packs;
-}
-
-const TYPE_LABELS = {
-  training_pack: '76K Training Pack',
-  surge_training_pack: 'Surge 240K Pack',
-};
-const typeLabel = (t) => TYPE_LABELS[t] || t;
-
-function render() {
-  const allPacks = groupPacks(pulls);
-  const packs = packTypeFilter === 'all'
-    ? allPacks
-    : allPacks.filter(p => p.pack_type === packTypeFilter);
-  const filteredPulls = packTypeFilter === 'all'
-    ? pulls
-    : pulls.filter(p => p.pack_type === packTypeFilter);
-  const n = packs.length;
-
-  
-  const byType = new Map();
-  for (const p of packs) {
-    if (!byType.has(p.pack_type)) byType.set(p.pack_type, []);
-    byType.get(p.pack_type).push(p);
-  }
-  const heroEl = document.getElementById('hero-types');
-  if (n === 0) {
-    heroEl.innerHTML = `<div class="hero-type-card">
-      <div class="hero-label">No packs yet</div>
-      <div class="hero-value" style="color:var(--text-faint)">—</div>
-      <div class="hero-sub">Open a pack to start tracking</div>
-    </div>`;
-  } else {
-    heroEl.innerHTML = [...byType.entries()].map(([type, ps]) => {
-      const earned = ps.reduce((s, p) => s + p.total_value, 0);
-      const spent = ps.reduce((s, p) => s + p.cost, 0);
-      const prof = earned - spent;
-      const roi = spent > 0 ? prof / spent : 0;
-      const avg = Math.round(earned / ps.length);
-      return `<div class="hero-type-card">
-        <div class="hero-label">${typeLabel(type)}</div>
-        <div class="hero-value ${prof >= 0 ? 'positive' : 'negative'}">${prof >= 0 ? '+' : '−'}${Math.abs(prof).toLocaleString()}</div>
-        <div class="hero-sub">${ps.length} pack${ps.length === 1 ? '' : 's'} · ROI <span class="delta ${roi < 0 ? 'neg' : ''}">${(roi * 100).toFixed(1)}%</span></div>
-        <div class="hero-sub">${earned.toLocaleString()} earned · ${spent.toLocaleString()} spent · avg ${avg.toLocaleString()}/pack</div>
-      </div>`;
-    }).join('');
-  }
-
-  
-  
-  
-  const tp = byType.get('training_pack') || [];
-  const tn = tp.length;
-  const tpEarned = tp.reduce((s, p) => s + p.total_value, 0);
-  const tpSpent = tp.reduce((s, p) => s + p.cost, 0);
-  const tpProfit = tpEarned - tpSpent;
-  const model = trainingModel();
-
-  
-  const counts = { '98+': 0, '96-97': 0, '94-95': 0 };
-  tp.forEach(p => { counts[bucket(p.hero_overall)]++; });
-  [['98+', '98'], ['96-97', '96'], ['94-95', '94']].forEach(([k, safeK]) => {
-    const actualPct = tn > 0 ? (counts[k] / tn) : 0;
-    const expectedPct = model ? model.probs[k] : 0;
-    document.getElementById(`count-${safeK}`).textContent = counts[k];
-    document.getElementById(`pct-${safeK}`).textContent = (actualPct * 100).toFixed(1) + '%';
-    document.getElementById(`exp-${safeK}`).style.width = Math.min(100, expectedPct * 100) + '%';
-    const bar = document.getElementById(`bar-${safeK}`);
-    bar.style.width = Math.min(100, actualPct * 100) + '%';
-    if ((k === '98+' || k === '96-97') && actualPct > expectedPct && tn >= 5) bar.classList.add('over');
-    else bar.classList.remove('over');
+// Currency view toggle — persists choice to localStorage
+(function() {
+  const stored = localStorage.getItem('mut-view') || 'coins';
+  setView(stored);
+  document.querySelectorAll('.filter-bar button').forEach(btn => {
+    btn.addEventListener('click', () => setView(btn.dataset.view));
   });
-
-  
-  const pct = sessionPercentile(tpProfit, tn, model);
-  const marker = document.getElementById('pct-marker');
-  if (pct !== null) {
-    marker.style.left = pct + '%';
-    marker.dataset.label = `${pct}th`;
-  } else {
-    marker.style.left = '50%';
-    marker.dataset.label = '—';
+  function setView(view) {
+    document.body.className = `view-${view}`;
+    document.querySelectorAll('.filter-bar button').forEach(b => {
+      b.classList.toggle('active', b.dataset.view === view);
+    });
+    localStorage.setItem('mut-view', view);
   }
+})();
 
-  
-  let narrative;
-  if (!model) {
-    narrative = 'Loading your historical 76K pack distribution…';
-  } else if (tn === 0) {
-    narrative = `No 76K packs this session yet. Your all-time average is ${fmt(model.profitMean)}/pack across ${model.n} packs.`;
-  } else if (tn < 5) {
-    narrative = `Only ${tn} 76K pack${tn === 1 ? '' : 's'} this session — too few to read a percentile. Your all-time average is ${fmt(model.profitMean)}/pack.`;
-  } else if (pct >= 75) {
-    narrative = `Running hot — this session's ${fmt(Math.round(tpProfit / tn))}/pack sits in the top ${100 - pct}% of your history (all-time avg ${fmt(Math.round(model.profitMean))}). Expect regression toward your mean.`;
-  } else if (pct <= 25) {
-    narrative = `Cold streak — this session's ${fmt(Math.round(tpProfit / tn))}/pack is in the bottom ${pct}% of your history (all-time avg ${fmt(Math.round(model.profitMean))}). Expect mean reversion.`;
-  } else {
-    narrative = `Tracking near your historical median — ${fmt(Math.round(tpProfit / tn))}/pack this session vs ${fmt(Math.round(model.profitMean))}/pack all-time.`;
+// OVR Distribution
+new Chart(document.getElementById('ovrChart'), {
+  type: 'bar',
+  data: {
+    labels: DATA.ovr_dist.map(d => d[0]),
+    datasets: [{
+      data: DATA.ovr_dist.map(d => d[1]),
+      backgroundColor: DATA.ovr_dist.map(d => {
+        const t = (d[0] - 70) / 29;
+        const r = Math.round(45 + t * (212 - 45));
+        const g = Math.round(107 + t * (175 - 107));
+        const b = Math.round(127 + t * (55 - 127));
+        return `rgb(${r},${g},${b})`;
+      }),
+      borderColor: '#1f2a30',
+      borderWidth: 1,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }},
+    scales: {
+      x: { ticks: { color: '#8a9ba3', font: { size: 10 }}, grid: { color: '#1f2a30' }},
+      y: { ticks: { color: '#8a9ba3', font: { size: 10 }}, grid: { color: '#1f2a30' }},
+    }
   }
-  document.getElementById('variance-narrative').textContent = narrative;
+});
 
-  
-  const projEl = document.getElementById('projected-profit');
-  const projDetail = document.getElementById('projected-detail');
-  if (tn > 0) {
-    const projected = (tpProfit / tn) * CONFIG.targetPacks;
-    projEl.textContent = (projected >= 0 ? '+' : '−') + Math.abs(Math.round(projected)).toLocaleString();
-    projEl.style.color = projected >= 0 ? 'var(--accent)' : 'var(--loss)';
-    projDetail.textContent = `Extrapolating ${tn}-pack 76K pace to ${CONFIG.targetPacks} packs`;
-  } else {
-    projEl.textContent = '—';
-    projDetail.textContent = 'No 76K packs yet';
+// Pack Mix Donut
+new Chart(document.getElementById('packMixChart'), {
+  type: 'doughnut',
+  data: {
+    labels: DATA.pack_summary.map(p => p.pack_type),
+    datasets: [{
+      data: DATA.pack_summary.map(p => p.packs),
+      backgroundColor: ['#7fffaa', '#d4af37', '#ffb86c', '#9c64f0', '#5dade2', '#ff6b7a', '#52d273'],
+      borderColor: '#0a0e0f',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'right', labels: { color: '#e8eef0', font: { size: 11 }}}}
   }
+});
 
-  
-  const bestEl = document.getElementById('best-pull');
-  const bestDetail = document.getElementById('best-pull-detail');
-  if (filteredPulls.length > 0) {
-    const best = filteredPulls.reduce((a, b) => b.value > a.value ? b : a);
-    bestEl.textContent = `${best.overall} OVR`;
-    bestDetail.textContent = `${best.value.toLocaleString()} coins`;
-  } else {
-    bestEl.textContent = '—';
-    bestDetail.textContent = 'No pulls yet';
+// Value by Pack Type
+new Chart(document.getElementById('valueByTypeChart'), {
+  type: 'bar',
+  data: {
+    labels: DATA.pack_summary.map(p => p.pack_type),
+    datasets: [{
+      label: 'Total Value',
+      data: DATA.pack_summary.map(p => p.total_value),
+      backgroundColor: '#7fffaa',
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }},
+    scales: {
+      x: { ticks: { color: '#8a9ba3', font: { size: 10 }, callback: v => v.toLocaleString() }, grid: { color: '#1f2a30' }},
+      y: { ticks: { color: '#e8eef0', font: { size: 11 }}, grid: { display: false }},
+    }
   }
+});
 
-  
-  document.getElementById('hit-98-rate').textContent =
-    tn > 0 ? ((counts['98+'] / tn) * 100).toFixed(1) + '%' : '0.0%';
-  document.getElementById('hit-98-detail').textContent =
-    model ? `Your all-time rate ${(model.probs['98+'] * 100).toFixed(1)}% · n=${model.n}` : '—';
-
-  
-  const tbody = document.getElementById('pull-log');
-  if (packs.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text-faint);font-style:italic">No pulls logged. Use the buttons above or wire up the API.</td></tr>`;
-  } else {
-    let runningProfit = 0;
-    const rows = packs.map((p, i) => {
-      runningProfit += (p.total_value - p.cost);
-      return { ...p, idx: i + 1, runningProfit };
-    }).reverse();
-    tbody.innerHTML = rows.map(r => {
-      const packPL = r.total_value - r.cost;
-      const cls = `pull-${r.hero_overall}`;
-      const time = new Date(r.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      return `<tr>
-        <td>#${r.idx}</td>
-        <td>${time}</td>
-        <td style="color:var(--text-dim)">${typeLabel(r.pack_type)}</td>
-        <td class="${cls}">${r.hero_overall} OVR</td>
-        <td class="num">${r.total_value.toLocaleString()}</td>
-        <td class="num" style="color:${r.runningProfit >= 0 ? 'var(--accent)' : 'var(--loss)'}">
-          ${r.runningProfit >= 0 ? '+' : '−'}${Math.abs(r.runningProfit).toLocaleString()}
-        </td>
-        <td class="num" style="color:${packPL >= 0 ? 'var(--accent)' : 'var(--loss)'}">
-          ${packPL >= 0 ? '+' : '−'}${Math.abs(packPL).toLocaleString()}
-        </td>
-      </tr>`;
-    }).join('');
+// Avg Value per Pack
+new Chart(document.getElementById('avgValueChart'), {
+  type: 'bar',
+  data: {
+    labels: DATA.pack_summary.map(p => p.pack_type),
+    datasets: [{
+      label: 'Avg Value per Pack',
+      data: DATA.pack_summary.map(p => p.avg_value_pack),
+      backgroundColor: DATA.pack_summary.map(p => p.avg_value_pack > 17500 ? '#7fffaa' : '#ff6b7a'),
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      annotation: { /* breakeven line at 17500 */ }
+    },
+    scales: {
+      x: { ticks: { color: '#8a9ba3', font: { size: 10 }, callback: v => v.toLocaleString() }, grid: { color: '#1f2a30' }},
+      y: { ticks: { color: '#e8eef0', font: { size: 11 }}, grid: { display: false }},
+    }
   }
-}
-
-
-const sessionStart = new Date();
-function updateTime() {
-  const elapsed = Math.floor((new Date() - sessionStart) / 1000);
-  const m = Math.floor(elapsed / 60);
-  const s = elapsed % 60;
-  document.getElementById('session-time').textContent =
-    `Session · ${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-}
-if (!SNAPSHOT) setInterval(updateTime, 1000);
-
-
-function mapPullRows(rows) {
-  return rows.map(p => ({
-    overall: p.card_overall,
-    value: p.card_value,
-    ts: p.pulled_at,
-    pack_id: p.screenshot_path || p.pulled_at,
-    pack_cost: p.pack_cost,
-    pack_type: p.pack_type
-  }));
-}
-
-
-async function loadPulls() {
-  if (SNAPSHOT) { pulls = mapPullRows(SNAPSHOT.pulls); render(); return; }
-  try {
-    const res = await fetch('/api/pulls/session?hours=999999');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    pulls = mapPullRows(data);
-    render();
-  } catch (e) {
-    console.error('Failed to load pulls:', e);
-  }
-}
-
-function renderStats(stats) {
-  const body = document.getElementById('stats-body');
-  let types = Object.entries(stats.packTypes);
-  if (packTypeFilter !== 'all') {
-    types = types.filter(([t]) => t === packTypeFilter);
-  }
-  if (types.length === 0) {
-    body.innerHTML = `<div style="text-align:center;padding:32px;color:var(--text-faint);font-style:italic">No packs yet.</div>`;
-    document.getElementById('stats-meta').textContent = '—';
-    return;
-  }
-  const money = n => (n >= 0 ? '+' : '−') + Math.abs(Math.round(n)).toLocaleString();
-  const pctv = n => (n * 100).toFixed(1) + '%';
-  let totalN = 0, html = '';
-  for (const [type, s] of types) {
-    totalN += s.n;
-    const p = s.profit;
-    const verdict = p.ciLo > 0 ? ['profitable — 95% CI excludes 0', 'var(--accent)']
-      : p.ciHi < 0 ? ['unprofitable — 95% CI excludes 0', 'var(--loss)']
-      : ['not distinguishable from break-even — 95% CI includes 0', 'var(--text-faint)'];
-    html += `<div style="margin-bottom:8px;font-size:13px;color:var(--text-dim)">${typeLabel(type)} · n=${s.n} · ${s.cost.toLocaleString()} coins/pack</div>`;
-    html += `<table style="margin-bottom:10px"><tbody>`;
-    html += `<tr><td>Mean profit / pack</td><td class="num" style="color:${p.mean>=0?'var(--accent)':'var(--loss)'}">${money(p.mean)}</td><td class="num" style="color:var(--text-faint)">95% CI ${money(p.ciLo)} … ${money(p.ciHi)}</td></tr>`;
-    html += `<tr><td>Median profit / pack</td><td class="num">${money(p.median)}</td><td class="num" style="color:var(--text-faint)">Q1 ${money(p.q1)} · Q3 ${money(p.q3)}</td></tr>`;
-    html += `<tr><td>Std dev / Std error</td><td class="num">${Math.round(p.sd).toLocaleString()}</td><td class="num" style="color:var(--text-faint)">SE ${Math.round(p.se).toLocaleString()} · CV ${isNaN(p.cv)?'—':p.cv.toFixed(2)}</td></tr>`;
-    html += `<tr><td>ROI</td><td class="num" style="color:${s.roi.point>=0?'var(--accent)':'var(--loss)'}">${pctv(s.roi.point)}</td><td class="num" style="color:var(--text-faint)">95% CI ${pctv(s.roi.ciLo)} … ${pctv(s.roi.ciHi)}</td></tr>`;
-    html += `<tr><td>Hit rate (profitable packs)</td><td class="num">${s.hitRate.wins}/${s.hitRate.n} = ${pctv(s.hitRate.p)}</td><td class="num" style="color:var(--text-faint)">95% CI ${pctv(s.hitRate.lo)} … ${pctv(s.hitRate.hi)}</td></tr>`;
-    html += `<tr><td colspan="3" style="color:${verdict[1]};font-size:12px;padding-top:6px">Verdict: ${verdict[0]}</td></tr>`;
-    html += `</tbody></table>`;
-    html += `<table><thead><tr><th>Hero OVR</th><th class="num">Count</th><th class="num">Odds</th><th class="num">95% Wilson CI</th></tr></thead><tbody>`;
-    for (const h of s.heroOdds)
-      html += `<tr><td class="pull-${h.ovr}">${h.ovr} OVR</td><td class="num">${h.count}</td><td class="num">${pctv(h.p)}</td><td class="num" style="color:var(--text-faint)">${pctv(h.lo)} … ${pctv(h.hi)}</td></tr>`;
-    for (const c of s.cumulative)
-      html += `<tr><td style="color:var(--text-faint)">${c.threshold}+ cumulative</td><td class="num" style="color:var(--text-faint)">${c.hits}</td><td class="num" style="color:var(--text-faint)">${pctv(c.p)}</td><td class="num" style="color:var(--text-faint)">${pctv(c.lo)} … ${pctv(c.hi)}</td></tr>`;
-    html += `</tbody></table>`;
-  }
-  body.innerHTML = html;
-  document.getElementById('stats-meta').textContent = `${totalN} packs · updated ${new Date().toLocaleTimeString()}`;
-}
-
-async function loadStats() {
-  if (SNAPSHOT) { statsData = SNAPSHOT.stats; renderStats(statsData); render(); return; }
-  try {
-    const res = await fetch('/api/stats');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    statsData = await res.json();
-    renderStats(statsData);
-    render();  
-  } catch (e) {
-    console.error('Failed to load stats:', e);
-  }
-}
-
-
-let simN = 50;
-async function loadSim() {
-  if (SNAPSHOT) { renderSim(SNAPSHOT.sim); return; }
-  const body = document.getElementById('sim-body');
-  body.style.opacity = '0.5';
-  try {
-    const r = await fetch(`/api/simulate?n=${simN}&trials=10000`);
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    renderSim(await r.json());
-  } catch (e) {
-    console.error('Sim failed:', e);
-  } finally {
-    body.style.opacity = '1';
-  }
-}
-function renderSim(d) {
-  const fmt = (x) => (x >= 0 ? '+' : '−') + Math.abs(Math.round(x)).toLocaleString();
-  const med = document.getElementById('sim-median');
-  med.textContent = fmt(d.median);
-  med.style.color = d.median >= 0 ? 'var(--accent)' : 'var(--loss)';
-  const pn = document.getElementById('sim-pneg');
-  pn.textContent = (d.pNegative * 100).toFixed(1) + '%';
-  pn.style.color = d.pNegative >= 0.5 ? 'var(--loss)' : 'var(--accent)';
-  const p95 = document.getElementById('sim-p95');
-  p95.textContent = fmt(d.p95);
-  p95.style.color = 'var(--accent)';
-  const p5 = document.getElementById('sim-p5');
-  p5.textContent = fmt(d.p5);
-  p5.style.color = 'var(--loss)';
-
-  
-  const span = d.p95 - d.p5 || 1;
-  const pos = (v) => Math.max(0, Math.min(100, ((v - d.p5) / span) * 100));
-  document.getElementById('sim-range-inner').style.left = pos(d.p25) + '%';
-  document.getElementById('sim-range-inner').style.width = (pos(d.p75) - pos(d.p25)) + '%';
-  document.getElementById('sim-range-median').style.left = pos(d.median) + '%';
-  const zero = document.getElementById('sim-range-zero');
-  if (d.p5 < 0 && d.p95 > 0) { zero.style.left = pos(0) + '%'; zero.style.display = 'block'; }
-  else { zero.style.display = 'none'; }
-
-  document.getElementById('sim-p5-label').textContent = fmt(d.p5);
-  document.getElementById('sim-med-label').textContent = fmt(d.median) + ' (median)';
-  document.getElementById('sim-p95-label').textContent = fmt(d.p95);
-
-  document.getElementById('sim-footnote').textContent =
-    `${d.n} packs · ${d.trials.toLocaleString()} trials · hero P(96+) anchored at ${(d.inputs.bucketP['96+'] * 100).toFixed(0)}% (EA published) · intra-bucket distribution from ${d.inputs.heroN} historical heroes · fillers bootstrapped from ${d.inputs.fillerN} cards. Shaded band = middle 50% of outcomes.`;
-}
-function setSimN(n, btn) {
-  simN = n;
-  document.querySelectorAll('.sim-btn').forEach((b) => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  loadSim();
-}
-
-
-if (SNAPSHOT) {
-  const meta = document.querySelector('.header-meta');
-  if (meta) {
-    meta.innerHTML = `<div class="session-time">Snapshot</div>
-      <div>Generated ${new Date(SNAPSHOT.generatedAt).toLocaleString()}</div>`;
-  }
-  
-  document.querySelectorAll('.sim-btn').forEach(b => { b.disabled = true; b.style.opacity = '0.4'; b.style.cursor = 'not-allowed'; });
-}
-
-loadPulls();
-loadStats();
-loadSim();
-if (!SNAPSHOT) {
-  setInterval(loadPulls, 5000);
-  setInterval(loadStats, 5000);
-}
-render();
+});
 </script>
 </body>
 </html>

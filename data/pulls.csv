@@ -1,0 +1,1074 @@
+project,card_id,batch,pack_type,pack_no,card_in_pack,ovr,name,position,training_value,is_platinum,manual_value,value_used,note,date_opened
+original,1,pack-original-1,Reel Deals,1,1,91,Denzel Perryman,MIKE,16700,False,10020,10020,pack_type inferred,
+original,2,pack-original-1,Reel Deals,1,2,90,Adam Jones,CB,10600,False,6360,6360,pack_type inferred,
+original,3,pack-original-10,70+ Gold Player,10,1,81,T.J. Edwards,WILL,170,False,102,102,pack_type inferred,
+original,4,pack-original-11,70+ Gold Player,11,1,81,Tyrion Ingram-Dawkins,DT,170,False,102,102,pack_type inferred,
+original,5,pack-original-12,70+ Gold Player,12,1,85,Zach Thomas,MIKE,1080,False,648,648,pack_type inferred,
+original,6,pack-original-13,70+ Gold Player,13,1,88,Michael Bennett,LE,4200,False,2520,2520,pack_type inferred,
+original,7,pack-original-14,70+ Gold Player,14,1,76,Shelby Harris,DT,18,False,10.799999999999999,10.799999999999999,pack_type inferred,
+original,8,pack-original-15,70+ Gold Player,15,1,89,Xavier Hutchinson,WR,6700,False,4020,4020,pack_type inferred,
+original,9,pack-original-16,70+ Gold Player,16,1,83,Michael Mayer,TE,430,False,258,258,pack_type inferred,
+original,10,pack-original-17,70+ Gold Player,17,1,76,Kaleb Johnson,HB,18,False,10.799999999999999,10.799999999999999,pack_type inferred,
+original,11,pack-original-18,70+ Gold Player,18,1,84,Aaron Brewer,LS,680,False,408,408,pack_type inferred,
+original,12,pack-original-19,70+ Gold Player,19,1,89,Jaelan Phillips,LE,6700,False,4020,4020,pack_type inferred,
+original,13,pack-original-2,Reel Deals,2,1,92,Randy Moss,WR,26000,False,15600,15600,pack_type inferred,
+original,14,pack-original-2,Reel Deals,2,2,92,Randy Moss,WR,26000,False,15600,15600,pack_type inferred,
+original,15,pack-original-20,70+ Gold Player,20,1,88,Walter Payton,HB,4200,False,2520,2520,pack_type inferred,
+original,16,pack-original-21,70+ Gold Player,21,1,80,Trey Taylor,FS,110,False,66,66,pack_type inferred,
+original,17,pack-original-22,70+ Gold Player,22,1,88,Derick Hall,RE,4200,False,2520,2520,pack_type inferred,
+original,18,pack-original-23,70+ Gold Player,23,1,78,Troy Fautanu,RT,44,False,26.4,26.4,pack_type inferred,
+original,19,pack-original-24,70+ Gold Player,24,1,87,Greg Newsome II,CB,2700,False,1620,1620,pack_type inferred,
+original,20,pack-original-25,70+ Gold Player,25,1,86,Abdul Carter,LE,1700,False,1020,1020,pack_type inferred,
+original,21,pack-original-26,70+ Gold Player,26,1,85,Jackie Slater,RT,1080,False,648,648,pack_type inferred,
+original,22,pack-original-27,70+ Gold Player,27,1,86,[avg 70+ copy],N/A,1700,False,1020,1020,placeholder; pack_type inferred,
+original,23,pack-original-3,Reel Deals,3,1,92,J.J. Watt,RE,26000,False,15600,15600,pack_type inferred,
+original,24,pack-original-3,Reel Deals,3,2,90,Kerby Joseph,FS,10600,False,6360,6360,pack_type inferred,
+original,25,pack-original-4,Reel Deals,4,1,90,J.J. Watt,RE,10600,False,6360,6360,pack_type inferred,
+original,26,pack-original-4,Reel Deals,4,2,93,Rashee Rice,WR,42000,False,25200,25200,pack_type inferred,
+original,27,pack-original-46,Deep Shot,46,1,88,,N/A,4200,True,620000,620000,"platinum kicker; manual_value=620k (training_value corrupted from 6.2M, corrected to 4200); pack_type inferred",
+original,28,pack-original-46,Deep Shot,46,2,76,,N/A,18,False,10.799999999999999,10.799999999999999,unidentified; pack_type inferred,
+original,29,pack-original-46,Deep Shot,46,3,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,30,pack-original-46,Deep Shot,46,4,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,31,pack-original-46,Deep Shot,46,5,83,,N/A,430,False,258,258,unidentified; pack_type inferred,
+original,32,pack-original-47,Deep Shot,47,1,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,33,pack-original-47,Deep Shot,47,2,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,34,pack-original-47,Deep Shot,47,3,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,35,pack-original-47,Deep Shot,47,4,79,,N/A,69,False,41.4,41.4,unidentified; pack_type inferred,
+original,36,pack-original-47,Deep Shot,47,5,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,37,pack-original-48,Deep Shot,48,1,86,,N/A,1700,False,1020,1020,unidentified; pack_type inferred,
+original,38,pack-original-48,Deep Shot,48,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,39,pack-original-48,Deep Shot,48,3,83,,N/A,430,False,258,258,unidentified; pack_type inferred,
+original,40,pack-original-48,Deep Shot,48,4,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,41,pack-original-48,Deep Shot,48,5,86,,N/A,1700,False,1020,1020,unidentified; pack_type inferred,
+original,42,pack-original-49,Deep Shot,49,1,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,43,pack-original-49,Deep Shot,49,2,76,,N/A,18,False,10.799999999999999,10.799999999999999,unidentified; pack_type inferred,
+original,44,pack-original-49,Deep Shot,49,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,45,pack-original-49,Deep Shot,49,4,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,46,pack-original-49,Deep Shot,49,5,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,47,pack-original-5,Reel Deals,5,1,90,J.J. Watt,RE,10600,False,6360,6360,pack_type inferred,
+original,48,pack-original-5,Reel Deals,5,2,92,William Perry,DT,26000,False,15600,15600,pack_type inferred,
+original,49,pack-original-50,Deep Shot,50,1,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,50,pack-original-50,Deep Shot,50,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,51,pack-original-50,Deep Shot,50,3,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,52,pack-original-50,Deep Shot,50,4,79,,N/A,69,False,41.4,41.4,unidentified; pack_type inferred,
+original,53,pack-original-50,Deep Shot,50,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,54,pack-original-51,Deep Shot,51,1,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,55,pack-original-51,Deep Shot,51,2,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,56,pack-original-51,Deep Shot,51,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,57,pack-original-51,Deep Shot,51,4,83,,N/A,430,False,258,258,unidentified; pack_type inferred,
+original,58,pack-original-51,Deep Shot,51,5,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,59,pack-original-52,Deep Shot,52,1,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,60,pack-original-52,Deep Shot,52,2,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,61,pack-original-52,Deep Shot,52,3,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,62,pack-original-52,Deep Shot,52,4,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,63,pack-original-52,Deep Shot,52,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,64,pack-original-53,Deep Shot,53,1,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,65,pack-original-53,Deep Shot,53,2,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,66,pack-original-53,Deep Shot,53,3,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,67,pack-original-53,Deep Shot,53,4,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,68,pack-original-53,Deep Shot,53,5,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,69,pack-original-54,Deep Shot,54,1,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,70,pack-original-54,Deep Shot,54,2,79,,N/A,69,False,41.4,41.4,unidentified; pack_type inferred,
+original,71,pack-original-54,Deep Shot,54,3,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,72,pack-original-54,Deep Shot,54,4,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,73,pack-original-54,Deep Shot,54,5,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,74,pack-original-55,Deep Shot,55,1,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,75,pack-original-55,Deep Shot,55,2,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,76,pack-original-55,Deep Shot,55,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,77,pack-original-55,Deep Shot,55,4,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,78,pack-original-55,Deep Shot,55,5,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,79,pack-original-56,Deep Shot,56,1,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,80,pack-original-56,Deep Shot,56,2,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,81,pack-original-56,Deep Shot,56,3,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,82,pack-original-56,Deep Shot,56,4,79,,N/A,69,False,41.4,41.4,unidentified; pack_type inferred,
+original,83,pack-original-56,Deep Shot,56,5,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,84,pack-original-57,Deep Shot,57,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,85,pack-original-57,Deep Shot,57,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,86,pack-original-57,Deep Shot,57,3,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,87,pack-original-57,Deep Shot,57,4,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,88,pack-original-57,Deep Shot,57,5,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,89,pack-original-58,Deep Shot,58,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,90,pack-original-58,Deep Shot,58,2,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,91,pack-original-58,Deep Shot,58,3,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,92,pack-original-58,Deep Shot,58,4,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,93,pack-original-58,Deep Shot,58,5,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,94,pack-original-59,Deep Shot,59,1,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,95,pack-original-59,Deep Shot,59,2,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,96,pack-original-59,Deep Shot,59,3,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,97,pack-original-59,Deep Shot,59,4,83,,N/A,430,False,258,258,unidentified; pack_type inferred,
+original,98,pack-original-59,Deep Shot,59,5,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,99,pack-original-6,Reel Deals,6,1,90,Adam Jones,CB,10600,False,6360,6360,pack_type inferred,
+original,100,pack-original-6,Reel Deals,6,2,94,Bud Dupree,RE,66000,False,39600,39600,pack_type inferred,
+original,101,pack-original-60,Deep Shot,60,1,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,102,pack-original-60,Deep Shot,60,2,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,103,pack-original-60,Deep Shot,60,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,104,pack-original-60,Deep Shot,60,4,86,,N/A,1700,False,1020,1020,unidentified; pack_type inferred,
+original,105,pack-original-60,Deep Shot,60,5,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,106,pack-original-61,Deep Shot,61,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,107,pack-original-61,Deep Shot,61,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,108,pack-original-61,Deep Shot,61,3,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,109,pack-original-61,Deep Shot,61,4,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,110,pack-original-61,Deep Shot,61,5,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,111,pack-original-62,Deep Shot,62,1,83,,N/A,430,False,258,258,unidentified; pack_type inferred,
+original,112,pack-original-62,Deep Shot,62,2,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,113,pack-original-62,Deep Shot,62,3,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,114,pack-original-62,Deep Shot,62,4,71,,N/A,2,False,1.2,1.2,unidentified; pack_type inferred,
+original,115,pack-original-62,Deep Shot,62,5,78,,N/A,44,False,26.4,26.4,unidentified; pack_type inferred,
+original,116,pack-original-63,Deep Shot,63,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,117,pack-original-63,Deep Shot,63,2,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,118,pack-original-63,Deep Shot,63,3,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,119,pack-original-63,Deep Shot,63,4,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,120,pack-original-63,Deep Shot,63,5,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,121,pack-original-64,Deep Shot,64,1,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,122,pack-original-64,Deep Shot,64,2,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,123,pack-original-64,Deep Shot,64,3,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,124,pack-original-64,Deep Shot,64,4,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,125,pack-original-64,Deep Shot,64,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,126,pack-original-65,Deep Shot,65,1,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,127,pack-original-65,Deep Shot,65,2,78,,N/A,44,False,26.4,26.4,unidentified; pack_type inferred,
+original,128,pack-original-65,Deep Shot,65,3,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,129,pack-original-65,Deep Shot,65,4,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,130,pack-original-65,Deep Shot,65,5,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,131,pack-original-66,Deep Shot,66,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,132,pack-original-66,Deep Shot,66,2,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,133,pack-original-66,Deep Shot,66,3,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,134,pack-original-66,Deep Shot,66,4,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,135,pack-original-66,Deep Shot,66,5,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,136,pack-original-67,Deep Shot,67,1,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,137,pack-original-67,Deep Shot,67,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,138,pack-original-67,Deep Shot,67,3,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,139,pack-original-67,Deep Shot,67,4,78,,N/A,44,False,26.4,26.4,unidentified; pack_type inferred,
+original,140,pack-original-67,Deep Shot,67,5,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,141,pack-original-68,Deep Shot,68,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,142,pack-original-68,Deep Shot,68,2,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,143,pack-original-68,Deep Shot,68,3,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,144,pack-original-68,Deep Shot,68,4,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,145,pack-original-68,Deep Shot,68,5,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,146,pack-original-69,Deep Shot,69,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,147,pack-original-69,Deep Shot,69,2,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,148,pack-original-69,Deep Shot,69,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,149,pack-original-69,Deep Shot,69,4,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,150,pack-original-69,Deep Shot,69,5,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,151,pack-original-7,Reel Deals,7,1,91,Ryan Wright,P,16700,False,10020,10020,pack_type inferred,
+original,152,pack-original-7,Reel Deals,7,2,90,Ray Lewis,MIKE,10600,False,6360,6360,pack_type inferred,
+original,153,pack-original-70,Deep Shot,70,1,78,,N/A,44,False,26.4,26.4,unidentified; pack_type inferred,
+original,154,pack-original-70,Deep Shot,70,2,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,155,pack-original-70,Deep Shot,70,3,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,156,pack-original-70,Deep Shot,70,4,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,157,pack-original-70,Deep Shot,70,5,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,158,pack-original-71,Deep Shot,71,1,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,159,pack-original-71,Deep Shot,71,2,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,160,pack-original-71,Deep Shot,71,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,161,pack-original-71,Deep Shot,71,4,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,162,pack-original-71,Deep Shot,71,5,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,163,pack-original-72,Deep Shot,72,1,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,164,pack-original-72,Deep Shot,72,2,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,165,pack-original-72,Deep Shot,72,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,166,pack-original-72,Deep Shot,72,4,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,167,pack-original-72,Deep Shot,72,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,168,pack-original-73,Deep Shot,73,1,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,169,pack-original-73,Deep Shot,73,2,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,170,pack-original-73,Deep Shot,73,3,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,171,pack-original-73,Deep Shot,73,4,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,172,pack-original-73,Deep Shot,73,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,173,pack-original-74,Deep Shot,74,1,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,174,pack-original-74,Deep Shot,74,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,175,pack-original-74,Deep Shot,74,3,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,176,pack-original-74,Deep Shot,74,4,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,177,pack-original-74,Deep Shot,74,5,80,,N/A,110,False,66,66,unidentified; pack_type inferred,
+original,178,pack-original-75,Deep Shot,75,1,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,179,pack-original-75,Deep Shot,75,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,180,pack-original-75,Deep Shot,75,3,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,181,pack-original-75,Deep Shot,75,4,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,182,pack-original-75,Deep Shot,75,5,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,183,pack-original-106,Snap Fantasy,106,3,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,184,pack-original-108,Snap Fantasy,108,5,84,,N/A,680,False,408,408,unidentified; pack_type inferred,
+original,185,pack-original-105,Snap Fantasy,105,5,93,,N/A,42000,False,25200,25200,unidentified; pack_type inferred,
+original,186,pack-original-109,Snap Fantasy,109,1,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,187,pack-original-106,Snap Fantasy,106,1,93,,N/A,42000,False,25200,25200,unidentified; pack_type inferred,
+original,188,pack-original-105,Snap Fantasy,105,2,96,,N/A,160000,False,96000,96000,unidentified; pack_type inferred,
+original,189,pack-original-8,70+ Gold Player,8,1,82,Ed Too Tall Jones,LE,270,False,162,162,pack_type inferred,
+original,190,pack-original-105,Snap Fantasy,105,3,96,,N/A,160000,False,96000,96000,unidentified; pack_type inferred,
+original,191,pack-original-108,Snap Fantasy,108,2,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,192,pack-original-106,Snap Fantasy,106,4,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,193,pack-original-108,Snap Fantasy,108,4,86,,N/A,1700,False,1020,1020,unidentified; pack_type inferred,
+original,194,pack-original-105,Snap Fantasy,105,1,97,,N/A,260000,False,156000,156000,unidentified; pack_type inferred,
+original,195,pack-original-109,Snap Fantasy,109,3,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,196,pack-original-106,Snap Fantasy,106,5,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,197,pack-original-109,Snap Fantasy,109,4,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,198,pack-original-105,Snap Fantasy,105,4,94,,N/A,66000,False,39600,39600,unidentified; pack_type inferred,
+original,199,pack-original-109,Snap Fantasy,109,5,81,,N/A,170,False,102,102,unidentified; pack_type inferred,
+original,200,pack-original-106,Snap Fantasy,106,2,93,,N/A,42000,False,25200,25200,unidentified; pack_type inferred,
+original,201,pack-original-107,Snap Fantasy,107,1,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,202,pack-original-87,Snap Fantasy,87,1,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,203,pack-original-87,Snap Fantasy,87,2,83,,N/A,430,False,258,258,unidentified; pack_type inferred,
+original,204,pack-original-87,Snap Fantasy,87,3,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,205,pack-original-87,Snap Fantasy,87,4,83,,N/A,430,False,258,258,unidentified; pack_type inferred,
+original,206,pack-original-87,Snap Fantasy,87,5,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,207,pack-original-109,Snap Fantasy,109,2,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,208,pack-original-88,Snap Fantasy,88,1,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,209,pack-original-88,Snap Fantasy,88,2,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,210,pack-original-88,Snap Fantasy,88,3,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,211,pack-original-88,Snap Fantasy,88,4,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,212,pack-original-88,Snap Fantasy,88,5,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,213,pack-original-108,Snap Fantasy,108,3,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,214,pack-original-89,Snap Fantasy,89,1,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,215,pack-original-89,Snap Fantasy,89,2,87,,N/A,2700,False,1620,1620,unidentified; pack_type inferred,
+original,216,pack-original-89,Snap Fantasy,89,3,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,217,pack-original-89,Snap Fantasy,89,4,85,,N/A,1080,False,648,648,unidentified; pack_type inferred,
+original,218,pack-original-89,Snap Fantasy,89,5,82,,N/A,270,False,162,162,unidentified; pack_type inferred,
+original,219,pack-original-107,Snap Fantasy,107,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,220,pack-original-9,70+ Gold Player,9,1,82,Justin Eboigbe,DT,270,False,162,162,pack_type inferred,
+original,221,pack-original-90,Snap Fantasy,90,1,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,222,pack-original-90,Snap Fantasy,90,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,223,pack-original-90,Snap Fantasy,90,3,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,224,pack-original-90,Snap Fantasy,90,4,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,225,pack-original-90,Snap Fantasy,90,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,226,pack-original-107,Snap Fantasy,107,3,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,227,pack-original-91,Snap Fantasy,91,1,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,228,pack-original-91,Snap Fantasy,91,2,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,229,pack-original-91,Snap Fantasy,91,3,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,230,pack-original-91,Snap Fantasy,91,4,93,,N/A,42000,False,25200,25200,unidentified; pack_type inferred,
+original,231,pack-original-91,Snap Fantasy,91,5,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,232,pack-original-108,Snap Fantasy,108,1,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,233,pack-original-92,Snap Fantasy,92,1,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,234,pack-original-92,Snap Fantasy,92,2,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,235,pack-original-92,Snap Fantasy,92,3,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,236,pack-original-92,Snap Fantasy,92,4,88,,N/A,4200,False,2520,2520,unidentified; pack_type inferred,
+original,237,pack-original-92,Snap Fantasy,92,5,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,238,pack-original-107,Snap Fantasy,107,4,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,239,pack-original-93,Snap Fantasy,93,1,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,240,pack-original-93,Snap Fantasy,93,2,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,241,pack-original-93,Snap Fantasy,93,3,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,242,pack-original-93,Snap Fantasy,93,4,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,243,pack-original-93,Snap Fantasy,93,5,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,244,pack-original-107,Snap Fantasy,107,2,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,245,pack-original-94,NFL Draft,94,1,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,246,pack-original-94,NFL Draft,94,2,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,247,pack-original-94,NFL Draft,94,3,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,248,pack-original-94,NFL Draft,94,4,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,249,pack-original-95,NFL Draft,95,1,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,250,pack-original-95,NFL Draft,95,2,92,,N/A,26000,False,15600,15600,unidentified; pack_type inferred,
+original,251,pack-original-95,NFL Draft,95,3,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,252,pack-original-95,NFL Draft,95,4,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,253,pack-original-96,NFL Draft,96,1,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,254,pack-original-96,NFL Draft,96,2,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,255,pack-original-96,NFL Draft,96,3,91,,N/A,16700,False,10020,10020,unidentified; pack_type inferred,
+original,256,pack-original-96,NFL Draft,96,4,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,257,pack-original-97,NFL Draft,97,1,90,,N/A,10600,False,6360,6360,unidentified; pack_type inferred,
+original,258,pack-original-97,NFL Draft,97,2,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,259,pack-original-97,NFL Draft,97,3,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+original,260,pack-original-97,NFL Draft,97,4,89,,N/A,6700,False,4020,4020,unidentified; pack_type inferred,
+mystery-2,261,70plus-mystery2-1,70+ Gold Player,1,1,85,Derick Hall,REDG,1080,False,648,648,,
+mystery-2,262,70plus-mystery2-3,70+ Gold Player,3,1,88,Trey Smith,RG,4200,False,2520,2520,,
+mystery-2,263,70plus-mystery2-4,70+ Gold Player,4,1,78,Jason Peters,LT,44,False,26.4,26.4,,
+mystery-2,264,70plus-mystery2-5,70+ Gold Player,5,1,76,Princely Umanmielen,REDG,18,False,10.799999999999999,10.799999999999999,,
+mystery-2,265,70plus-mystery2-6,70+ Gold Player,6,1,84,Zion Johnson,LG,680,False,408,408,,
+mystery-2,266,70plus-mystery2-7,70+ Gold Player,7,1,82,Jimmy Smith,WR,270,False,162,162,,
+mystery-2,267,70plus-mystery2-8,70+ Gold Player,8,1,87,Rasul Douglas,CB,2700,False,1620,1620,,
+mystery-2,268,70plus-mystery2-9,70+ Gold Player,9,1,78,Lloyd Cushenberry III,C,44,False,26.4,26.4,,
+mystery-2,269,70plus-mystery2-10,70+ Gold Player,10,1,81,Michael Wilson,WR,170,False,102,102,,
+mystery-2,270,70plus-mystery2-11,70+ Gold Player,11,1,86,Zyon McCollum,CB,1700,False,1020,1020,,
+mystery-2,271,70plus-mystery2-12,70+ Gold Player,12,1,76,Mo Alie-Cox,TE,18,False,10.799999999999999,10.799999999999999,,
+mystery-2,272,70plus-mystery2-13,70+ Gold Player,13,1,81,Jaycee Horn,CB,170,False,102,102,,
+mystery-2,273,70plus-mystery2-2,70+ Gold Player,2,1,84,Anthony Bradford,RG,680,False,408,408,,
+mystery-2,274,70plus-mystery2-14,70+ Gold Player,14,1,81,Logan Wilson,WILL,170,False,102,102,,
+mystery-2,275,collector-mystery2-1,Collector Series,1,1,92,Trey Hendrickson,REDG,26000,False,15600,15600,collector series,
+mystery-2,276,collector-mystery2-1,Collector Series,1,2,83,Charles Tillman,CB,430,False,258,258,legend gold trim - verify value,
+mystery-2,277,collector-mystery2-2,Collector Series,2,1,94,Jaelan Phillips,LEDG,66000,False,39600,39600,,
+mystery-2,278,collector-mystery2-2,Collector Series,2,2,88,Anton Harrison,RT,4200,False,2520,2520,,
+mystery-2,279,collector-mystery2-4,Collector Series,4,1,92,Peyton Hillis,HB,26000,False,15600,15600,power back - verify value,
+mystery-2,280,collector-mystery2-4,Collector Series,4,2,80,Teven Jenkins,LG,110,False,66,66,,
+mystery-2,281,collector-mystery2-3,Collector Series,4,1,93,Montaric Brown,CB,42000,False,25200,25200,,
+mystery-2,282,collector-mystery2-3,Collector Series,4,2,86,Zay Flowers,WR,1700,False,1020,1020,,
+mystery-2,283,deepshot-mystery2-1,Deep Shot,1,1,85,D'Andre Swift,HB,1080,False,648,648,,
+mystery-2,284,deepshot-mystery2-1,Deep Shot,1,2,86,Matthew Stafford,QB,1700,False,1020,1020,,
+mystery-2,285,deepshot-mystery2-1,Deep Shot,1,3,90,Raheem Mostert,HB,10600,False,6360,6360,,
+mystery-2,286,deepshot-mystery2-1,Deep Shot,1,4,88,Nick Martin,WILL,4200,False,2520,2520,,
+mystery-2,287,deepshot-mystery2-1,Deep Shot,1,5,83,Harrison Butker,K,430,True,76000,76000,platinum kicker,
+mystery-2,288,deepshot-mystery2-9,Deep Shot,9,1,89,Bhayshul Tuten,HB,6700,False,4020,4020,,
+mystery-2,289,deepshot-mystery2-9,Deep Shot,9,2,89,Robert Spillane,WILL,6700,False,4020,4020,,
+mystery-2,290,deepshot-mystery2-9,Deep Shot,9,3,90,Will Shields,RG,10600,False,6360,6360,,
+mystery-2,291,deepshot-mystery2-9,Deep Shot,9,4,91,Penei Sewell,RT,16700,False,10020,10020,,
+mystery-2,292,deepshot-mystery2-9,Deep Shot,9,5,90,Jack Fox,P,10600,False,6360,6360,,
+mystery-2,293,deepshot-mystery2-2,Deep Shot,2,1,88,Anton Harrison,RT,4200,False,2520,2520,,
+mystery-2,294,deepshot-mystery2-2,Deep Shot,2,2,94,Nakobe Dean,MIKE,66000,False,39600,39600,,
+mystery-2,295,deepshot-mystery2-2,Deep Shot,2,3,91,Trevor Penning,LG,16700,False,10020,10020,flashbacks,
+mystery-2,296,deepshot-mystery2-2,Deep Shot,2,4,88,Ty'Ron Hopper,WILL,4200,False,2520,2520,,
+mystery-2,297,deepshot-mystery2-2,Deep Shot,2,5,82,DeForest Buckner,DT,270,False,162,162,,
+mystery-2,298,deepshot-mystery2-23,Deep Shot,23,2,90,Coby Bryant,SS,10600,False,6360,6360,TOTW,
+mystery-2,299,deepshot-mystery2-25,Deep Shot,25,2,84,Nick Bosa,LEDG,680,False,408,408,,
+mystery-2,300,deepshot-mystery2-23,Deep Shot,23,4,88,Cole Strange,LG,4200,False,2520,2520,,
+mystery-2,301,deepshot-mystery2-25,Deep Shot,25,1,85,Dell Pettus,SS,1080,False,648,648,,
+mystery-2,302,deepshot-mystery2-3,Deep Shot,3,1,95,Philip Rivers,QB,100000,False,60000,60000,legend QB - verify value,
+mystery-2,303,deepshot-mystery2-3,Deep Shot,3,2,91,J.J. McCarthy,QB,16700,False,10020,10020,,
+mystery-2,304,deepshot-mystery2-3,Deep Shot,3,3,84,Mike Jackson,CB,680,False,408,408,,
+mystery-2,305,deepshot-mystery2-3,Deep Shot,3,4,88,Zach Harrison,DT,4200,False,2520,2520,TOTW,
+mystery-2,306,deepshot-mystery2-3,Deep Shot,3,5,79,Evan Williams,FS,69,False,41.4,41.4,TOTW,
+mystery-2,307,deepshot-mystery2-11,Deep Shot,11,1,82,Zach Thomas,MIKE,270,False,162,162,,
+mystery-2,308,deepshot-mystery2-11,Deep Shot,11,2,76,Kader Kohou,CB,18,False,10.799999999999999,10.799999999999999,,
+mystery-2,309,deepshot-mystery2-11,Deep Shot,11,3,88,Owen Daniels,TE,4200,False,2520,2520,,
+mystery-2,310,deepshot-mystery2-11,Deep Shot,11,4,89,Steve Atwater,FS,6700,False,4020,4020,,
+mystery-2,311,deepshot-mystery2-11,Deep Shot,11,5,95,Damien Woody,LG,100000,False,60000,60000,Super Bowl program - verify value,
+mystery-2,312,deepshot-mystery2-23,Deep Shot,23,3,89,Jake Tonges,TE,6700,False,4020,4020,TOTW,
+mystery-2,313,deepshot-mystery2-23,Deep Shot,23,1,92,Tre'von Moehrig,FS,26000,False,15600,15600,flashbacks,
+mystery-2,314,deepshot-mystery2-4,Deep Shot,4,1,81,George Karlaftis,LEDG,170,False,102,102,,
+mystery-2,315,deepshot-mystery2-4,Deep Shot,4,2,88,Alge Crumpler,TE,4200,False,2520,2520,legend gold trim - verify value,
+mystery-2,316,deepshot-mystery2-4,Deep Shot,4,3,88,Alex Ward,LS,4200,False,2520,2520,combine card,
+mystery-2,317,deepshot-mystery2-4,Deep Shot,4,4,77,Jordan Stout,P,28,False,16.8,16.8,,
+mystery-2,318,deepshot-mystery2-4,Deep Shot,4,5,88,Dylan Sampson,HB,4200,False,2520,2520,TOTW,
+mystery-2,319,deepshot-mystery2-13,Deep Shot,13,1,76,Amik Robertson,CB,18,False,10.799999999999999,10.799999999999999,,
+mystery-2,320,deepshot-mystery2-13,Deep Shot,13,2,77,Jordan Battle,SS,28,False,16.8,16.8,,
+mystery-2,321,deepshot-mystery2-13,Deep Shot,13,3,87,Roman Wilson,WR,2700,False,1620,1620,OVR unclear from screenshot - verify,
+mystery-2,322,deepshot-mystery2-13,Deep Shot,13,4,90,Teven Jenkins,LG,10600,False,6360,6360,,
+mystery-2,323,deepshot-mystery2-13,Deep Shot,13,5,88,DeAndre Hopkins,WR,4200,False,2520,2520,,
+mystery-2,324,deepshot-mystery2-23,Deep Shot,23,5,88,Edgerrin Cooper,MIKE,4200,False,2520,2520,,
+mystery-2,325,deepshot-mystery2-25,Deep Shot,25,4,80,Kevin Byard III,FS,110,False,66,66,,
+mystery-2,326,deepshot-mystery2-5,Deep Shot,5,1,83,KaVontae Turpin,WR,430,False,258,258,,
+mystery-2,327,deepshot-mystery2-5,Deep Shot,5,2,90,Chris Spielman,MIKE,10600,False,6360,6360,legend - verify value,
+mystery-2,328,deepshot-mystery2-5,Deep Shot,5,3,83,Cobie Durant,CB,430,False,258,258,,
+mystery-2,329,deepshot-mystery2-5,Deep Shot,5,4,88,Deonte Banks,CB,4200,False,2520,2520,,
+mystery-2,330,deepshot-mystery2-5,Deep Shot,5,5,85,Donovan Wilson,SS,1080,False,648,648,,
+mystery-2,331,deepshot-mystery2-15,Deep Shot,15,1,88,Max Melton,CB,4200,False,2520,2520,,
+mystery-2,332,deepshot-mystery2-15,Deep Shot,15,2,82,Colston Loveland,TE,270,False,162,162,,
+mystery-2,333,deepshot-mystery2-15,Deep Shot,15,3,85,KeAndre Lambert-Smith,WR,1080,False,648,648,,
+mystery-2,334,deepshot-mystery2-15,Deep Shot,15,4,90,Dan Dierdorf,RT,10600,False,6360,6360,legend - verify value,
+mystery-2,335,deepshot-mystery2-15,Deep Shot,15,5,81,Henry To'oTo'o,SAM,170,False,102,102,,
+mystery-2,336,deepshot-mystery2-24,Deep Shot,24,1,88,Max Melton,CB,4200,False,2520,2520,duplicate of #63,
+mystery-2,337,deepshot-mystery2-6,Deep Shot,6,1,89,Hugh Green,WILL,6700,False,4020,4020,legend - verify value,
+mystery-2,338,deepshot-mystery2-6,Deep Shot,6,2,82,Greg Rousseau,LEDG,270,False,162,162,,
+mystery-2,339,deepshot-mystery2-6,Deep Shot,6,3,88,Zyon McCollum,CB,4200,False,2520,2520,different OVR than 70+ pull (86),
+mystery-2,340,deepshot-mystery2-6,Deep Shot,6,4,88,Anton Harrison,RT,4200,False,2520,2520,duplicate of #25,
+mystery-2,341,deepshot-mystery2-6,Deep Shot,6,5,90,Sauce Gardner,CB,10600,False,6360,6360,,
+mystery-2,342,deepshot-mystery2-17,Deep Shot,17,1,89,Fred Biletnikoff,WR,6700,False,4020,4020,legend - verify value,
+mystery-2,343,deepshot-mystery2-17,Deep Shot,17,2,88,Ahkello Witherspoon,CB,4200,False,2520,2520,,
+mystery-2,344,deepshot-mystery2-17,Deep Shot,17,3,81,Mason Tipton,WR,170,False,102,102,throwback look,
+mystery-2,345,deepshot-mystery2-17,Deep Shot,17,4,78,Tucker Kraft,TE,44,False,26.4,26.4,,
+mystery-2,346,deepshot-mystery2-17,Deep Shot,17,5,85,Patrick Chung,SS,1080,False,648,648,legend - verify value,
+mystery-2,347,deepshot-mystery2-24,Deep Shot,24,2,88,Michael Bennett,LEDG,4200,False,2520,2520,legend - verify value,
+mystery-2,348,deepshot-mystery2-24,Deep Shot,24,3,88,Parker Washington,WR,4200,False,2520,2520,TOTW,
+mystery-2,349,deepshot-mystery2-7,Deep Shot,7,1,81,George Holani,HB,170,False,102,102,TOTW,
+mystery-2,350,deepshot-mystery2-7,Deep Shot,7,2,88,Alge Crumpler,TE,4200,False,2520,2520,duplicate of #47 (legend),
+mystery-2,351,deepshot-mystery2-7,Deep Shot,7,3,88,Jihaad Campbell,WILL,4200,False,2520,2520,,
+mystery-2,352,deepshot-mystery2-7,Deep Shot,7,4,81,O'Cyrus Torrence,RG,170,False,102,102,,
+mystery-2,353,deepshot-mystery2-7,Deep Shot,7,5,82,Colston Loveland,TE,270,False,162,162,duplicate of #64,
+mystery-2,354,deepshot-mystery2-19,Deep Shot,19,1,89,Maurice Jones-Drew,HB,6700,False,4020,4020,flashbacks,
+mystery-2,355,deepshot-mystery2-19,Deep Shot,19,2,88,DeAndre Hopkins,WR,4200,False,2520,2520,duplicate of #55,
+mystery-2,356,deepshot-mystery2-19,Deep Shot,19,3,86,Abdul Carter,LEDG,1700,False,1020,1020,,
+mystery-2,357,deepshot-mystery2-19,Deep Shot,19,4,76,Mykal Walker,MIKE,18,False,10.799999999999999,10.799999999999999,,
+mystery-2,358,deepshot-mystery2-19,Deep Shot,19,5,88,Sheldon Rankins,DT,4200,False,2520,2520,flashbacks,
+mystery-2,359,deepshot-mystery2-24,Deep Shot,24,4,88,Xavier Legette,WR,4200,False,2520,2520,,
+mystery-2,360,deepshot-mystery2-25,Deep Shot,25,3,84,Trey Hendrickson,REDG,680,False,408,408,,
+mystery-2,361,deepshot-mystery2-8,Deep Shot,8,1,81,A.J. Terrell Jr,CB,170,False,102,102,,
+mystery-2,362,deepshot-mystery2-8,Deep Shot,8,2,88,Tyrod Taylor,QB,4200,False,2520,2520,,
+mystery-2,363,deepshot-mystery2-8,Deep Shot,8,3,91,Coleman Shelton,C,16700,False,10020,10020,,
+mystery-2,364,deepshot-mystery2-8,Deep Shot,8,4,88,Antrel Rolle,FS,4200,False,2520,2520,legend - verify value,
+mystery-2,365,deepshot-mystery2-8,Deep Shot,8,5,82,Robert Hainsey,C,270,False,162,162,,
+mystery-2,366,deepshot-mystery2-21,Deep Shot,21,1,91,Isaac Seumalo,LG,16700,False,10020,10020,,
+mystery-2,367,deepshot-mystery2-21,Deep Shot,21,2,89,John Randle,DT,6700,False,4020,4020,legend - verify value,
+mystery-2,368,deepshot-mystery2-21,Deep Shot,21,3,88,Larry Little,RG,4200,False,2520,2520,legend - verify value,
+mystery-2,369,deepshot-mystery2-21,Deep Shot,21,4,81,Daiyan Henley,WILL,170,False,102,102,,
+mystery-2,370,deepshot-mystery2-21,Deep Shot,21,5,88,Cooper Beebe,C,4200,False,2520,2520,,
+mystery-2,371,deepshot-mystery2-25,Deep Shot,25,5,80,Jaylen Waddle,WR,110,False,66,66,,
+mystery-2,372,deepshot-mystery2-24,Deep Shot,24,5,87,Cameron Jordan,REDG,2700,False,1620,1620,,
+mystery-2,373,nfl-draft-mystery2-1,NFL Draft,1,1,93,Shedeur Sanders,QB,42000,False,25200,25200,,
+mystery-2,374,nfl-draft-mystery2-1,NFL Draft,1,2,92,DJ Turner II,CB,26000,False,15600,15600,theme team surge,
+mystery-2,375,nfl-draft-mystery2-1,NFL Draft,1,3,89,Tory Taylor,P,6700,False,4020,4020,,
+mystery-2,376,nfl-draft-mystery2-1,NFL Draft,1,4,89,Kobee Minor,CB,6700,False,4020,4020,,
+mystery-2,377,nfl-draft-mystery2-2,NFL Draft,2,1,89,Kobee Minor,CB,6700,False,4020,4020,duplicate of #121,
+mystery-2,378,nfl-draft-mystery2-2,NFL Draft,2,2,90,Peter Skoronski,LT,10600,False,6360,6360,,
+mystery-2,379,nfl-draft-mystery2-2,NFL Draft,2,3,90,Jevon Kearse,LEDG,10600,False,6360,6360,,
+mystery-2,380,nfl-draft-mystery2-2,NFL Draft,2,4,90,Terrell Davis,HB,10600,False,6360,6360,legend,
+mystery-2,381,nfl-draft-mystery2-3,NFL Draft,3,1,89,Kobee Minor,CB,6700,False,4020,4020,duplicate of #121,
+mystery-2,382,nfl-draft-mystery2-3,NFL Draft,3,2,89,Alex Austin,CB,6700,False,4020,4020,,
+mystery-2,383,nfl-draft-mystery2-3,NFL Draft,3,3,90,Matthew Stafford,QB,10600,False,6360,6360,,
+mystery-2,384,nfl-draft-mystery2-3,NFL Draft,3,4,90,Terrell Davis,HB,10600,False,6360,6360,legend,
+mystery-2,385,nfl-draft-mystery2-4,NFL Draft,4,1,90,Andre Cisco,FS,10600,False,6360,6360,,
+mystery-2,386,nfl-draft-mystery2-4,NFL Draft,4,2,89,Cal Adomitis,LS,6700,False,4020,4020,,
+mystery-2,387,nfl-draft-mystery2-4,NFL Draft,4,3,89,Tory Taylor,P,6700,False,4020,4020,duplicate of #120,
+mystery-2,388,nfl-draft-mystery2-4,NFL Draft,4,4,90,Harry Carson,MIKE,10600,False,6360,6360,legend,
+mystery-2,389,reeldeals-mystery2-1,Reel Deals,1,1,90,Cris Collinsworth,WR,10600,False,6360,6360,legend,
+mystery-2,390,reeldeals-mystery2-1,Reel Deals,1,2,92,Olamide Zaccheaus,WR,26000,False,15600,15600,theme team surge - AH 19325 coins,
+mystery-2,391,reeldeals-mystery2-2,Reel Deals,2,1,90,J.J. Watt,REDG,10600,False,6360,6360,legend retro,
+mystery-2,392,reeldeals-mystery2-2,Reel Deals,2,2,90,Kurt Warner,QB,10600,False,6360,6360,legend gold trim - verify value,
+mystery-2,393,snap-mystery2-1,Snap Fantasy,1,1,88,Jalon Walker,LEDG,4200,False,2520,2520,,
+mystery-2,394,snap-mystery2-1,Snap Fantasy,1,2,88,Danny Stutsman,SAM,4200,False,2520,2520,,
+mystery-2,395,snap-mystery2-1,Snap Fantasy,1,3,88,Mason McCormick,RG,4200,False,2520,2520,,
+mystery-2,396,snap-mystery2-1,Snap Fantasy,1,4,89,Jaylen Waddle,WF,6700,False,4020,4020,,
+mystery-2,397,snap-mystery2-1,Snap Fantasy,1,5,90,Darius Muasau,MIKE,10600,False,6360,6360,,
+mystery-2,398,snap-mystery2-10,Snap Fantasy,10,1,88,Chase Young,LEDG,4200,False,2520,2520,deep shot,
+mystery-2,399,snap-mystery2-10,Snap Fantasy,10,2,87,Jalen Carter,DT,2700,False,1620,1620,deep shot,
+mystery-2,400,snap-mystery2-10,Snap Fantasy,10,3,86,Tyson Campbell,CB,1700,False,1020,1020,deep shot,
+mystery-2,401,snap-mystery2-10,Snap Fantasy,10,4,85,Trey McBride,TE,1080,False,648,648,deep shot,
+mystery-2,402,snap-mystery2-10,Snap Fantasy,10,5,90,DeVonta Smith,WR,10600,False,6360,6360,,
+mystery-2,403,snap-mystery2-2,Snap Fantasy,2,1,88,J.J. Watt,REDG,4200,False,2520,2520,,
+mystery-2,404,snap-mystery2-2,Snap Fantasy,2,2,89,Maurice Jones-Drew,HB,6700,False,4020,4020,,
+mystery-2,405,snap-mystery2-2,Snap Fantasy,2,3,88,Justin Jefferson,WR,4200,False,2520,2520,,
+mystery-2,406,snap-mystery2-2,Snap Fantasy,2,4,88,Ty'Ron Hopper,WILL,4200,False,2520,2520,,
+mystery-2,407,snap-mystery2-2,Snap Fantasy,2,5,91,Kevin Dotson,RG,16700,False,10020,10020,,
+mystery-2,408,snap-mystery2-3,Snap Fantasy,3,1,88,Walter Payton,HB,4200,False,2520,2520,,
+mystery-2,409,snap-mystery2-3,Snap Fantasy,3,2,88,Francisco Mauigoa,MIKE,4200,False,2520,2520,,
+mystery-2,410,snap-mystery2-3,Snap Fantasy,3,3,88,Javon Kinlaw,DT,4200,False,2520,2520,,
+mystery-2,411,snap-mystery2-3,Snap Fantasy,3,4,94,Ryan Kelly,C,66000,False,39600,39600,,
+mystery-2,412,snap-mystery2-3,Snap Fantasy,3,5,90,Myles Garrett,REDG,10600,False,6360,6360,,
+mystery-2,413,snap-mystery2-4,Snap Fantasy,4,1,88,Sheldon Rankins,DT,4200,False,2520,2520,,
+mystery-2,414,snap-mystery2-4,Snap Fantasy,4,2,92,Joey Porter,CB,26000,False,15600,15600,,
+mystery-2,415,snap-mystery2-4,Snap Fantasy,4,3,91,Antonio Gates,TE,16700,False,10020,10020,,
+mystery-2,416,snap-mystery2-4,Snap Fantasy,4,4,88,Mark Barron,SS,4200,False,2520,2520,,
+mystery-2,417,snap-mystery2-4,Snap Fantasy,4,5,88,Tyrique Stevenson,CB,4200,False,2520,2520,,
+mystery-2,418,snap-mystery2-5,Snap Fantasy,5,1,89,Jeremy Shockey,TE,6700,False,4020,4020,,
+mystery-2,419,snap-mystery2-5,Snap Fantasy,5,2,91,Keith Jackson,TE,16700,False,10020,10020,,
+mystery-2,420,snap-mystery2-5,Snap Fantasy,5,3,88,Jaden Hicks,SS,4200,False,2520,2520,,
+mystery-2,421,snap-mystery2-5,Snap Fantasy,5,4,88,Brandon Stephens,CB,4200,False,2520,2520,,
+mystery-2,422,snap-mystery2-5,Snap Fantasy,5,5,89,Marvin Mims Jr,WR,6700,False,4020,4020,,
+mystery-2,423,snap-mystery2-6,Snap Fantasy,6,1,92,Jordan Mailata,LT,26000,False,15600,15600,,
+mystery-2,424,snap-mystery2-6,Snap Fantasy,6,2,88,Grant Delpit,SS,4200,False,2520,2520,,
+mystery-2,425,snap-mystery2-6,Snap Fantasy,6,3,89,Steve Atwater,FS,6700,False,4020,4020,,
+mystery-2,426,snap-mystery2-6,Snap Fantasy,6,4,91,John Riggins,FB,16700,False,10020,10020,,
+mystery-2,427,snap-mystery2-6,Snap Fantasy,6,5,88,Xavier Legette,WR,4200,False,2520,2520,,
+mystery-2,428,snap-mystery2-7,Snap Fantasy,7,1,89,Stephon Gilmore,CB,6700,False,4020,4020,,
+mystery-2,429,snap-mystery2-7,Snap Fantasy,7,2,92,Patrick Surtain II,CB,26000,False,15600,15600,,
+mystery-2,430,snap-mystery2-7,Snap Fantasy,7,3,88,Nic Scourton,WILL,4200,False,2520,2520,,
+mystery-2,431,snap-mystery2-7,Snap Fantasy,7,4,88,Rigoberto Sanchez,P,4200,False,2520,2520,,
+mystery-2,432,snap-mystery2-7,Snap Fantasy,7,5,88,Dak Prescott,QB,4200,False,2520,2520,,
+mystery-2,433,snap-mystery2-8,Snap Fantasy,8,1,89,Laramy Tunsil,LT,6700,False,4020,4020,,
+mystery-2,434,snap-mystery2-8,Snap Fantasy,8,2,88,DeAndre Hopkins,WR,4200,False,2520,2520,,
+mystery-2,435,snap-mystery2-8,Snap Fantasy,8,3,88,Melvin Gordon III,HB,4200,False,2520,2520,,
+mystery-2,436,snap-mystery2-8,Snap Fantasy,8,4,88,Reggie Wayne,WR,4200,False,2520,2520,,
+mystery-2,437,snap-mystery2-8,Snap Fantasy,8,5,92,Zach Tom,RT,26000,False,15600,15600,,
+mystery-2,438,snap-mystery2-9,Snap Fantasy,9,1,88,Isaiah Thomas,REDG,4200,False,2520,2520,,
+mystery-2,439,snap-mystery2-9,Snap Fantasy,9,2,90,Riley Moss,CB,10600,False,6360,6360,,
+mystery-2,440,snap-mystery2-9,Snap Fantasy,9,3,92,Joe Thuney,LG,26000,False,15600,15600,,
+mystery-2,441,snap-mystery2-9,Snap Fantasy,9,4,92,Patrick Surtain,CB,26000,False,15600,15600,,
+mystery-2,442,snap-mystery2-9,Snap Fantasy,9,5,88,Mark Barron,SS,4200,False,2520,2520,,
+mystery-3,443,70plus-mystery3-1,70+ Gold Player,1,1,94,Champ Bailey,CB,66000,False,39600,39600,"legend - frozen/icicle frame, lightning bolt badge",
+mystery-3,444,70plus-mystery3-2,70+ Gold Player,2,1,81,Jonathan Greenard,LEDG,170,False,102,102,,
+mystery-3,445,70plus-mystery3-3,70+ Gold Player,3,1,87,Jeremy Shockey,TE,2700,False,1620,1620,Super Bowl program,
+mystery-3,446,70plus-mystery3-4,70+ Gold Player,4,1,78,Emmanuel Forbes Jr,CB,44,False,26.4,26.4,GH badge,
+mystery-3,447,collector-mystery3-1,Collector Series,5,1,93,Kyle Hamilton,SS,42000,False,25200,25200,Collector Series,
+mystery-3,448,collector-mystery3-1,Collector Series,5,2,88,Clay Matthews,SAM,4200,False,2520,2520,legend,
+mystery-3,449,collector-mystery3-2,Collector Series,6,1,93,Antoine Winfield Jr,FS,42000,False,25200,25200,Collector Series,
+mystery-3,450,collector-mystery3-2,Collector Series,6,2,89,Nick Chubb,HB,6700,False,4020,4020,Flashbacks - upgrade arrow,
+mystery-3,451,deepshot-mystery3-1,Deep Shot,1,1,88,Trey Smith,RG,4200,False,2520,2520,upgrade arrow,
+mystery-3,452,deepshot-mystery3-1,Deep Shot,1,2,88,Alec Ingold,FB,4200,False,2520,2520,Combine card,
+mystery-3,453,deepshot-mystery3-1,Deep Shot,1,3,80,Zaire Franklin,MIKE,110,False,66,66,,
+mystery-3,454,deepshot-mystery3-1,Deep Shot,1,4,77,Deion Jones,WILL,28,False,16.8,16.8,,
+mystery-3,455,deepshot-mystery3-1,Deep Shot,1,5,81,Tyler Biadasz,C,170,False,102,102,,
+mystery-3,456,deepshot-mystery3-2,Deep Shot,2,1,79,Jameson Williams,WR,69,False,41.4,41.4,,
+mystery-3,457,deepshot-mystery3-2,Deep Shot,2,2,94,Cam Ward,QB,66000,False,39600,39600,TOTW Week 16,
+mystery-3,458,deepshot-mystery3-2,Deep Shot,2,3,85,Wyatt Teller,RG,1080,False,648,648,Collector Series,
+mystery-3,459,deepshot-mystery3-2,Deep Shot,2,4,91,The Kings Hand,WR,16700,False,10020,10020,Spectral Threat - Bengals,
+mystery-3,460,deepshot-mystery3-2,Deep Shot,2,5,88,Charles Tillman,CB,4200,False,2520,2520,legend,
+mystery-3,461,deepshot-mystery3-3,Deep Shot,3,1,88,Randy White,DT,4200,False,2520,2520,legend - Collector Series,
+mystery-3,462,deepshot-mystery3-3,Deep Shot,3,2,88,Larry Little,RG,4200,False,2520,2520,legend,
+mystery-3,463,deepshot-mystery3-3,Deep Shot,3,3,80,Brandon Jones,FS,110,False,66,66,,
+mystery-3,464,deepshot-mystery3-3,Deep Shot,3,4,80,Zay Flowers,WR,110,False,66,66,,
+mystery-3,465,deepshot-mystery3-3,Deep Shot,3,5,82,Drew Sanders,MIKE,270,False,162,162,upgrade arrow,
+mystery-3,466,nfl-draft-mystery3-1,NFL Draft,1,1,94,Jalen Hurts,QB,66000,False,39600,39600,,
+mystery-3,467,nfl-draft-mystery3-1,NFL Draft,1,2,92,Steve Avila,LG,26000,False,15600,15600,Theme Team,
+mystery-3,468,nfl-draft-mystery3-1,NFL Draft,1,3,89,Cal Adomitis,LS,6700,False,4020,4020,,
+mystery-3,469,nfl-draft-mystery3-1,NFL Draft,1,4,89,Chad Ryland,K,6700,False,4020,4020,,
+mystery-3,470,nfl-draft-mystery3-2,NFL Draft,2,1,89,Tory Taylor,P,6700,False,4020,4020,,
+mystery-3,471,nfl-draft-mystery3-2,NFL Draft,2,2,92,Corey Dillon,HB,26000,False,15600,15600,Flashbacks - upgrade arrow,
+mystery-3,472,nfl-draft-mystery3-2,NFL Draft,2,3,91,Trey McBride,TE,16700,False,10020,10020,,
+mystery-3,473,nfl-draft-mystery3-2,NFL Draft,2,4,89,Chad Zavala,LG,6700,False,4020,4020,,
+mystery-4,474,70plus-mystery4-1,70+ Gold Player,1,1,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,475,70plus-mystery4-2,70+ Gold Player,2,1,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,476,70plus-mystery4-3,70+ Gold Player,3,1,96,,,160000,False,96000.0,96000.0,,2026-05-25
+mystery-4,477,70plus-mystery4-4,70+ Gold Player,4,1,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-4,478,70plus-mystery4-5,70+ Gold Player,5,1,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,479,70plus-mystery4-6,70+ Gold Player,6,1,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,480,70plus-mystery4-7,70+ Gold Player,7,1,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,481,70plus-mystery4-8,70+ Gold Player,8,1,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,482,70plus-mystery4-9,70+ Gold Player,9,1,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-4,483,70plus-mystery4-10,70+ Gold Player,10,1,77,,,28,False,16.8,16.8,,2026-05-25
+mystery-4,484,70plus-mystery4-11,70+ Gold Player,11,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,485,deepshot-mystery4-1,Deep Shot,1,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,486,deepshot-mystery4-1,Deep Shot,1,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,487,deepshot-mystery4-1,Deep Shot,1,3,77,,,28,False,16.8,16.8,,2026-05-25
+mystery-4,488,deepshot-mystery4-1,Deep Shot,1,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,489,deepshot-mystery4-1,Deep Shot,1,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,490,deepshot-mystery4-2,Deep Shot,2,1,87,,,2700,False,1620.0,1620.0,,2026-05-25
+mystery-4,491,deepshot-mystery4-2,Deep Shot,2,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,492,deepshot-mystery4-2,Deep Shot,2,3,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,493,deepshot-mystery4-2,Deep Shot,2,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,494,deepshot-mystery4-2,Deep Shot,2,5,76,,,18,False,10.8,10.8,,2026-05-25
+mystery-4,495,deepshot-mystery4-3,Deep Shot,3,1,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-4,496,deepshot-mystery4-3,Deep Shot,3,2,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,497,deepshot-mystery4-3,Deep Shot,3,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,498,deepshot-mystery4-3,Deep Shot,3,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,499,deepshot-mystery4-3,Deep Shot,3,5,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,500,deepshot-mystery4-4,Deep Shot,4,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,501,deepshot-mystery4-4,Deep Shot,4,2,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-4,502,deepshot-mystery4-4,Deep Shot,4,3,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,503,deepshot-mystery4-4,Deep Shot,4,4,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-4,504,deepshot-mystery4-4,Deep Shot,4,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,505,deepshot-mystery4-5,Deep Shot,5,1,78,,,44,False,26.4,26.4,,2026-05-25
+mystery-4,506,deepshot-mystery4-5,Deep Shot,5,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,507,deepshot-mystery4-5,Deep Shot,5,3,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-4,508,deepshot-mystery4-5,Deep Shot,5,4,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-4,509,deepshot-mystery4-5,Deep Shot,5,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,510,deepshot-mystery4-6,Deep Shot,6,1,95,,,100000,False,60000.0,60000.0,,2026-05-25
+mystery-4,511,deepshot-mystery4-6,Deep Shot,6,2,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-4,512,deepshot-mystery4-6,Deep Shot,6,3,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,513,deepshot-mystery4-6,Deep Shot,6,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,514,deepshot-mystery4-6,Deep Shot,6,5,78,,,44,False,26.4,26.4,,2026-05-25
+mystery-4,515,deepshot-mystery4-7,Deep Shot,7,1,82,,,270,False,162.0,162.0,,2026-05-25
+mystery-4,516,deepshot-mystery4-7,Deep Shot,7,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,517,deepshot-mystery4-7,Deep Shot,7,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,518,deepshot-mystery4-7,Deep Shot,7,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,519,deepshot-mystery4-7,Deep Shot,7,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,520,deepshot-mystery4-8,Deep Shot,8,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,521,deepshot-mystery4-8,Deep Shot,8,2,78,,,44,False,26.4,26.4,,2026-05-25
+mystery-4,522,deepshot-mystery4-8,Deep Shot,8,3,78,,,44,False,26.4,26.4,,2026-05-25
+mystery-4,523,deepshot-mystery4-8,Deep Shot,8,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,524,deepshot-mystery4-8,Deep Shot,8,5,93,,,42000,False,25200.0,25200.0,,2026-05-25
+mystery-4,525,deepshot-mystery4-9,Deep Shot,9,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,526,deepshot-mystery4-9,Deep Shot,9,2,87,,,2700,False,1620.0,1620.0,,2026-05-25
+mystery-4,527,deepshot-mystery4-9,Deep Shot,9,3,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,528,deepshot-mystery4-9,Deep Shot,9,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,529,deepshot-mystery4-9,Deep Shot,9,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,530,deepshot-mystery4-10,Deep Shot,10,1,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,531,deepshot-mystery4-10,Deep Shot,10,2,82,,,270,False,162.0,162.0,,2026-05-25
+mystery-4,532,deepshot-mystery4-10,Deep Shot,10,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,533,deepshot-mystery4-10,Deep Shot,10,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,534,deepshot-mystery4-10,Deep Shot,10,5,75,,,11,False,6.6,6.6,,2026-05-25
+mystery-4,535,deepshot-mystery4-11,Deep Shot,11,1,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-4,536,deepshot-mystery4-11,Deep Shot,11,2,78,,,44,False,26.4,26.4,,2026-05-25
+mystery-4,537,deepshot-mystery4-11,Deep Shot,11,3,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-4,538,deepshot-mystery4-11,Deep Shot,11,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,539,deepshot-mystery4-11,Deep Shot,11,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,540,deepshot-mystery4-12,Deep Shot,12,1,86,,,1700,False,1020.0,1020.0,,2026-05-25
+mystery-4,541,deepshot-mystery4-12,Deep Shot,12,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,542,deepshot-mystery4-12,Deep Shot,12,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,543,deepshot-mystery4-12,Deep Shot,12,4,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-4,544,deepshot-mystery4-12,Deep Shot,12,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,545,deepshot-mystery4-13,Deep Shot,13,1,78,,,44,False,26.4,26.4,,2026-05-25
+mystery-4,546,deepshot-mystery4-13,Deep Shot,13,2,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,547,deepshot-mystery4-13,Deep Shot,13,3,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-4,548,deepshot-mystery4-13,Deep Shot,13,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,549,deepshot-mystery4-13,Deep Shot,13,5,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-4,550,deepshot-mystery4-14,Deep Shot,14,1,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-4,551,deepshot-mystery4-14,Deep Shot,14,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,552,deepshot-mystery4-14,Deep Shot,14,3,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-4,553,deepshot-mystery4-14,Deep Shot,14,4,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,554,deepshot-mystery4-14,Deep Shot,14,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,555,deepshot-mystery4-15,Deep Shot,15,1,86,,,1700,False,1020.0,1020.0,,2026-05-25
+mystery-4,556,deepshot-mystery4-15,Deep Shot,15,2,75,,,11,False,6.6,6.6,,2026-05-25
+mystery-4,557,deepshot-mystery4-15,Deep Shot,15,3,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,558,deepshot-mystery4-15,Deep Shot,15,4,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,559,deepshot-mystery4-15,Deep Shot,15,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,560,deepshot-mystery4-16,Deep Shot,16,1,86,,,1700,False,1020.0,1020.0,,2026-05-25
+mystery-4,561,deepshot-mystery4-16,Deep Shot,16,2,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-4,562,deepshot-mystery4-16,Deep Shot,16,3,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,563,deepshot-mystery4-16,Deep Shot,16,4,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-4,564,deepshot-mystery4-16,Deep Shot,16,5,87,,,2700,False,1620.0,1620.0,,2026-05-25
+mystery-4,565,deepshot-mystery4-17,Deep Shot,17,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,566,deepshot-mystery4-17,Deep Shot,17,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,567,deepshot-mystery4-17,Deep Shot,17,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,568,deepshot-mystery4-17,Deep Shot,17,4,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,569,deepshot-mystery4-17,Deep Shot,17,5,76,,,18,False,10.8,10.8,,2026-05-25
+mystery-4,570,deepshot-mystery4-18,Deep Shot,18,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,571,deepshot-mystery4-18,Deep Shot,18,2,80,,,110,False,66.0,66.0,,2026-05-25
+mystery-4,572,deepshot-mystery4-18,Deep Shot,18,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,573,deepshot-mystery4-18,Deep Shot,18,4,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-4,574,deepshot-mystery4-18,Deep Shot,18,5,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,575,deepshot-mystery4-19,Deep Shot,19,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,576,deepshot-mystery4-19,Deep Shot,19,2,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,577,deepshot-mystery4-19,Deep Shot,19,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,578,deepshot-mystery4-19,Deep Shot,19,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,579,deepshot-mystery4-19,Deep Shot,19,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,580,reeldeals-mystery4-1,Reel Deals,1,1,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,581,reeldeals-mystery4-1,Reel Deals,1,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,582,reeldeals-mystery4-2,Reel Deals,2,1,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,583,reeldeals-mystery4-2,Reel Deals,2,2,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-4,584,snap-mystery4-1,Snap Fantasy,1,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,585,snap-mystery4-1,Snap Fantasy,1,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,586,snap-mystery4-1,Snap Fantasy,1,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,587,snap-mystery4-1,Snap Fantasy,1,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,588,snap-mystery4-1,Snap Fantasy,1,5,93,,,42000,False,25200.0,25200.0,,2026-05-25
+mystery-4,589,snap-mystery4-2,Snap Fantasy,2,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,590,snap-mystery4-2,Snap Fantasy,2,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,591,snap-mystery4-2,Snap Fantasy,2,3,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-4,592,snap-mystery4-2,Snap Fantasy,2,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,593,snap-mystery4-2,Snap Fantasy,2,5,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-4,594,snap-mystery4-3,Snap Fantasy,3,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,595,snap-mystery4-3,Snap Fantasy,3,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,596,snap-mystery4-3,Snap Fantasy,3,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,597,snap-mystery4-3,Snap Fantasy,3,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,598,snap-mystery4-3,Snap Fantasy,3,5,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-4,599,snap-mystery4-4,Snap Fantasy,4,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,600,snap-mystery4-4,Snap Fantasy,4,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,601,snap-mystery4-4,Snap Fantasy,4,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,602,snap-mystery4-4,Snap Fantasy,4,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-4,603,snap-mystery4-4,Snap Fantasy,4,5,94,,,66000,False,39600.0,39600.0,,2026-05-25
+mystery-4,604,draft-mystery4-1,NFL Draft,1,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,605,draft-mystery4-1,NFL Draft,1,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,606,draft-mystery4-1,NFL Draft,1,3,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-4,607,draft-mystery4-1,NFL Draft,1,4,93,,,42000,False,25200.0,25200.0,,2026-05-25
+mystery-4,608,draft-mystery4-2,NFL Draft,2,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,609,draft-mystery4-2,NFL Draft,2,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,610,draft-mystery4-2,NFL Draft,2,3,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,611,draft-mystery4-2,NFL Draft,2,4,93,,,42000,False,25200.0,25200.0,,2026-05-25
+mystery-4,612,draft-mystery4-3,NFL Draft,3,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,613,draft-mystery4-3,NFL Draft,3,2,96,,,160000,False,96000.0,96000.0,,2026-05-25
+mystery-4,614,draft-mystery4-3,NFL Draft,3,3,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,615,draft-mystery4-3,NFL Draft,3,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,616,draft-mystery4-4,NFL Draft,4,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,617,draft-mystery4-4,NFL Draft,4,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-4,618,draft-mystery4-4,NFL Draft,4,3,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-4,619,draft-mystery4-4,NFL Draft,4,4,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-4,620,collector-mystery4-1,Collector Series,1,1,98,,,410000,False,246000.0,246000.0,,2026-05-25
+mystery-4,621,collector-mystery4-1,Collector Series,1,2,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-4,622,collector-mystery4-2,Collector Series,2,1,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-4,623,collector-mystery4-2,Collector Series,2,2,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-4,624,collector-mystery4-3,Collector Series,3,1,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-4,625,collector-mystery4-3,Collector Series,3,2,82,,,270,False,162.0,162.0,,2026-05-25
+mystery-4,626,collector-mystery4-4,Collector Series,4,1,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-4,627,collector-mystery4-4,Collector Series,4,2,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-4,628,ultlegend-mystery4-1,Ultimate Legends,1,1,98,,,410000,False,246000.0,246000.0,,2026-05-25
+mystery-4,629,ultlegend-mystery4-1,Ultimate Legends,1,2,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-5,630,deepshot-mystery5-1,Deep Shot,1,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,631,deepshot-mystery5-1,Deep Shot,1,2,75,,,11,False,6.6,6.6,,2026-05-25
+mystery-5,632,deepshot-mystery5-1,Deep Shot,1,3,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-5,633,deepshot-mystery5-1,Deep Shot,1,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,634,deepshot-mystery5-1,Deep Shot,1,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,635,deepshot-mystery5-2,Deep Shot,2,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,636,deepshot-mystery5-2,Deep Shot,2,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,637,deepshot-mystery5-2,Deep Shot,2,3,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,638,deepshot-mystery5-2,Deep Shot,2,4,80,,,110,False,66.0,66.0,,2026-05-25
+mystery-5,639,deepshot-mystery5-2,Deep Shot,2,5,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-5,640,deepshot-mystery5-3,Deep Shot,3,1,82,,,270,False,162.0,162.0,,2026-05-25
+mystery-5,641,deepshot-mystery5-3,Deep Shot,3,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,642,deepshot-mystery5-3,Deep Shot,3,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,643,deepshot-mystery5-3,Deep Shot,3,4,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-5,644,deepshot-mystery5-3,Deep Shot,3,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,645,deepshot-mystery5-4,Deep Shot,4,1,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-5,646,deepshot-mystery5-4,Deep Shot,4,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,647,deepshot-mystery5-4,Deep Shot,4,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,648,deepshot-mystery5-4,Deep Shot,4,4,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-5,649,deepshot-mystery5-4,Deep Shot,4,5,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,650,deepshot-mystery5-5,Deep Shot,5,1,86,,,1700,False,1020.0,1020.0,,2026-05-25
+mystery-5,651,deepshot-mystery5-5,Deep Shot,5,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,652,deepshot-mystery5-5,Deep Shot,5,3,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-5,653,deepshot-mystery5-5,Deep Shot,5,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,654,deepshot-mystery5-5,Deep Shot,5,5,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,655,deepshot-mystery5-6,Deep Shot,6,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,656,deepshot-mystery5-6,Deep Shot,6,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,657,deepshot-mystery5-6,Deep Shot,6,3,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-5,658,deepshot-mystery5-6,Deep Shot,6,4,80,,,110,False,66.0,66.0,,2026-05-25
+mystery-5,659,deepshot-mystery5-6,Deep Shot,6,5,83,,,430,False,258.0,258.0,,2026-05-25
+mystery-5,660,deepshot-mystery5-7,Deep Shot,7,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,661,deepshot-mystery5-7,Deep Shot,7,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,662,deepshot-mystery5-7,Deep Shot,7,3,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-5,663,deepshot-mystery5-7,Deep Shot,7,4,78,,,44,False,26.4,26.4,,2026-05-25
+mystery-5,664,deepshot-mystery5-7,Deep Shot,7,5,76,,,18,False,10.8,10.8,,2026-05-25
+mystery-5,665,deepshot-mystery5-8,Deep Shot,8,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,666,deepshot-mystery5-8,Deep Shot,8,2,80,,,110,False,66.0,66.0,,2026-05-25
+mystery-5,667,deepshot-mystery5-8,Deep Shot,8,3,77,,,28,False,16.8,16.8,,2026-05-25
+mystery-5,668,deepshot-mystery5-8,Deep Shot,8,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,669,deepshot-mystery5-8,Deep Shot,8,5,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-5,670,deepshot-mystery5-9,Deep Shot,9,1,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-5,671,deepshot-mystery5-9,Deep Shot,9,2,81,,,170,False,102.0,102.0,,2026-05-25
+mystery-5,672,deepshot-mystery5-9,Deep Shot,9,3,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-5,673,deepshot-mystery5-9,Deep Shot,9,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,674,deepshot-mystery5-9,Deep Shot,9,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,675,deepshot-mystery5-10,Deep Shot,10,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,676,deepshot-mystery5-10,Deep Shot,10,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,677,deepshot-mystery5-10,Deep Shot,10,3,73,,,4,False,2.4,2.4,,2026-05-25
+mystery-5,678,deepshot-mystery5-10,Deep Shot,10,4,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-5,679,deepshot-mystery5-10,Deep Shot,10,5,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,680,deepshot-mystery5-11,Deep Shot,11,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,681,deepshot-mystery5-11,Deep Shot,11,2,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-5,682,deepshot-mystery5-11,Deep Shot,11,3,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-5,683,deepshot-mystery5-11,Deep Shot,11,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,684,deepshot-mystery5-11,Deep Shot,11,5,87,,,2700,False,1620.0,1620.0,,2026-05-25
+mystery-5,686,70plus-mystery5-1,70+ Gold Player,1,1,85,,,1080,False,648.0,648.0,,2026-05-25
+mystery-5,687,70plus-mystery5-2,70+ Gold Player,2,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,688,70plus-mystery5-3,70+ Gold Player,3,1,79,,,69,False,41.4,41.4,,2026-05-25
+mystery-5,689,70plus-mystery5-4,70+ Gold Player,4,1,80,,,110,False,66.0,66.0,,2026-05-25
+mystery-5,690,70plus-mystery5-5,70+ Gold Player,5,1,84,,,680,False,408.0,408.0,,2026-05-25
+mystery-5,691,70plus-mystery5-6,70+ Gold Player,6,1,82,,,270,False,162.0,162.0,,2026-05-25
+mystery-5,692,70plus-mystery5-7,70+ Gold Player,7,1,80,,,110,False,66.0,66.0,,2026-05-25
+mystery-5,693,reeldeals-mystery5-1,Reel Deals,1,1,94,,,66000,False,39600.0,39600.0,,2026-05-25
+mystery-5,694,reeldeals-mystery5-1,Reel Deals,1,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,695,reeldeals-mystery5-2,Reel Deals,2,1,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,696,reeldeals-mystery5-2,Reel Deals,2,2,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-5,697,draft-mystery5-1,NFL Draft,1,1,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-5,698,draft-mystery5-1,NFL Draft,1,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,699,draft-mystery5-1,NFL Draft,1,3,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,700,draft-mystery5-1,NFL Draft,1,4,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-5,701,draft-mystery5-2,NFL Draft,2,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,702,draft-mystery5-2,NFL Draft,2,2,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-5,703,draft-mystery5-2,NFL Draft,2,3,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-5,704,draft-mystery5-2,NFL Draft,2,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,705,snap-mystery5-1,Snap Fantasy,1,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,706,snap-mystery5-1,Snap Fantasy,1,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,707,snap-mystery5-1,Snap Fantasy,1,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,708,snap-mystery5-1,Snap Fantasy,1,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,709,snap-mystery5-1,Snap Fantasy,1,5,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,710,snap-mystery5-2,Snap Fantasy,2,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,711,snap-mystery5-2,Snap Fantasy,2,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,712,snap-mystery5-2,Snap Fantasy,2,3,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-5,713,snap-mystery5-2,Snap Fantasy,2,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,714,snap-mystery5-2,Snap Fantasy,2,5,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-5,715,snap-mystery5-3,Snap Fantasy,3,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,716,snap-mystery5-3,Snap Fantasy,3,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,717,snap-mystery5-3,Snap Fantasy,3,3,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,718,snap-mystery5-3,Snap Fantasy,3,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,719,snap-mystery5-3,Snap Fantasy,3,5,94,,,66000,False,39600.0,39600.0,,2026-05-25
+mystery-5,720,snap-mystery5-4,Snap Fantasy,4,1,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,721,snap-mystery5-4,Snap Fantasy,4,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,722,snap-mystery5-4,Snap Fantasy,4,3,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,723,snap-mystery5-4,Snap Fantasy,4,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,724,snap-mystery5-4,Snap Fantasy,4,5,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,725,snap-mystery5-5,Snap Fantasy,5,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,726,snap-mystery5-5,Snap Fantasy,5,2,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,727,snap-mystery5-5,Snap Fantasy,5,3,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,728,snap-mystery5-5,Snap Fantasy,5,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,729,snap-mystery5-5,Snap Fantasy,5,5,91,,,16700,False,10020.0,10020.0,,2026-05-25
+mystery-5,730,snap-mystery5-6,Snap Fantasy,6,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,731,snap-mystery5-6,Snap Fantasy,6,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,732,snap-mystery5-6,Snap Fantasy,6,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,733,snap-mystery5-6,Snap Fantasy,6,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,734,snap-mystery5-6,Snap Fantasy,6,5,90,,,10600,False,6360.0,6360.0,,2026-05-25
+mystery-5,735,snap-mystery5-7,Snap Fantasy,7,1,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,736,snap-mystery5-7,Snap Fantasy,7,2,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,737,snap-mystery5-7,Snap Fantasy,7,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,738,snap-mystery5-7,Snap Fantasy,7,4,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,739,snap-mystery5-7,Snap Fantasy,7,5,95,,,100000,False,60000.0,60000.0,,2026-05-25
+mystery-5,740,snap-mystery5-8,Snap Fantasy,8,1,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,741,snap-mystery5-8,Snap Fantasy,8,2,89,,,6700,False,4020.0,4020.0,,2026-05-25
+mystery-5,742,snap-mystery5-8,Snap Fantasy,8,3,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,743,snap-mystery5-8,Snap Fantasy,8,4,88,,,4200,False,2520.0,2520.0,,2026-05-25
+mystery-5,744,snap-mystery5-8,Snap Fantasy,8,5,92,,,26000,False,15600.0,15600.0,,2026-05-25
+mystery-5,745,collector-mystery5-1,Collector Series,1,1,94,,,66000,False,39600.0,39600.0,,2026-05-25
+mystery-5,746,collector-mystery5-1,Collector Series,1,2,82,,,270,False,162.0,162.0,,2026-05-25
+mystery-6,747,draft-mystery6-1,NFL Draft,1,1,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,748,draft-mystery6-1,NFL Draft,1,2,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,749,draft-mystery6-1,NFL Draft,1,3,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,750,draft-mystery6-1,NFL Draft,1,4,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,751,draft-mystery6-2,NFL Draft,2,1,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,752,draft-mystery6-2,NFL Draft,2,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,753,draft-mystery6-2,NFL Draft,2,3,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,754,draft-mystery6-2,NFL Draft,2,4,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,755,draft-mystery6-3,NFL Draft,3,1,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,756,draft-mystery6-3,NFL Draft,3,2,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,757,draft-mystery6-3,NFL Draft,3,3,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,758,draft-mystery6-3,NFL Draft,3,4,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,759,draft-mystery6-4,NFL Draft,4,1,93,,,42000,False,25200.0,25200.0,,2026-05-26
+mystery-6,760,draft-mystery6-4,NFL Draft,4,2,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,761,draft-mystery6-4,NFL Draft,4,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,762,draft-mystery6-4,NFL Draft,4,4,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,763,draft-mystery6-5,NFL Draft,5,1,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,764,draft-mystery6-5,NFL Draft,5,2,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,765,draft-mystery6-5,NFL Draft,5,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,766,draft-mystery6-5,NFL Draft,5,4,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,767,draft-mystery6-6,NFL Draft,6,1,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,768,draft-mystery6-6,NFL Draft,6,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,769,draft-mystery6-6,NFL Draft,6,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,770,draft-mystery6-6,NFL Draft,6,4,93,,,42000,False,25200.0,25200.0,,2026-05-26
+mystery-6,771,draft-mystery6-7,NFL Draft,7,1,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,772,draft-mystery6-7,NFL Draft,7,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,773,draft-mystery6-7,NFL Draft,7,3,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,774,draft-mystery6-7,NFL Draft,7,4,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,775,draft-mystery6-8,NFL Draft,8,1,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,776,draft-mystery6-8,NFL Draft,8,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,777,draft-mystery6-8,NFL Draft,8,3,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,778,draft-mystery6-8,NFL Draft,8,4,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,779,draft-mystery6-9,NFL Draft,9,1,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,780,draft-mystery6-9,NFL Draft,9,2,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,781,draft-mystery6-9,NFL Draft,9,3,93,,,42000,False,25200.0,25200.0,,2026-05-26
+mystery-6,782,draft-mystery6-9,NFL Draft,9,4,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,783,70plus-mystery6-1,70+ Gold Player,1,1,79,,,69,False,41.4,41.4,,2026-05-26
+mystery-6,784,70plus-mystery6-2,70+ Gold Player,2,1,76,,,18,False,10.8,10.8,,2026-05-26
+mystery-6,785,70plus-mystery6-3,70+ Gold Player,3,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,786,70plus-mystery6-4,70+ Gold Player,4,1,77,,,28,False,16.8,16.8,,2026-05-26
+mystery-6,787,70plus-mystery6-5,70+ Gold Player,5,1,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,788,70plus-mystery6-6,70+ Gold Player,6,1,82,,,270,False,162.0,162.0,,2026-05-26
+mystery-6,789,70plus-mystery6-7,70+ Gold Player,7,1,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,790,70plus-mystery6-8,70+ Gold Player,8,1,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,791,70plus-mystery6-9,70+ Gold Player,9,1,78,,,44,False,26.4,26.4,,2026-05-26
+mystery-6,792,70plus-mystery6-10,70+ Gold Player,10,1,83,,,430,False,258.0,258.0,,2026-05-26
+mystery-6,793,70plus-mystery6-11,70+ Gold Player,11,1,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,794,70plus-mystery6-12,70+ Gold Player,12,1,73,,,4,False,2.4,2.4,,2026-05-26
+mystery-6,795,70plus-mystery6-13,70+ Gold Player,13,1,80,,,110,False,66.0,66.0,,2026-05-26
+mystery-6,796,70plus-mystery6-14,70+ Gold Player,14,1,86,,,1700,False,1020.0,1020.0,,2026-05-26
+mystery-6,797,70plus-mystery6-15,70+ Gold Player,15,1,76,,,18,False,10.8,10.8,,2026-05-26
+mystery-6,798,70plus-mystery6-16,70+ Gold Player,16,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,799,70plus-mystery6-17,70+ Gold Player,17,1,87,,,2700,False,1620.0,1620.0,,2026-05-26
+mystery-6,800,70plus-mystery6-18,70+ Gold Player,18,1,79,,,69,False,41.4,41.4,,2026-05-26
+mystery-6,801,70plus-mystery6-19,70+ Gold Player,19,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,802,70plus-mystery6-20,70+ Gold Player,20,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,803,70plus-mystery6-21,70+ Gold Player,21,1,82,,,270,False,162.0,162.0,,2026-05-26
+mystery-6,804,70plus-mystery6-22,70+ Gold Player,22,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,805,70plus-mystery6-23,70+ Gold Player,23,1,83,,,430,False,258.0,258.0,,2026-05-26
+mystery-6,806,70plus-mystery6-24,70+ Gold Player,24,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,807,ultlegend-mystery6-1,Ultimate Legends,1,1,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,808,ultlegend-mystery6-1,Ultimate Legends,1,2,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,809,ultlegend-mystery6-2,Ultimate Legends,2,1,94,,,66000,False,39600.0,39600.0,,2026-05-26
+mystery-6,810,ultlegend-mystery6-2,Ultimate Legends,2,2,95,,,100000,False,60000.0,60000.0,,2026-05-26
+mystery-6,811,reeldeals-mystery6-1,Reel Deals,1,1,94,,,66000,False,39600.0,39600.0,,2026-05-26
+mystery-6,812,reeldeals-mystery6-1,Reel Deals,1,2,96,,,160000,False,96000.0,96000.0,,2026-05-26
+mystery-6,813,reeldeals-mystery6-2,Reel Deals,2,1,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,814,reeldeals-mystery6-2,Reel Deals,2,2,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,815,reeldeals-mystery6-3,Reel Deals,3,1,97,,,260000,False,156000.0,156000.0,,2026-05-26
+mystery-6,816,reeldeals-mystery6-3,Reel Deals,3,2,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,817,snap-mystery6-1,Snap Fantasy,1,1,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,818,snap-mystery6-1,Snap Fantasy,1,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,819,snap-mystery6-1,Snap Fantasy,1,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,820,snap-mystery6-1,Snap Fantasy,1,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,821,snap-mystery6-1,Snap Fantasy,1,5,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,822,snap-mystery6-2,Snap Fantasy,2,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,823,snap-mystery6-2,Snap Fantasy,2,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,824,snap-mystery6-2,Snap Fantasy,2,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,825,snap-mystery6-2,Snap Fantasy,2,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,826,snap-mystery6-2,Snap Fantasy,2,5,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,827,snap-mystery6-3,Snap Fantasy,3,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,828,snap-mystery6-3,Snap Fantasy,3,2,93,,,42000,False,25200.0,25200.0,,2026-05-26
+mystery-6,829,snap-mystery6-3,Snap Fantasy,3,3,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,830,snap-mystery6-3,Snap Fantasy,3,4,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,831,snap-mystery6-3,Snap Fantasy,3,5,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,832,snap-mystery6-4,Snap Fantasy,4,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,833,snap-mystery6-4,Snap Fantasy,4,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,834,snap-mystery6-4,Snap Fantasy,4,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,835,snap-mystery6-4,Snap Fantasy,4,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,836,snap-mystery6-4,Snap Fantasy,4,5,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,837,snap-mystery6-5,Snap Fantasy,5,1,95,,,100000,False,60000.0,60000.0,,2026-05-26
+mystery-6,838,snap-mystery6-5,Snap Fantasy,5,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,839,snap-mystery6-5,Snap Fantasy,5,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,840,snap-mystery6-5,Snap Fantasy,5,4,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,841,snap-mystery6-5,Snap Fantasy,5,5,94,,,66000,False,39600.0,39600.0,,2026-05-26
+mystery-6,842,snap-mystery6-6,Snap Fantasy,6,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,843,snap-mystery6-6,Snap Fantasy,6,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,844,snap-mystery6-6,Snap Fantasy,6,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,845,snap-mystery6-6,Snap Fantasy,6,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,846,snap-mystery6-6,Snap Fantasy,6,5,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,847,snap-mystery6-7,Snap Fantasy,7,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,848,snap-mystery6-7,Snap Fantasy,7,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,849,snap-mystery6-7,Snap Fantasy,7,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,850,snap-mystery6-7,Snap Fantasy,7,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,851,snap-mystery6-7,Snap Fantasy,7,5,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,852,snap-mystery6-8,Snap Fantasy,8,1,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,853,snap-mystery6-8,Snap Fantasy,8,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,854,snap-mystery6-8,Snap Fantasy,8,3,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,855,snap-mystery6-8,Snap Fantasy,8,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,856,snap-mystery6-8,Snap Fantasy,8,5,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,857,snap-mystery6-9,Snap Fantasy,9,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,858,snap-mystery6-9,Snap Fantasy,9,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,859,snap-mystery6-9,Snap Fantasy,9,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,860,snap-mystery6-9,Snap Fantasy,9,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,861,snap-mystery6-9,Snap Fantasy,9,5,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,862,collector-mystery6-1,Collector Series,1,1,93,,,42000,False,25200.0,25200.0,,2026-05-26
+mystery-6,863,collector-mystery6-1,Collector Series,1,2,75,,,11,False,6.6,6.6,,2026-05-26
+mystery-6,864,collector-mystery6-2,Collector Series,2,1,93,,,42000,False,25200.0,25200.0,,2026-05-26
+mystery-6,865,collector-mystery6-2,Collector Series,2,2,80,,,110,False,66.0,66.0,,2026-05-26
+mystery-6,866,collector-mystery6-3,Collector Series,3,1,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,867,collector-mystery6-3,Collector Series,3,2,80,,,110,False,66.0,66.0,,2026-05-26
+mystery-6,868,collector-mystery6-4,Collector Series,4,1,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,869,collector-mystery6-4,Collector Series,4,2,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,870,collector-mystery6-5,Collector Series,5,1,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,871,collector-mystery6-5,Collector Series,5,2,81,,,170,False,102.0,102.0,,2026-05-26
+mystery-6,872,deepshot-mystery6-1,Deep Shot,1,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,873,deepshot-mystery6-1,Deep Shot,1,2,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,874,deepshot-mystery6-1,Deep Shot,1,3,74,,,7,False,4.2,4.2,,2026-05-26
+mystery-6,875,deepshot-mystery6-1,Deep Shot,1,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,876,deepshot-mystery6-1,Deep Shot,1,5,79,,,69,False,41.4,41.4,,2026-05-26
+mystery-6,877,deepshot-mystery6-2,Deep Shot,2,1,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,878,deepshot-mystery6-2,Deep Shot,2,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,879,deepshot-mystery6-2,Deep Shot,2,3,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,880,deepshot-mystery6-2,Deep Shot,2,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,881,deepshot-mystery6-2,Deep Shot,2,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,882,deepshot-mystery6-3,Deep Shot,3,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,883,deepshot-mystery6-3,Deep Shot,3,2,74,,,7,False,4.2,4.2,,2026-05-26
+mystery-6,884,deepshot-mystery6-3,Deep Shot,3,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,885,deepshot-mystery6-3,Deep Shot,3,4,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,886,deepshot-mystery6-3,Deep Shot,3,5,79,,,69,False,41.4,41.4,,2026-05-26
+mystery-6,887,deepshot-mystery6-4,Deep Shot,4,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,888,deepshot-mystery6-4,Deep Shot,4,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,889,deepshot-mystery6-4,Deep Shot,4,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,890,deepshot-mystery6-4,Deep Shot,4,4,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,891,deepshot-mystery6-4,Deep Shot,4,5,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,892,deepshot-mystery6-5,Deep Shot,5,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,893,deepshot-mystery6-5,Deep Shot,5,2,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,894,deepshot-mystery6-5,Deep Shot,5,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,895,deepshot-mystery6-5,Deep Shot,5,4,82,,,270,False,162.0,162.0,,2026-05-26
+mystery-6,896,deepshot-mystery6-5,Deep Shot,5,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,897,deepshot-mystery6-6,Deep Shot,6,1,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,898,deepshot-mystery6-6,Deep Shot,6,2,87,,,2700,False,1620.0,1620.0,,2026-05-26
+mystery-6,899,deepshot-mystery6-6,Deep Shot,6,3,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,900,deepshot-mystery6-6,Deep Shot,6,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,901,deepshot-mystery6-6,Deep Shot,6,5,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,902,deepshot-mystery6-7,Deep Shot,7,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,903,deepshot-mystery6-7,Deep Shot,7,2,95,,,100000,False,60000.0,60000.0,,2026-05-26
+mystery-6,904,deepshot-mystery6-7,Deep Shot,7,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,905,deepshot-mystery6-7,Deep Shot,7,4,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,906,deepshot-mystery6-7,Deep Shot,7,5,80,,,110,False,66.0,66.0,,2026-05-26
+mystery-6,907,deepshot-mystery6-8,Deep Shot,8,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,908,deepshot-mystery6-8,Deep Shot,8,2,81,,,170,False,102.0,102.0,,2026-05-26
+mystery-6,909,deepshot-mystery6-8,Deep Shot,8,3,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,910,deepshot-mystery6-8,Deep Shot,8,4,77,,,28,False,16.8,16.8,,2026-05-26
+mystery-6,911,deepshot-mystery6-8,Deep Shot,8,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,912,deepshot-mystery6-9,Deep Shot,9,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,913,deepshot-mystery6-9,Deep Shot,9,2,83,,,430,False,258.0,258.0,,2026-05-26
+mystery-6,914,deepshot-mystery6-9,Deep Shot,9,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,915,deepshot-mystery6-9,Deep Shot,9,4,82,,,270,False,162.0,162.0,,2026-05-26
+mystery-6,916,deepshot-mystery6-9,Deep Shot,9,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,917,deepshot-mystery6-10,Deep Shot,10,1,82,,,270,False,162.0,162.0,,2026-05-26
+mystery-6,918,deepshot-mystery6-10,Deep Shot,10,2,80,,,110,False,66.0,66.0,,2026-05-26
+mystery-6,919,deepshot-mystery6-10,Deep Shot,10,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,920,deepshot-mystery6-10,Deep Shot,10,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,921,deepshot-mystery6-10,Deep Shot,10,5,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,922,deepshot-mystery6-11,Deep Shot,11,1,78,,,44,False,26.4,26.4,,2026-05-26
+mystery-6,923,deepshot-mystery6-11,Deep Shot,11,2,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,924,deepshot-mystery6-11,Deep Shot,11,3,80,,,110,False,66.0,66.0,,2026-05-26
+mystery-6,925,deepshot-mystery6-11,Deep Shot,11,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,926,deepshot-mystery6-11,Deep Shot,11,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,927,deepshot-mystery6-12,Deep Shot,12,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,928,deepshot-mystery6-12,Deep Shot,12,2,87,,,2700,False,1620.0,1620.0,,2026-05-26
+mystery-6,929,deepshot-mystery6-12,Deep Shot,12,3,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,930,deepshot-mystery6-12,Deep Shot,12,4,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,931,deepshot-mystery6-12,Deep Shot,12,5,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,932,deepshot-mystery6-13,Deep Shot,13,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,933,deepshot-mystery6-13,Deep Shot,13,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,934,deepshot-mystery6-13,Deep Shot,13,3,78,,,44,False,26.4,26.4,,2026-05-26
+mystery-6,935,deepshot-mystery6-13,Deep Shot,13,4,77,,,28,False,16.8,16.8,,2026-05-26
+mystery-6,936,deepshot-mystery6-13,Deep Shot,13,5,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,937,deepshot-mystery6-14,Deep Shot,14,1,78,,,44,False,26.4,26.4,,2026-05-26
+mystery-6,938,deepshot-mystery6-14,Deep Shot,14,2,83,,,430,False,258.0,258.0,,2026-05-26
+mystery-6,939,deepshot-mystery6-14,Deep Shot,14,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,940,deepshot-mystery6-14,Deep Shot,14,4,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,941,deepshot-mystery6-14,Deep Shot,14,5,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,942,deepshot-mystery6-15,Deep Shot,15,1,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,943,deepshot-mystery6-15,Deep Shot,15,2,78,,,44,False,26.4,26.4,,2026-05-26
+mystery-6,944,deepshot-mystery6-15,Deep Shot,15,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,945,deepshot-mystery6-15,Deep Shot,15,4,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,946,deepshot-mystery6-15,Deep Shot,15,5,92,,,26000,False,15600.0,15600.0,,2026-05-26
+mystery-6,947,deepshot-mystery6-16,Deep Shot,16,1,81,,,170,False,102.0,102.0,,2026-05-26
+mystery-6,948,deepshot-mystery6-16,Deep Shot,16,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,949,deepshot-mystery6-16,Deep Shot,16,3,87,,,2700,False,1620.0,1620.0,,2026-05-26
+mystery-6,950,deepshot-mystery6-16,Deep Shot,16,4,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,951,deepshot-mystery6-16,Deep Shot,16,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,952,deepshot-mystery6-17,Deep Shot,17,1,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,953,deepshot-mystery6-17,Deep Shot,17,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,954,deepshot-mystery6-17,Deep Shot,17,3,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,955,deepshot-mystery6-17,Deep Shot,17,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,956,deepshot-mystery6-17,Deep Shot,17,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,957,deepshot-mystery6-18,Deep Shot,18,1,78,,,44,False,26.4,26.4,,2026-05-26
+mystery-6,958,deepshot-mystery6-18,Deep Shot,18,2,81,,,170,False,102.0,102.0,,2026-05-26
+mystery-6,959,deepshot-mystery6-18,Deep Shot,18,3,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,960,deepshot-mystery6-18,Deep Shot,18,4,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,961,deepshot-mystery6-18,Deep Shot,18,5,82,,,270,False,162.0,162.0,,2026-05-26
+mystery-6,962,deepshot-mystery6-19,Deep Shot,19,1,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,963,deepshot-mystery6-19,Deep Shot,19,2,76,,,18,False,10.8,10.8,,2026-05-26
+mystery-6,964,deepshot-mystery6-19,Deep Shot,19,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,965,deepshot-mystery6-19,Deep Shot,19,4,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,966,deepshot-mystery6-19,Deep Shot,19,5,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,967,deepshot-mystery6-20,Deep Shot,20,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,968,deepshot-mystery6-20,Deep Shot,20,2,86,,,1700,False,1020.0,1020.0,,2026-05-26
+mystery-6,969,deepshot-mystery6-20,Deep Shot,20,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,970,deepshot-mystery6-20,Deep Shot,20,4,83,,,430,False,258.0,258.0,,2026-05-26
+mystery-6,971,deepshot-mystery6-20,Deep Shot,20,5,95,,,100000,False,60000.0,60000.0,,2026-05-26
+mystery-6,972,deepshot-mystery6-21,Deep Shot,21,1,85,,,1080,False,648.0,648.0,,2026-05-26
+mystery-6,973,deepshot-mystery6-21,Deep Shot,21,2,77,,,28,False,16.8,16.8,,2026-05-26
+mystery-6,974,deepshot-mystery6-21,Deep Shot,21,3,93,,,42000,False,25200.0,25200.0,,2026-05-26
+mystery-6,975,deepshot-mystery6-21,Deep Shot,21,4,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,976,deepshot-mystery6-21,Deep Shot,21,5,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,977,deepshot-mystery6-22,Deep Shot,22,1,78,,,44,False,26.4,26.4,,2026-05-26
+mystery-6,978,deepshot-mystery6-22,Deep Shot,22,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,979,deepshot-mystery6-22,Deep Shot,22,3,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,980,deepshot-mystery6-22,Deep Shot,22,4,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,981,deepshot-mystery6-22,Deep Shot,22,5,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,982,deepshot-mystery6-23,Deep Shot,23,1,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,983,deepshot-mystery6-23,Deep Shot,23,2,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,984,deepshot-mystery6-23,Deep Shot,23,3,75,,,11,False,6.6,6.6,,2026-05-26
+mystery-6,985,deepshot-mystery6-23,Deep Shot,23,4,75,,,11,False,6.6,6.6,,2026-05-26
+mystery-6,986,deepshot-mystery6-23,Deep Shot,23,5,86,,,1700,False,1020.0,1020.0,,2026-05-26
+mystery-6,987,deepshot-mystery6-24,Deep Shot,24,1,83,,,430,False,258.0,258.0,,2026-05-26
+mystery-6,988,deepshot-mystery6-24,Deep Shot,24,2,90,,,10600,False,6360.0,6360.0,,2026-05-26
+mystery-6,989,deepshot-mystery6-24,Deep Shot,24,3,81,,,170,False,102.0,102.0,,2026-05-26
+mystery-6,990,deepshot-mystery6-24,Deep Shot,24,4,81,,,170,False,102.0,102.0,,2026-05-26
+mystery-6,991,deepshot-mystery6-24,Deep Shot,24,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,992,deepshot-mystery6-25,Deep Shot,25,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,993,deepshot-mystery6-25,Deep Shot,25,2,91,,,16700,False,10020.0,10020.0,,2026-05-26
+mystery-6,994,deepshot-mystery6-25,Deep Shot,25,3,95,,,100000,False,60000.0,60000.0,,2026-05-26
+mystery-6,995,deepshot-mystery6-25,Deep Shot,25,4,95,,,100000,False,60000.0,60000.0,,2026-05-26
+mystery-6,996,deepshot-mystery6-25,Deep Shot,25,5,89,,,6700,False,4020.0,4020.0,,2026-05-26
+mystery-6,997,deepshot-mystery6-26,Deep Shot,26,1,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-6,998,deepshot-mystery6-26,Deep Shot,26,2,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,999,deepshot-mystery6-26,Deep Shot,26,3,80,,,110,False,66.0,66.0,,2026-05-26
+mystery-6,1000,deepshot-mystery6-26,Deep Shot,26,4,84,,,680,False,408.0,408.0,,2026-05-26
+mystery-6,1001,deepshot-mystery6-26,Deep Shot,26,5,88,,,4200,False,2520.0,2520.0,,2026-05-26
+mystery-7,1002,70plus-mystery7-1,70+ Gold Player,1,1,84,,,680,False,408.0,408.0,,2026-05-27
+mystery-7,1003,70plus-mystery7-2,70+ Gold Player,2,1,90,,,10600,False,6360.0,6360.0,,2026-05-27
+mystery-7,1004,70plus-mystery7-3,70+ Gold Player,3,1,82,,,270,False,162.0,162.0,,2026-05-27
+mystery-7,1005,70plus-mystery7-4,70+ Gold Player,4,1,86,,,1700,False,1020.0,1020.0,,2026-05-27
+mystery-7,1006,snap-mystery7-1,Snap Fantasy,1,1,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1007,snap-mystery7-1,Snap Fantasy,1,2,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1008,snap-mystery7-1,Snap Fantasy,1,3,91,,,16700,False,10020.0,10020.0,,2026-05-27
+mystery-7,1009,snap-mystery7-1,Snap Fantasy,1,4,82,,,270,False,162.0,162.0,,2026-05-27
+mystery-7,1010,snap-mystery7-1,Snap Fantasy,1,5,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1011,snap-mystery7-2,Snap Fantasy,2,1,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1012,snap-mystery7-2,Snap Fantasy,2,2,90,,,10600,False,6360.0,6360.0,,2026-05-27
+mystery-7,1013,snap-mystery7-2,Snap Fantasy,2,3,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1014,snap-mystery7-2,Snap Fantasy,2,4,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1015,snap-mystery7-2,Snap Fantasy,2,5,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1016,deepshot-mystery7-1,Deep Shot,1,1,75,,,11,False,6.6,6.6,,2026-05-27
+mystery-7,1017,deepshot-mystery7-1,Deep Shot,1,2,82,,,270,False,162.0,162.0,,2026-05-27
+mystery-7,1018,deepshot-mystery7-1,Deep Shot,1,3,79,,,69,False,41.4,41.4,,2026-05-27
+mystery-7,1019,deepshot-mystery7-1,Deep Shot,1,4,82,,,270,False,162.0,162.0,,2026-05-27
+mystery-7,1020,deepshot-mystery7-1,Deep Shot,1,5,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1021,deepshot-mystery7-2,Deep Shot,2,1,82,,,270,False,162.0,162.0,,2026-05-27
+mystery-7,1022,deepshot-mystery7-2,Deep Shot,2,2,85,,,1080,False,648.0,648.0,,2026-05-27
+mystery-7,1023,deepshot-mystery7-2,Deep Shot,2,3,91,,,16700,False,10020.0,10020.0,,2026-05-27
+mystery-7,1024,deepshot-mystery7-2,Deep Shot,2,4,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1025,deepshot-mystery7-2,Deep Shot,2,5,84,,,680,False,408.0,408.0,,2026-05-27
+mystery-7,1026,deepshot-mystery7-3,Deep Shot,3,1,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1027,deepshot-mystery7-3,Deep Shot,3,2,86,,,1700,False,1020.0,1020.0,,2026-05-27
+mystery-7,1028,deepshot-mystery7-3,Deep Shot,3,3,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1029,deepshot-mystery7-3,Deep Shot,3,4,83,,,430,False,258.0,258.0,,2026-05-27
+mystery-7,1030,deepshot-mystery7-3,Deep Shot,3,5,86,,,1700,False,1020.0,1020.0,,2026-05-27
+mystery-7,1031,deepshot-mystery7-4,Deep Shot,4,1,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1032,deepshot-mystery7-4,Deep Shot,4,2,85,,,1080,False,648.0,648.0,,2026-05-27
+mystery-7,1033,deepshot-mystery7-4,Deep Shot,4,3,91,,,16700,False,10020.0,10020.0,,2026-05-27
+mystery-7,1034,deepshot-mystery7-4,Deep Shot,4,4,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1035,deepshot-mystery7-4,Deep Shot,4,5,80,,,110,False,66.0,66.0,,2026-05-27
+mystery-7,1036,deepshot-mystery7-5,Deep Shot,5,1,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1037,deepshot-mystery7-5,Deep Shot,5,2,80,,,110,False,66.0,66.0,,2026-05-27
+mystery-7,1038,deepshot-mystery7-5,Deep Shot,5,3,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1039,deepshot-mystery7-5,Deep Shot,5,4,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1040,deepshot-mystery7-5,Deep Shot,5,5,95,,,100000,False,60000.0,60000.0,,2026-05-27
+mystery-7,1041,deepshot-mystery7-6,Deep Shot,6,1,93,,,42000,False,25200.0,25200.0,,2026-05-27
+mystery-7,1042,deepshot-mystery7-6,Deep Shot,6,2,81,,,170,False,102.0,102.0,,2026-05-27
+mystery-7,1043,deepshot-mystery7-6,Deep Shot,6,3,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1044,deepshot-mystery7-6,Deep Shot,6,4,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1045,deepshot-mystery7-6,Deep Shot,6,5,86,,,1700,False,1020.0,1020.0,,2026-05-27
+mystery-7,1046,deepshot-mystery7-7,Deep Shot,7,1,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1047,deepshot-mystery7-7,Deep Shot,7,2,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1048,deepshot-mystery7-7,Deep Shot,7,3,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1049,deepshot-mystery7-7,Deep Shot,7,4,86,,,1700,False,1020.0,1020.0,,2026-05-27
+mystery-7,1050,deepshot-mystery7-7,Deep Shot,7,5,86,,,1700,False,1020.0,1020.0,,2026-05-27
+mystery-7,1051,deepshot-mystery7-8,Deep Shot,8,1,71,,,2,False,1.2,1.2,,2026-05-27
+mystery-7,1052,deepshot-mystery7-8,Deep Shot,8,2,73,,,4,False,2.4,2.4,,2026-05-27
+mystery-7,1053,deepshot-mystery7-8,Deep Shot,8,3,92,,,26000,False,15600.0,15600.0,,2026-05-27
+mystery-7,1054,deepshot-mystery7-8,Deep Shot,8,4,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1055,deepshot-mystery7-8,Deep Shot,8,5,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1056,deepshot-mystery7-9,Deep Shot,9,1,86,,,1700,False,1020.0,1020.0,,2026-05-27
+mystery-7,1057,deepshot-mystery7-9,Deep Shot,9,2,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1058,deepshot-mystery7-9,Deep Shot,9,3,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1059,deepshot-mystery7-9,Deep Shot,9,4,88,,,4200,False,2520.0,2520.0,,2026-05-27
+mystery-7,1060,deepshot-mystery7-9,Deep Shot,9,5,81,,,170,False,102.0,102.0,,2026-05-27
+mystery-7,1061,draft-mystery7-1,NFL Draft,1,1,95,,,100000,False,60000.0,60000.0,,2026-05-27
+mystery-7,1062,draft-mystery7-1,NFL Draft,1,2,90,,,10600,False,6360.0,6360.0,,2026-05-27
+mystery-7,1063,draft-mystery7-1,NFL Draft,1,3,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1064,draft-mystery7-1,NFL Draft,1,4,89,,,6700,False,4020.0,4020.0,,2026-05-27
+mystery-7,1065,reeldeals-mystery7-1,Reel Deals,1,1,91,,,16700,False,10020.0,10020.0,,2026-05-27
+mystery-7,1066,reeldeals-mystery7-1,Reel Deals,1,2,90,,,10600,False,6360.0,6360.0,,2026-05-27
+mystery-7,1067,reeldeals-mystery7-2,Reel Deals,2,1,90,,,10600,False,6360.0,6360.0,,2026-05-27
+mystery-7,1068,reeldeals-mystery7-2,Reel Deals,2,2,92,,,26000,False,15600.0,15600.0,,2026-05-27
+mystery-7,1069,reeldeals-mystery7-3,Reel Deals,3,1,91,,,16700,False,10020.0,10020.0,,2026-05-27
+mystery-7,1070,reeldeals-mystery7-3,Reel Deals,3,2,90,,,10600,False,6360.0,6360.0,,2026-05-27
+mystery-7,1071,reeldeals-mystery7-4,Reel Deals,4,1,90,,,10600,False,6360.0,6360.0,,2026-05-27
+mystery-7,1072,reeldeals-mystery7-4,Reel Deals,4,2,91,,,16700,False,10020.0,10020.0,,2026-05-27
+mystery-7,1073,collector-mystery7-1,Collector Series,1,1,92,,,26000,False,15600.0,15600.0,,2026-05-27
+mystery-7,1074,collector-mystery7-1,Collector Series,1,2,75,,,11,False,6.6,6.6,,2026-05-27
