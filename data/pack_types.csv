@@ -1,11 +1,11 @@
 pack_type,pack_family,cards_per_pack,cost_coins,cost_training
-Reel Deals,mystery,2,17500,50000
-70+ Gold Player,mystery,1,17500,50000
-Deep Shot,mystery,5,17500,50000
-Snap Fantasy,mystery,5,17500,50000
-NFL Draft,mystery,4,17500,50000
-Collector Series,mystery,2,17500,50000
-Ultimate Legends,mystery,2,17500,50000
+Reel Deals,mystery,2,17500,16667
+70+ Gold Player,mystery,1,17500,16667
+Deep Shot,mystery,5,17500,16667
+Snap Fantasy,mystery,5,17500,16667
+NFL Draft,mystery,4,17500,16667
+Collector Series,mystery,2,17500,16667
+Ultimate Legends,mystery,2,17500,16667
 Blaze Pack,blaze,10,78000,
 Strike Elite Pack,strike,3,76000,
 Surge Pack,surge,1,121500,
